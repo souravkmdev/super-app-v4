@@ -15,7 +15,7 @@ export const colors = {
   buttonBgDarkColor: '#233F78',
   secondary: '#ADACB5',
   border: '#E5E7EB',
-  text_Primary: '#1E1E1E',
+  text_Primary: '#0C0032',
   Color_2d3142: '#2D3142',
   Color_F2F2F2: '#F2F2F2',
   text_Secondary: '#6B7280',

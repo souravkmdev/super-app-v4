@@ -1,11 +1,17 @@
-import { Image, StatusBar, StyleSheet, View } from 'react-native';
+import { Image, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { Text } from '../../globalComponents/CustomText';
-import { colors } from '../../utils/constants/Theme';
+import { colors, fonts } from '../../utils/constants/Theme';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import SubSections from './components/subSections';
 
 const Profile = () => {
   const size = useSizeConfig();
-  const styles = getStyles(size);
+  const insets = useSafeAreaInsets();
+
+  const styles = getStyles(size, insets);
 
   return (
     <View style={styles.container}>
@@ -15,30 +21,35 @@ const Profile = () => {
         barStyle={'dark-content'}
       />
 
-      <View>
+      <ScrollView>
         <Image
           source={require('../../assets/images/profile/profileBg.png')}
           style={styles.backgroundImage}
         />
-
         <View style={styles.overlayContainer}>
-          <Text>Profile</Text>
+          <Text style={styles.profileTitle}>Profile </Text>
 
           <View style={styles.profileInfoContainer}>
-            <View style={styles.avatarContainer}>
-              <Text>S</Text>
+            <View style={styles.avatarOuterContainer}>
+              <View style={styles.avatarContainer}>
+                <Text style={styles.avatarText}>S</Text>
+              </View>
             </View>
 
-            <Text>Hello, Suhail</Text>
-            <Text>+91 12345 67890</Text>
+            <View style={{ gap: size.width }}>
+              <Text style={styles.userName}>Hello, Suhail</Text>
+              <Text style={styles.phoneNumber}>12345 67890</Text>
+            </View>
           </View>
         </View>
-      </View>
+
+        <SubSections />
+      </ScrollView>
     </View>
   );
 };
 
-const getStyles = (size: any) =>
+const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -50,13 +61,21 @@ const getStyles = (size: any) =>
     },
 
     overlayContainer: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: size.height * 8,
       position: 'absolute',
-      top: size.width * 10,
+      top: size.width * 7,
       left: 0,
       right: 0,
+      paddingTop: insets.top,
+
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: size.height * 7,
+    },
+
+    profileTitle: {
+      fontFamily: fonts.bold,
+      fontSize: size.fontSize * 4.5,
+      color: colors.text_Primary,
     },
 
     profileInfoContainer: {
@@ -65,15 +84,50 @@ const getStyles = (size: any) =>
       gap: size.height * 2,
     },
 
+    avatarOuterContainer: {
+      backgroundColor: '#9580f55b',
+      width: size.width * 15,
+      height: size.width * 15,
+      borderRadius: size.width * 8,
+
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
     avatarContainer: {
       backgroundColor: colors.primary,
       width: size.width * 13,
       height: size.width * 13,
       borderRadius: size.width * 10,
+
       alignItems: 'center',
       justifyContent: 'center',
-      borderWidth: 4,
-      borderColor: '#836af49c',
+    },
+
+    avatarText: {
+      fontFamily: fonts.extraBold,
+      fontSize: size.fontSize * 5,
+      color: colors.white,
+
+      includeFontPadding: false,
+      textAlignVertical: 'center',
+
+      lineHeight: size.fontSize * 4.5,
+      marginTop: -1,
+    },
+
+    userName: {
+      fontFamily: fonts.bold,
+      fontSize: size.fontSize * 4.3,
+      color: colors.text_Primary,
+      textAlign: 'center',
+    },
+
+    phoneNumber: {
+      fontFamily: fonts.medium,
+      fontSize: size.fontSize * 3,
+      color: '#9B9CB5',
+      textAlign: 'center',
     },
   });
 
