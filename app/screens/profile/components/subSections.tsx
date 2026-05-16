@@ -126,6 +126,11 @@ const getStyles = (size: any, insets: any) =>
       alignItems: 'center',
 
       padding: size.width * 2,
+      paddingHorizontal: size.width * 4,
+      borderBottomWidth: 1,
+      borderBottomColor: '#EEEEF2',
+      marginHorizontal: size.width * 5,
+      paddingVertical : size.height * 3,
     },
 
     leftContainer: {

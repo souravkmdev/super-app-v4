@@ -9,8 +9,8 @@ import { Text } from '../../globalComponents/CustomText';
 import { colors, fonts } from '../../utils/constants/Theme';
 
 import SubSections from './components/subSections';
-import { profileSections } from './data';
 import CustomButton from '../../globalComponents/CustomButton';
+import { logIn, logOut } from './data';
 
 const Profile = () => {
   const size = useSizeConfig();
@@ -29,81 +29,74 @@ const Profile = () => {
       />
 
       <FlatList
-        data={profileSections}
+        data={isLoggedIn ? logIn : logOut}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
         renderItem={({ item }) => <SubSections title={item} />}
         ListHeaderComponent={
-          <>
-            <View style={styles.headerContainer}>
-              <Image
-                source={require('../../assets/images/profile/profileBg.png')}
-                style={styles.backgroundImage}
-                resizeMode="cover"
-              />
+          <View style={styles.headerContainer}>
+            <Image
+              source={require('../../assets/images/profile/profileBg.png')}
+              style={styles.backgroundImage}
+              resizeMode="cover"
+            />
 
-              <View style={styles.overlayContainer}>
-                <Text style={styles.profileTitle}>Profile</Text>
+            <View style={styles.overlayContainer}>
+              <Text style={styles.profileTitle}>Profile</Text>
 
-                {isLoggedIn ? (
-                  <View style={styles.profileInfoContainer}>
+              {isLoggedIn ? (
+                <View style={styles.profileInfoContainer}>
+                  <View style={styles.avatarOuterContainer}>
+                    <View style={styles.avatarContainer}>
+                      <Text style={styles.avatarText}>S</Text>
+                    </View>
+                  </View>
+
+                  <View style={styles.userDetailsContainer}>
+                    <Text style={styles.userName}>Hello, Suhail</Text>
+
+                    <Text style={styles.phoneNumber}>+91 12345 67890</Text>
+                  </View>
+                </View>
+              ) : (
+                <View
+                  style={{
+                    gap: size.height * 5,
+                    marginTop: size.height * 5,
+                    marginBottom: size.height * 3,
+                  }}
+                >
+                  <View style={styles.loginContainer}>
                     <View style={styles.avatarOuterContainer}>
-                      <View style={styles.avatarContainer}>
-                        <Text style={styles.avatarText}>S</Text>
+                      <View style={styles.loginAvatarContainer}>
+                        <Feather
+                          name="user"
+                          size={size.width * 7}
+                          color={colors.primary}
+                        />
                       </View>
                     </View>
 
-                    <View style={styles.userDetailsContainer}>
-                      <Text style={styles.userName}>Hello, Suhail</Text>
+                    <View style={styles.loginTextContainer}>
+                      <Text style={styles.loginTitle}>Login / Sign Up</Text>
 
-                      <Text style={styles.phoneNumber}>+91 12345 67890</Text>
+                      <Text style={styles.loginSubtitle}>
+                        Login to access your profile and manage your account
+                      </Text>
                     </View>
                   </View>
-                ) : (
-                  <View
-                    style={{
-                      gap: size.height * 5,
-                      marginTop: size.height * 4,
-
+                  <CustomButton
+                    TextValue="Login / Sign Up"
+                    PressableStyle={{
+                      paddingVertical: size.height * 2.5,
                     }}
-                  >
-                    <View style={styles.loginContainer}>
-                      <View style={styles.avatarOuterContainer}>
-                        <View style={styles.loginAvatarContainer}>
-                          <Feather
-                            name="user"
-                            size={size.width * 7}
-                            color={colors.primary}
-                          />
-                        </View>
-                      </View>
-
-                      <View style={styles.loginTextContainer}>
-                        <Text style={styles.loginTitle}>Login / Sign Up</Text>
-
-                        <Text style={styles.loginSubtitle}>
-                          Login to access your profile and manage your account
-                        </Text>
-                      </View>
-                    </View>
-                    <CustomButton
-                      TextValue="Login / Sign Up"
-                      PressableStyle={{
-                        paddingVertical: size.height * 2.5,
-                      }}
-                    />
-                  </View>
-                )}
-              </View>
+                    TextStyle={{ fontFamily: fonts.bold }}              
+                  />
+                </View>
+              )}
             </View>
-
-            {/* <View
-              style={{
-                height:  size.height * 13,
-              }}
-            /> */}
-          </>
+          </View>
         }
       />
     </View>
@@ -118,26 +111,26 @@ const getStyles = (size: any, insets: any) =>
     },
 
     listContent: {
-      paddingHorizontal: size.width * 4,
       paddingBottom: size.height * 3,
+      gap: size.height,
     },
 
     headerContainer: {
       position: 'relative',
+      paddingHorizontal: size.width * 5,
     },
 
     backgroundImage: {
       width: size.deviceWidth,
       height: size.width * 52,
+      position: 'absolute',
+      top: 0,
     },
 
     overlayContainer: {
-      position: 'absolute',
-      top: size.width * 5,
-      left: 0,
-      right: 0,
-      paddingTop: insets.top,
+      paddingTop: insets.top + size.width * 7,
       gap: size.height * 2,
+      marginBottom: size.height * 2,
     },
 
     profileTitle: {
@@ -150,6 +143,7 @@ const getStyles = (size: any, insets: any) =>
     profileInfoContainer: {
       marginTop: size.height * 4,
       alignItems: 'center',
+      gap: size.height * 3,
     },
 
     avatarOuterContainer: {
@@ -195,7 +189,6 @@ const getStyles = (size: any, insets: any) =>
     },
 
     userDetailsContainer: {
-      marginTop: size.height * 1.5,
       alignItems: 'center',
     },
 

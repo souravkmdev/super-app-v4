@@ -103,6 +103,6 @@ const getStyles = (SizeConfig: any) =>
       fontSize: SizeConfig.fontSize * 3.8,
       fontFamily: fonts.medium,
       marginHorizontal: SizeConfig.width,
-      includeFontPadding : false
+      includeFontPadding: false,
     },
   });
