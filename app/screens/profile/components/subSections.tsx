@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -102,7 +102,7 @@ const SubSections = ({ title }: { title: string }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity activeOpacity={0.6} style={styles.container}>
       <View style={styles.leftContainer}>
         {renderIcon()}
 
@@ -114,7 +114,7 @@ const SubSections = ({ title }: { title: string }) => {
         size={size.width * 7}
         color="#13131380"
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 

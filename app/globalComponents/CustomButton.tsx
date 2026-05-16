@@ -54,7 +54,7 @@ export default function CustomButton({
       end={{ x: 0.9, y: 0.5 }}
     >
       <TouchableOpacity
-        activeOpacity={0.8}
+        activeOpacity={0.6}
         onPress={OnPress}
         disabled={isLoading}
         style={[styles.buttonContainer, PressableStyle]}
