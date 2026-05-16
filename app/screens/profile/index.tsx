@@ -1,50 +1,111 @@
-import { Image, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { FlatList, Image, StatusBar, StyleSheet, View } from 'react-native';
+
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Feather from 'react-native-vector-icons/Feather';
 
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { Text } from '../../globalComponents/CustomText';
 import { colors, fonts } from '../../utils/constants/Theme';
-import Icon from 'react-native-vector-icons/FontAwesome';
+
 import SubSections from './components/subSections';
+import { profileSections } from './data';
+import CustomButton from '../../globalComponents/CustomButton';
 
 const Profile = () => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
 
-  const styles = getStyles(size, insets);
+  const styles = useMemo(() => getStyles(size, insets), [size, insets]);
+
+  const isLoggedIn = true;
 
   return (
     <View style={styles.container}>
       <StatusBar
         translucent
-        backgroundColor={'rgba(0, 0, 0, 0)'}
-        barStyle={'dark-content'}
+        backgroundColor="transparent"
+        barStyle="dark-content"
       />
 
-      <ScrollView>
-        <Image
-          source={require('../../assets/images/profile/profileBg.png')}
-          style={styles.backgroundImage}
-        />
-        <View style={styles.overlayContainer}>
-          <Text style={styles.profileTitle}>Profile </Text>
+      <FlatList
+        data={profileSections}
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.listContent}
+        renderItem={({ item }) => <SubSections title={item} />}
+        ListHeaderComponent={
+          <>
+            <View style={styles.headerContainer}>
+              <Image
+                source={require('../../assets/images/profile/profileBg.png')}
+                style={styles.backgroundImage}
+                resizeMode="cover"
+              />
 
-          <View style={styles.profileInfoContainer}>
-            <View style={styles.avatarOuterContainer}>
-              <View style={styles.avatarContainer}>
-                <Text style={styles.avatarText}>S</Text>
+              <View style={styles.overlayContainer}>
+                <Text style={styles.profileTitle}>Profile</Text>
+
+                {isLoggedIn ? (
+                  <View style={styles.profileInfoContainer}>
+                    <View style={styles.avatarOuterContainer}>
+                      <View style={styles.avatarContainer}>
+                        <Text style={styles.avatarText}>S</Text>
+                      </View>
+                    </View>
+
+                    <View style={styles.userDetailsContainer}>
+                      <Text style={styles.userName}>Hello, Suhail</Text>
+
+                      <Text style={styles.phoneNumber}>+91 12345 67890</Text>
+                    </View>
+                  </View>
+                ) : (
+                  <View
+                    style={{
+                      gap: size.height * 5,
+                      marginTop: size.height * 4,
+
+                    }}
+                  >
+                    <View style={styles.loginContainer}>
+                      <View style={styles.avatarOuterContainer}>
+                        <View style={styles.loginAvatarContainer}>
+                          <Feather
+                            name="user"
+                            size={size.width * 7}
+                            color={colors.primary}
+                          />
+                        </View>
+                      </View>
+
+                      <View style={styles.loginTextContainer}>
+                        <Text style={styles.loginTitle}>Login / Sign Up</Text>
+
+                        <Text style={styles.loginSubtitle}>
+                          Login to access your profile and manage your account
+                        </Text>
+                      </View>
+                    </View>
+                    <CustomButton
+                      TextValue="Login / Sign Up"
+                      PressableStyle={{
+                        paddingVertical: size.height * 2.5,
+                      }}
+                    />
+                  </View>
+                )}
               </View>
             </View>
 
-            <View style={{ gap: size.width }}>
-              <Text style={styles.userName}>Hello, Suhail</Text>
-              <Text style={styles.phoneNumber}>12345 67890</Text>
-            </View>
-          </View>
-        </View>
-
-        <SubSections />
-      </ScrollView>
+            {/* <View
+              style={{
+                height:  size.height * 13,
+              }}
+            /> */}
+          </>
+        }
+      />
     </View>
   );
 };
@@ -53,52 +114,72 @@ const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: colors.white,
+    },
+
+    listContent: {
+      paddingHorizontal: size.width * 4,
+      paddingBottom: size.height * 3,
+    },
+
+    headerContainer: {
+      position: 'relative',
     },
 
     backgroundImage: {
       width: size.deviceWidth,
-      height: size.width * 50,
+      height: size.width * 52,
     },
 
     overlayContainer: {
       position: 'absolute',
-      top: size.width * 7,
+      top: size.width * 5,
       left: 0,
       right: 0,
       paddingTop: insets.top,
-
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: size.height * 7,
+      gap: size.height * 2,
     },
 
     profileTitle: {
       fontFamily: fonts.bold,
       fontSize: size.fontSize * 4.5,
       color: colors.text_Primary,
+      textAlign: 'center',
     },
 
     profileInfoContainer: {
+      marginTop: size.height * 4,
       alignItems: 'center',
-      justifyContent: 'center',
-      gap: size.height * 2,
     },
 
     avatarOuterContainer: {
-      backgroundColor: '#9580f55b',
-      width: size.width * 15,
-      height: size.width * 15,
+      width: size.width * 16,
+      height: size.width * 16,
       borderRadius: size.width * 8,
+
+      backgroundColor: '#9580f540',
 
       alignItems: 'center',
       justifyContent: 'center',
     },
 
     avatarContainer: {
-      backgroundColor: colors.primary,
       width: size.width * 13,
       height: size.width * 13,
-      borderRadius: size.width * 10,
+      borderRadius: size.width * 6.5,
+
+      backgroundColor: colors.primary,
+
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    loginAvatarContainer: {
+      width: size.width * 14,
+      height: size.width * 14,
+      borderRadius: size.width * 7,
+
+      backgroundColor: '#FAF7FF',
 
       alignItems: 'center',
       justifyContent: 'center',
@@ -111,23 +192,52 @@ const getStyles = (size: any, insets: any) =>
 
       includeFontPadding: false,
       textAlignVertical: 'center',
+    },
 
-      lineHeight: size.fontSize * 4.5,
-      marginTop: -1,
+    userDetailsContainer: {
+      marginTop: size.height * 1.5,
+      alignItems: 'center',
     },
 
     userName: {
       fontFamily: fonts.bold,
-      fontSize: size.fontSize * 4.3,
+      fontSize: size.fontSize * 4.2,
       color: colors.text_Primary,
-      textAlign: 'center',
     },
 
     phoneNumber: {
+      marginTop: size.height * 0.4,
+
       fontFamily: fonts.medium,
       fontSize: size.fontSize * 3,
       color: '#9B9CB5',
-      textAlign: 'center',
+    },
+
+    loginContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+
+    loginTextContainer: {
+      flex: 1,
+      marginLeft: size.width * 4,
+      gap: size.height * 1.5,
+    },
+
+    loginTitle: {
+      fontFamily: fonts.bold,
+      fontSize: size.fontSize * 4.2,
+      color: colors.text_Primary,
+    },
+
+    loginSubtitle: {
+      marginTop: size.height * 0.5,
+
+      fontFamily: fonts.medium,
+      fontSize: size.fontSize * 2.8,
+      color: '#9B9CB5',
+
+      lineHeight: size.fontSize * 4,
     },
   });
 
