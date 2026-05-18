@@ -22,11 +22,7 @@ const Profile = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar
-        translucent
-        backgroundColor="transparent"
-        barStyle="dark-content"
-      />
+      <StatusBar backgroundColor="transparent" barStyle="dark-content" />
 
       <FlatList
         data={isLoggedIn ? logIn : logOut}
@@ -91,7 +87,7 @@ const Profile = () => {
                     PressableStyle={{
                       paddingVertical: size.height * 2.5,
                     }}
-                    TextStyle={{ fontFamily: fonts.bold }}              
+                    TextStyle={{ fontFamily: fonts.bold }}
                   />
                 </View>
               )}
