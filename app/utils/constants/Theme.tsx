@@ -26,6 +26,7 @@ export const colors = {
 export const fonts = {
   extraBold: 'PlusJakartaSans-ExtraBold',
   bold: 'PlusJakartaSans-Bold',
+  semibold: 'PlusJakartaSans-SemiBold',
   regular: 'PlusJakartaSans-Regular',
   medium: 'PlusJakartaSans-Medium',
   light: 'PlusJakartaSans-Light',
