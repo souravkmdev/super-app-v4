@@ -19,13 +19,14 @@ export const colors = {
   Color_2d3142: '#2D3142',
   Color_F2F2F2: '#F2F2F2',
   text_Secondary: '#6B7280',
-  borderColor: '#E3DDDD',
-  ligh_borderColor: '#8A8A8A',
+  ligh_borderColor: '#E3DDDD',
+  borderColor: '#8A8A8A',
 };
 
 export const fonts = {
   extraBold: 'PlusJakartaSans-ExtraBold',
   bold: 'PlusJakartaSans-Bold',
+  semiBold: 'PlusJakartaSans-SemiBold',
   regular: 'PlusJakartaSans-Regular',
   medium: 'PlusJakartaSans-Medium',
   light: 'PlusJakartaSans-Light',

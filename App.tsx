@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import StackNavigation from './app/navigation/stackNavigation';
+import StackNavigation from './app/navigation/StackNavigation';
 import { SizeConfigProvider } from './app/utils/context/SizeConfig';
 
 function App() {
