@@ -15,5 +15,5 @@ export const logOut = [
   'Contact Us',
   'Privacy Policy',
   'Cancellation & Refund Policy',
-  'Log Out',
+  'About Us',
 ];
