@@ -33,7 +33,7 @@ const ARENA_CARS: CarItem[] = [
         variants: 4,
         availability: 'Available from 2 August',
         image:
-            'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&q=80',
+            'https://assets.kalyanicrm.com/app-version4-development/Card/breeza.png',
         isFavorite: false,
     },
     {
@@ -44,7 +44,7 @@ const ARENA_CARS: CarItem[] = [
         variants: 4,
         availability: 'Available from 2 August',
         image:
-            'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&q=80',
+            'https://assets.kalyanicrm.com/app-version4-development/Card/dzire.png',
         isFavorite: false,
     },
 ];
@@ -56,9 +56,9 @@ const NEXA_CARS: CarItem[] = [
         price: '₹7,51,500',
         rating: 4.8,
         variants: 6,
-        availability: 'Available Now',
+        availability: 'Latest launch...',
         image:
-            'https://assets.kalyanicrm.com/exterior/ev-ex-08.png',
+            'https://assets.kalyanicrm.com/app-version4-development/Card/fronx.png',
         isFavorite: false,
     },
 ];
