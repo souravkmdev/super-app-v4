@@ -22,6 +22,7 @@ import CustomButton from '../../globalComponents/CustomButton';
 import Variants from './components/Variants';
 import Specifications from './components/Specifications';
 import ImageGallery from './components/ImageGallery';
+import carDetailsData from './data';
 
 const Details = () => {
   const size = useSizeConfig();
@@ -66,132 +67,6 @@ const Details = () => {
     [itemWidth],
   );
 
-  const bannerImages = [
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-    require('../../assets/images/detail/detailsBanner.png'),
-  ];
-
-  const modalImages = [
-    'https://assets-global.website-files.com/63634f4a7b868a399577cf37/64665685a870fadf4bb171c2_labrador%20americano.jpg',
-    'https://i0.wp.com/bcc-newspack.s3.amazonaws.com/uploads/2023/05/052323-Foxes-in-Millennium-Park-Colin-Boyle-9124.jpg?fit=1650%2C1099&ssl=1',
-    'https://media.istockphoto.com/id/1550071750/photo/green-tea-tree-leaves-camellia-sinensis-in-organic-farm-sunlight-fresh-young-tender-bud.jpg?s=2048x2048&w=is&k=20&c=xye_THXrYSdonhfGkhpRY4JvUGqLqjzV0tcxkbkvJVY=',
-    'https://static.vecteezy.com/system/resources/thumbnails/049/855/347/small_2x/nature-background-high-resolution-wallpaper-for-a-serene-and-stunning-view-photo.jpg',
-    'https://media.istockphoto.com/id/1458782106/photo/scenic-aerial-view-of-the-mountain-landscape-with-a-forest-and-the-crystal-blue-river-in.jpg?s=2048x2048&w=is&k=20&c=jbXMS_yFujUo29EIjPd8XBsEan-PAHUcPs0Zo1-HY_U=',
-    'https://media.istockphoto.com/id/935746242/photo/mata-atlantica-atlantic-forest-in-brazil.jpg?s=2048x2048&w=is&k=20&c=X0Gcie74ozYJnS_4QwEI61_Omg7Kv8kfmAphsWve9Yk=',
-    'https://media.istockphoto.com/id/511119924/photo/tea-plantations-and-river-in-hills-kerala-india.jpg?s=2048x2048&w=is&k=20&c=DHGXYX9Ff21baUwbpwv_7lyAKi-iPI8IVl2nmBVG_nA=',
-  ];
-
-  const highlightsData = [
-    { key: 'Hybrid', title: 'Hybrid' },
-    { key: 'Km', title: '23.Km/l' },
-    { key: 'Ac', title: 'A/C' },
-  ];
-
-  const colorsData = [
-    {
-      key: 'Red',
-      color: '#A48FFF',
-      image: require('../../assets/images/detail/color_img_1.png'),
-    },
-    {
-      key: 'Blue',
-      color: '#E6FABE',
-      image: require('../../assets/images/detail/color_img_1.png'),
-    },
-    {
-      key: 'Black',
-      color: '#FACBBE',
-      image: require('../../assets/images/detail/color_img_1.png'),
-    },
-    {
-      key: 'Royal Blue',
-      color: '#24038D',
-      image: require('../../assets/images/detail/color_img_1.png'),
-    },
-  ];
-
-  const variantsData = [
-    {
-      key: 1,
-      name: 'Sigma',
-      price: '₹12,80,000',
-      image: require('../../assets/images/detail/variants_img.png'),
-      isPopular: true,
-    },
-    {
-      key: 2,
-      name: 'Delta',
-      price: '₹12,80,000',
-      image: require('../../assets/images/detail/variants_img.png'),
-      isPopular: false,
-    },
-    {
-      key: 3,
-      name: 'Zeta',
-      price: '₹12,80,000',
-      image: require('../../assets/images/detail/variants_img.png'),
-      isPopular: false,
-    },
-    {
-      key: 4,
-      name: 'Alpha',
-      price: '₹12,80,000',
-      image: require('../../assets/images/detail/variants_img.png'),
-      isPopular: false,
-    },
-  ];
-  const SpecificationsData = [
-    {
-      key: 'engine',
-      title: 'Engine',
-      value: '1462CC',
-      icon: 'engine',
-    },
-    {
-      key: 'power',
-      title: 'Power',
-      value: '103 BHP',
-      icon: 'speedometer',
-    },
-    {
-      key: 'alloy',
-      title: 'Alloy',
-      value: '17 Inch',
-      icon: 'car-tire-alert',
-    },
-    {
-      key: 'seats',
-      title: 'Seats',
-      value: '5 Seater',
-      icon: 'car-seat',
-    },
-    {
-      key: 'mileage',
-      title: 'Mileage',
-      value: '21 KM/L',
-      icon: 'fuel',
-    },
-    {
-      key: 'brakes',
-      title: 'Brakes',
-      value: 'ABS',
-      icon: 'disc',
-    },
-  ];
-
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -199,7 +74,7 @@ const Details = () => {
           <View>
             <FlatList
               ref={flatListRef}
-              data={bannerImages}
+              data={carDetailsData.bannerImages}
               showsHorizontalScrollIndicator={false}
               pagingEnabled
               horizontal
@@ -225,7 +100,7 @@ const Details = () => {
             </View>
 
             <View style={styles.paginationContainer}>
-              {bannerImages.map((_, index) => (
+              {carDetailsData.bannerImages.map((_, index) => (
                 <View
                   key={index}
                   style={
@@ -252,7 +127,7 @@ const Details = () => {
               />
             </View>
 
-            <Text style={styles.title}>Grand Vitara</Text>
+            <Text style={styles.title}>{carDetailsData.info.name}</Text>
 
             <View style={styles.emptyView} />
           </View>
@@ -261,14 +136,16 @@ const Details = () => {
         <View style={styles.contentContainer}>
           <View style={styles.sectionComponentMargin}>
             <View style={styles.highlightsRow}>
-              {highlightsData.map((highlight, index) => (
+              {carDetailsData.highlights.map((highlight, index) => (
                 <Highlights key={index} title={highlight} />
               ))}
             </View>
             <View style={styles.priceCard}>
               <View style={styles.detailsRow}>
                 <View style={styles.titleContainer}>
-                  <Text style={styles.carTitle}>Grand Vitara</Text>
+                  <Text style={styles.carTitle}>
+                    {carDetailsData.info.name}
+                  </Text>
 
                   <Text style={styles.priceText}>Ex-showroom price</Text>
                 </View>
@@ -278,7 +155,7 @@ const Details = () => {
 
                   <View style={styles.colorsRow}>
                     <FlatList
-                      data={colorsData}
+                      data={carDetailsData.colors}
                       horizontal
                       showsHorizontalScrollIndicator={false}
                       contentContainerStyle={styles.colorsListContainer}
@@ -293,11 +170,13 @@ const Details = () => {
               <View style={styles.priceInfoContainer}>
                 <View style={styles.onRoadPriceBadge}>
                   <Text style={styles.onRoadPriceText}>
-                    On Road Price ₹12,80,000
+                    On Road Price ₹{carDetailsData.info.price}
                   </Text>
                 </View>
 
-                <Text style={styles.mainPriceText}>₹12,80,000</Text>
+                <Text style={styles.mainPriceText}>
+                  ₹{carDetailsData.info.price}
+                </Text>
               </View>
             </View>
 
@@ -331,7 +210,7 @@ const Details = () => {
           >
             <Text style={styles.headerTitle}> Variants </Text>
             <FlatList
-              data={variantsData}
+              data={carDetailsData.variants}
               horizontal
               showsHorizontalScrollIndicator={false}
               renderItem={({ item }) => <Variants item={item} />}
@@ -344,12 +223,7 @@ const Details = () => {
               <Text style={styles.aboutTitle}>About</Text>
 
               <Text style={styles.aboutDescription}>
-                The Grand Vitra is a versatile SUV that combines style and
-                functionality. With its spacious interior, advanced safety
-                features, and impressive fuel efficiency, it's perfect for both
-                city driving and off-road adventures. The Grand Vitra also
-                boasts a powerful engine and cutting-edge technology, making
-                every journey enjoyable.
+                {carDetailsData.about}
               </Text>
             </View>
 
@@ -359,7 +233,7 @@ const Details = () => {
               </Text>
 
               <View style={styles.specificationCardMainComp}>
-                {SpecificationsData.map((item, index) => (
+                {carDetailsData.specifications.map((item, index) => (
                   <Specifications
                     key={item.key || index.toString()}
                     item={item}
@@ -399,7 +273,7 @@ const Details = () => {
 
       <ImageGallery
         isVisible={isModalVisible}
-        imagesList={modalImages}
+        imagesList={carDetailsData.modalImages}
         onPress={() => {
           setModalVisible(!isModalVisible);
         }}
