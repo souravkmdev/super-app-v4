@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
-  Dimensions,
   FlatList,
   Image,
   Modal,
@@ -11,18 +10,11 @@ import {
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Gallery, stackTransition } from 'react-native-zoom-toolkit';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors } from '../../../utils/constants/Theme';
-import Animated, {
-  FadeIn,
-  FadeOut,
-  ZoomIn,
-  ZoomOut,
-} from 'react-native-reanimated';
+import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated';
 
-const GalleryExample = ({
+const ImageGallery = ({
   imagesList,
   isVisible,
   onPress,
@@ -40,13 +32,11 @@ const GalleryExample = ({
 
   const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 
-  const renderItem = useCallback(
-    (item: string) => {
-      return (
-        <Image source={{ uri: item }} style={styles.image} resizeMode="cover" />
-      );
-    },
-    [styles],
+  const renderGalleryItem = useCallback(
+    (item: string) => (
+      <Image source={{ uri: item }} style={styles.image} resizeMode="cover" />
+    ),
+    [],
   );
 
   const keyExtractor = useCallback(
@@ -63,80 +53,75 @@ const GalleryExample = ({
     [],
   );
 
+  const renderThumbnail = useCallback(
+    ({ item, index }: { item: string; index: number }) => (
+      <TouchableOpacity
+        onPress={() => {
+          if (index === activeIndex) return;
+          setActiveIndex(index);
+          ref.current?.setIndex(index);
+        }}
+        activeOpacity={0.8}
+        style={styles.thumbnailContainer}
+      >
+        <Image source={{ uri: item }} style={styles.thumbnailImage} />
+      </TouchableOpacity>
+    ),
+    [activeIndex],
+  );
+
   return (
     <Modal
       visible={isVisible}
       transparent
       statusBarTranslucent
       animationType="slide"
+      onRequestClose={onPress}
     >
       <GestureHandlerRootView style={styles.root}>
         <TouchableOpacity
           activeOpacity={1}
-          style={styles.overlay}
+          style={styles.backdrop}
           onPress={onPress}
+        />
+        <Animated.View
+          entering={ZoomIn.duration(250)}
+          exiting={ZoomOut.duration(200)}
+          style={styles.container}
         >
-          <Animated.View
-            entering={ZoomIn.duration(250)}
-            exiting={ZoomOut.duration(200)}
-            style={styles.container}
-          >
-            <View style={styles.galleryContainer}>
-              <Gallery
-                ref={ref}
-                data={imagesList}
-                keyExtractor={thumbnailKeyExtractor}
-                initialIndex={0}
-                onIndexChange={index => setActiveIndex(index)}
-                renderItem={renderItem}
-                onTap={onTap}
-                customTransition={stackTransition}
-              />
-            </View>
-
-            <FlatList
+          <View style={styles.galleryContainer}>
+            <Gallery
+              ref={ref}
               data={imagesList}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              keyExtractor={keyExtractor}
-              contentContainerStyle={styles.flatListContent}
-              renderItem={({ item, index }) => {
-                return (
-                  <TouchableOpacity
-                    onPress={() => {
-                      if (index === activeIndex) return;
-                      setActiveIndex(index);
-                      ref.current?.setIndex(index);
-                    }}
-                    activeOpacity={0.8}
-                    style={styles.thumbnailContainer}
-                  >
-                    <Image
-                      source={{ uri: item }}
-                      style={styles.thumbnailImage}
-                    />
-                  </TouchableOpacity>
-                );
-              }}
+              keyExtractor={thumbnailKeyExtractor}
+              initialIndex={0}
+              onIndexChange={setActiveIndex}
+              renderItem={renderGalleryItem}
+              onTap={onTap}
+              customTransition={stackTransition}
             />
-          </Animated.View>
-        </TouchableOpacity>
+          </View>
+
+          <FlatList
+            data={imagesList}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={keyExtractor}
+            contentContainerStyle={styles.flatListContent}
+            renderItem={renderThumbnail}
+          />
+        </Animated.View>
       </GestureHandlerRootView>
     </Modal>
   );
 };
 
-export default GalleryExample;
+export default ImageGallery;
 
 const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     root: {
       flex: 1,
-    },
-
-    overlay: {
-      flex: 1,
-      backgroundColor: '#000000af',
     },
 
     container: {
@@ -175,5 +160,13 @@ const getStyles = (size: any, insets: any) =>
       width: '100%',
       height: '100%',
       resizeMode: 'cover',
+    },
+    backdrop: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
     },
   });

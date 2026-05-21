@@ -21,7 +21,7 @@ import SelectColor from './components/SelectColor';
 import CustomButton from '../../globalComponents/CustomButton';
 import Variants from './components/Variants';
 import Specifications from './components/Specifications';
-import GalleryExample from './components/GalleryExample';
+import ImageGallery from './components/ImageGallery';
 
 const Details = () => {
   const size = useSizeConfig();
@@ -371,14 +371,6 @@ const Details = () => {
         </View>
       </ScrollView>
 
-      <GalleryExample
-        isVisible={isModalVisible}
-        imagesList={modalImages}
-        onPress={() => {
-          setModalVisible(!isModalVisible);
-        }}
-      />
-
       <View style={styles.bottomContainer}>
         <CustomButton
           GradientColors={['#EDEBFF', '#EDEBFF']}
@@ -404,6 +396,14 @@ const Details = () => {
           TextValue="Book Now"
         />
       </View>
+
+      <ImageGallery
+        isVisible={isModalVisible}
+        imagesList={modalImages}
+        onPress={() => {
+          setModalVisible(!isModalVisible);
+        }}
+      />
     </View>
   );
 };
