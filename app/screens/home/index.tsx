@@ -37,7 +37,7 @@ const HomeScreen = () => {
         <TrackYourCar />
         <RoadSideBanner />
         <SmartSuggestions/>
-        <TopRatedCars/>
+        {/* <TopRatedCars/> */}
       </ScrollView>
     </SafeAreaView>
   );

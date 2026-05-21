@@ -30,9 +30,15 @@ const GarageCard = () => {
 
 
       <View style={styles.TopRow}>
-        <Text style={styles.GarageText}>
-          ∘ My Garage
-        </Text>
+        <View style={styles.GarageTitleRow}>
+
+  <View style={styles.Dot} />
+
+  <Text style={styles.GarageText}>
+    My Garage
+  </Text>
+
+</View>
 
          <MaterialIcons
          name="chevron-right"
@@ -251,6 +257,18 @@ const getStyles = (SizeConfig: any) =>
     ArrowIcon: {
      marginTop: SizeConfig.height * 1,
     },
+    GarageTitleRow: {
+  flexDirection: 'row',
+  alignItems: 'center',
+},
+
+Dot: {
+  width: SizeConfig.width * 1.2,
+  height: SizeConfig.width * 1.2,
+  borderRadius: SizeConfig.width,
+  backgroundColor: '#D9D6FF',
+  marginRight: SizeConfig.width * 1.5,
+},
   });
 
 export default GarageCard;
