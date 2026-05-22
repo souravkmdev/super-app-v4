@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
-import theme, { colors } from '../../../utils/constants/Theme';
+import  { colors, fonts } from '../../../utils/constants/Theme';
 
 
 const featureData = [
@@ -30,25 +30,25 @@ const featureData = [
 ];
 
 const FeatureGrid = () => {
-  const SizeConfig = useSizeConfig();
-  const styles = getStyles(SizeConfig);
+  const size = useSizeConfig();
+  const styles = getStyles(size);
 
   return (
-    <View style={styles.MainContainer}>
+    <View style={styles.mainContainer}>
       {featureData.map(item => {
         return (
           <TouchableOpacity
             key={item.id}
             activeOpacity={0.8}
-            style={styles.Card}
+            style={styles.card}
           >
             <Image
               source={item.icon}
-              style={styles.IconStyle}
+              style={styles.iconStyle}
               resizeMode="contain"
             />
 
-            <Text style={styles.Title}>
+            <Text style={styles.title}>
               {item.title}
             </Text>
           </TouchableOpacity>
@@ -58,37 +58,37 @@ const FeatureGrid = () => {
   );
 };
 
-const getStyles = (SizeConfig: any) =>
+const getStyles = (size:any) =>
   StyleSheet.create({
-    MainContainer: {
+    mainContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingHorizontal: SizeConfig.width * 4,
-      marginTop: SizeConfig.height * 3.5,
+      paddingHorizontal: size.width * 4,
+      marginTop: size.height * 3.5,
     },
 
-    Card: {
-      width: SizeConfig.width * 20.5,
-      height: SizeConfig.width * 20.5,
+    card: {
+      width: size.width * 20.5,
+      height: size.width * 20.5,
       backgroundColor: '#FCFCFE',
-      borderRadius: SizeConfig.width * 4,
+      borderRadius: size.width * 4,
       borderColor:colors.borderColor,
       borderWidth: 0.3,
       alignItems: 'center',
       justifyContent: 'center',
     },
 
-    IconStyle: {
-      width: SizeConfig.width * 8,
-      height: SizeConfig.width * 8,
+    iconStyle: {
+      width: size.width * 9,
+      height: size.width * 9,
     },
 
-    Title: {
-      marginTop: SizeConfig.height * 1,
+    title: {
+      marginTop: size.height * 1,
       textAlign: 'center',
-      color: theme.colors.text_Primary,
-      fontSize: SizeConfig.fontSize * 2.5,
-      fontFamily: theme.fonts.medium,
+      color: colors.text_Primary,
+      fontSize: size.fontSize * 2.5,
+      fontFamily: fonts.medium,
     },
   });
 

@@ -9,7 +9,7 @@ import {
 
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
-import theme, { colors } from '../../../utils/constants/Theme';
+import  { colors, fonts } from '../../../utils/constants/Theme';
 
 const trackingData = [
   {
@@ -39,70 +39,73 @@ const trackingData = [
 ];
 
 const TrackYourCar = () => {
-  const SizeConfig = useSizeConfig();
+  const size = useSizeConfig();
 
-  const styles = getStyles(SizeConfig);
+  const styles = getStyles(size);
 
   return (
-    <View style={styles.MainContainer}>
-      {/* Top Row */}
-      <View style={styles.HeaderRow}>
-        <Text style={styles.Title}>
+    <View style={styles.mainContainer}>
+      
+      <View style={styles.headerRow}>
+        <Text style={styles.title}>
           Track Your Car
         </Text>
 
         <TouchableOpacity activeOpacity={0.8}>
-          <Text style={styles.ViewTracking}>
+          <Text style={styles.viewTracking}>
             View Tracking
           </Text>
         </TouchableOpacity>
       </View>
 
-      {/* Card */}
-      <View style={styles.CardContainer}>
-        {/* Main Line */}
-        {/* <View style={styles.TrackingLine} /> */}
- 
-        {/* Steps */}
+      <View style={styles.cardContainer}>
+
         {trackingData.map(item => {
           return (
             <View
               key={item.id}
-              style={styles.StepContainer}
+              style={styles.stepContainer}
             >
 
               {item.id !== 4 && (
                 <View
                   style={[
-                    styles.LineContainer,
+                    styles.lineContainer,
 
                     item.id === 3
-                      ? styles.DottedLine
-                      : styles.SolidLine,
+                      ? styles.dottedLine
+                      : styles.solidLine,
                   ]}
                 />
               )}
-              {/* Outer Circle */}
-              <View style={styles.OuterCircle}>
-                {/* Inner Circle */}
-
-                
-                <View style={styles.InnerCircle}>
-                  <Image
-                    source={item.image}
-                    style={styles.Icon}
-                    resizeMode="contain"
-                  />
+      
+              {item.id === 4 ? (
+                <View style={styles.deliveredOuterCircle}>
+                  <View style={styles.deliveredInnerCircle}>
+                    <Image
+                      source={item.image}
+                      style={styles.deliveredIcon}
+                      resizeMode="contain"
+                    />
+                  </View>
                 </View>
-              </View>
+              ) : (
+                <View style={styles.outerCircle}>
+                  <View style={styles.innerCircle}>
+                    <Image
+                      source={item.image}
+                      style={styles.icon}
+                      resizeMode="contain"
+                    />
+                  </View>
+                </View>
+              )}
 
-              {/* Title */}
-              <Text style={styles.StepTitle}>
+              <Text style={styles.stepTitle}>
                 {item.title}
               </Text>
 
-              {/* Date */}
-              <Text style={styles.StepDate}>
+              <Text style={styles.stepDate}>
                 {item.date}
               </Text>
             </View>
@@ -113,121 +116,152 @@ const TrackYourCar = () => {
   );
 };
 
-const getStyles = (SizeConfig: any) =>
+const getStyles = (size: any) =>
   StyleSheet.create({
-    MainContainer: {
-      marginTop: SizeConfig.height * 4,
-      paddingHorizontal: SizeConfig.width * 4,
+    mainContainer: {
+      marginTop: size.height * 4,
+      paddingHorizontal: size.width * 4,
     },
 
-    HeaderRow: {
+    headerRow: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: SizeConfig.height * 1.5,
+      marginBottom: size.height * 2,
     },
 
-    Title: {
+    title: {
       color: '#1F1733',
-      fontSize: SizeConfig.fontSize * 3.8,
-      fontFamily: theme.fonts.bold,
+      fontSize: size.fontSize * 3.8,
+      fontFamily: fonts.semibold,
     },
 
-    ViewTracking: {
+    viewTracking: {
       color: '#9C8CFF',
-      fontSize: SizeConfig.fontSize * 3,
-      fontFamily: theme.fonts.medium,
+      fontSize: size.fontSize * 3,
+      fontFamily: fonts.medium,
     },
 
-    CardContainer: {
-      backgroundColor: '#F3F0FE',
-      borderRadius: SizeConfig.width * 5,
-      // paddingVertical: SizeConfig.height * 2.2,
-      paddingTop: SizeConfig.height * 1.8,
-      paddingBottom: SizeConfig.height * 2.5,
+    cardContainer: {
+      backgroundColor: '#F5F2FF',
+      borderRadius: size.width * 5,
+      paddingTop: size.height * 2.2,
+      paddingBottom: size.height * 2.4,
       flexDirection: 'row',
       justifyContent: 'space-between',
       position: 'relative',
       overflow: 'hidden',
     },
-    
-    StepContainer: {
+
+    stepContainer: {
       flex: 1,
       alignItems: 'center',
       zIndex: 10,
-      // paddingHorizontal: SizeConfig.width * 1,
     },
-    OuterCircle: {
-      width: SizeConfig.width * 13,
-      height: SizeConfig.width * 13,
-      borderRadius: SizeConfig.width * 13,
+    outerCircle: {
+      width: size.width * 13,
+      height: size.width * 13,
+      borderRadius: size.width * 7,
       alignItems: 'center',
       justifyContent: 'center',
       borderWidth: 2,
       borderColor: '#A48BFF',
-      backgroundColor: '#F4F1FF',
+      backgroundColor: '#F6F3FF',
     },
 
-    InnerCircle: {
-      width: SizeConfig.width * 10.3,
-      height: SizeConfig.width * 10.3,
-      borderRadius: SizeConfig.width * 10,
+    innerCircle: {
+      width: size.width * 10.5,
+      height: size.width * 10.5,
+      borderRadius: size.width * 10,
       backgroundColor: '#8E7DFF',
-      borderWidth: 2,
-      borderColor: '#9275fa',
+      borderWidth: 1.5,
+      borderColor: '#B9A8FF',
       alignItems: 'center',
       justifyContent: 'center',
     },
 
-    Icon: {
-      width: SizeConfig.width * 9,
-      height: SizeConfig.width * 10,
+    icon: {
+      width: size.width * 8.5,
+      height: size.width * 8.5,
     },
 
-    TrackingLine: {
+    trackingLine: {
       position: 'absolute',
-      top: SizeConfig.width * 8,
-      left: SizeConfig.width * 12,
+      top: size.width * 8,
+      left: size.width * 12,
       width: '67%',
-      height: SizeConfig.width * 0.6,
+      height: size.width * 0.6,
       backgroundColor: '#8E7DFF',
       zIndex: 0,
     },
-    StepTitle: {
-      marginTop: SizeConfig.height * 1.2,
-      // color: '#241942',
+    stepTitle: {
+      marginTop: size.height * 1,
       color: colors.text_Primary,
-      fontSize: SizeConfig.fontSize * 2.7,
-      fontFamily: theme.fonts.bold,
+      fontSize: size.fontSize * 2.7,
+      fontFamily: fonts.bold,
       textAlign: 'center',
     },
 
-    StepDate: {
-      marginTop: SizeConfig.height * 1,
-      // color: '#241942',
+    stepDate: {
+      marginTop: size.height * 1,
       color: colors.text_Primary,
-      fontSize: SizeConfig.fontSize * 2.5,
-      fontFamily: theme.fonts.medium,
-      // fontWeight: 500,
+      fontSize: size.fontSize * 2.5,
+      fontFamily: fonts.medium,
     },
 
-    LineContainer: {
+    lineContainer: {
       position: 'absolute',
-      top: SizeConfig.width * 6,
+      top: size.width * 6.5,
       left: '70%',
-      width: SizeConfig.width * 14,
-      height: 2,
+      width: size.width * 14,
+      height: 1.8,
     },
 
-    SolidLine: {
+    solidLine: {
       backgroundColor: '#8E7DFF',
     },
 
-    DottedLine: {
+    dottedLine: {
       borderWidth: 1,
       borderStyle: 'dashed',
       borderColor: '#C8BCFF',
     },
+    deliveredCircle: {
+      width: size.width * 13,
+      height: size.width * 13,
+      borderRadius: size.width * 7,
+      backgroundColor: '#F6F3FF',
+      borderWidth: 2,
+      borderColor: '#9B84FF5E',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    
+    deliveredOuterCircle: {
+      width: size.width * 13,
+      height: size.width * 13,
+      borderRadius: size.width * 7,
+      backgroundColor: '#DCD3FF',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    deliveredInnerCircle: {
+      width: size.width * 11,
+      height: size.width * 11,
+      borderRadius: size.width * 6,
+      backgroundColor: '#F5F2FF',
+      borderWidth: 2.5,
+      borderColor: '#8E7DFF',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    deliveredIcon: {
+      width: size.width * 8.7,
+      height: size.width * 8.7,
+    },
+
   })
 
 export default TrackYourCar;

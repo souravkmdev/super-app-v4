@@ -7,8 +7,7 @@ import {
 } from 'react-native';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
-import theme, { colors } from '../../../utils/constants/Theme';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { colors, fonts } from '../../../utils/constants/Theme';
 
 const suggestionsData = [
   {
@@ -37,54 +36,46 @@ const suggestionsData = [
 
 
 const SmartSuggestions = () => {
-  const SizeConfig = useSizeConfig();
-  const styles = getStyles(SizeConfig);
+  const size = useSizeConfig();
+  const styles = getStyles(size);
 
   return (
-    <View style={styles.MainContainer}>
-      <Text style={styles.SectionTitle}>
+    <View style={styles.mainContainer}>
+      <Text style={styles.sectionTitle}>
         Smart Suggestions
       </Text>
 
-      <View style={styles.Row}>
+      <View style={styles.row}>
         {suggestionsData.map(item => {
           return (
             <TouchableOpacity
               key={item.id}
               activeOpacity={0.8}
               style={[
-                styles.Card,
+                styles.card,
                 {
                   backgroundColor: item.backgroundColor,
                 },
               ]}
             >
-              <Text style={styles.CardTitle}>
+              <Text style={styles.cardTitle}>
                 {item.title}
               </Text>
 
-              <Text style={styles.CardSubTitle}>
+              <Text style={styles.cardSubTitle}>
                 {item.subtitle}
               </Text>
 
               {item.extra && (
-                <Text style={styles.ExtraText}>
+                <Text style={styles.extraText}>
                   {item.extra}
                 </Text>
               )}
 
-              {/* <View style={styles.IconContainer}>
-               <MaterialCommunityIcons
-                 name={item.icon}
-                 size={SizeConfig.width * 5}
-                 color={item.iconColor}
-                />
-                </View> */}
-
-              <View style={styles.IconContainer}>
+              <View style={styles.iconContainer}>
                 <Image
                   source={item.image}
-                  style={styles.IconImage}
+                  style={styles.iconImage}
                   resizeMode="contain"
                 />
               </View>
@@ -96,71 +87,70 @@ const SmartSuggestions = () => {
   );
 };
 
-const getStyles = (SizeConfig: any) =>
+const getStyles = (size: any) =>
   StyleSheet.create({
-    MainContainer: {
-      marginTop: SizeConfig.height * 3.5,
-      paddingHorizontal: SizeConfig.width * 4,
+    mainContainer: {
+      marginTop: size.height * 3.5,
+      paddingHorizontal: size.width * 4,
     },
 
-    SectionTitle: {
+    sectionTitle: {
       color: colors.text_Primary,
-      fontSize: SizeConfig.fontSize * 3.8,
-      fontFamily: theme.fonts.bold,
-      marginBottom: SizeConfig.height * 1.5,
+      fontSize: size.fontSize * 3.8,
+      fontFamily: fonts.semibold,
+      marginBottom: size.height * 3.5,
     },
 
-    Row: {
+    row: {
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
 
-    Card: {
-      width: SizeConfig.width * 30,
-      borderRadius: SizeConfig.width * 3,
-      paddingHorizontal: SizeConfig.width * 2.5,
-      paddingTop: SizeConfig.height * 1.5,
-      paddingBottom: SizeConfig.height * 1.8,
-      minHeight: SizeConfig.height * 23,
+    card: {
+      width: size.width * 30,
+      borderRadius: size.width * 3,
+      paddingHorizontal: size.width * 2.5,
+      paddingTop: size.height * 1.5,
+      paddingBottom: size.height * 1.8,
+      minHeight: size.height * 23,
       position: 'relative',
     },
 
-    CardTitle: {
+    cardTitle: {
       color: '#2A1F47',
-      fontSize: SizeConfig.fontSize * 3,
-      fontFamily: theme.fonts.bold,
+      fontSize: size.fontSize * 3,
+      fontFamily: fonts.bold,
     },
 
-    CardSubTitle: {
-      marginTop: SizeConfig.height * 0.8,
+    cardSubTitle: {
+      marginTop: size.height * 0.8,
       color: '#3E345B',
-      fontSize: SizeConfig.fontSize * 2.6,
-      fontFamily: theme.fonts.medium,
-      // lineHeight: SizeConfig.height * 2.4,
+      fontSize: size.fontSize * 2.6,
+      fontFamily: fonts.medium,
     },
 
-    ExtraText: {
-      marginTop: SizeConfig.height * 5,
+    extraText: {
+      marginTop: size.height * 5,
       color: '#FF5A4E',
-      fontSize: SizeConfig.fontSize * 2.5,
-      fontFamily: theme.fonts.medium,
+      fontSize: size.fontSize * 2.5,
+      fontFamily: fonts.medium,
     },
 
-    IconContainer: {
+    iconContainer: {
       position: 'absolute',
-      right: SizeConfig.width * 2.5,
-      bottom: SizeConfig.height * 1.2,
-      width: SizeConfig.width * 6,
-      height: SizeConfig.width * 6,
-      borderRadius: SizeConfig.width * 6,
+      right: size.width * 2.5,
+      bottom: size.height * 1.2,
+      width: size.width * 7,
+      height: size.width * 7,
+      borderRadius: size.width * 6,
       backgroundColor: 'rgba(255,255,255,0.55)',
       alignItems: 'center',
       justifyContent: 'center',
     },
 
-    IconImage: {
-      width: SizeConfig.width * 4.8,
-      height: SizeConfig.width * 4.8,
+    iconImage: {
+      width: size.width * 4.4,
+      height: size.width * 4.5,
     },
   });
 

@@ -7,39 +7,38 @@ import {
 } from 'react-native';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors } from '../../../utils/constants/Theme';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Header = () => {
-  const SizeConfig = useSizeConfig();
-  const styles = getStyles(SizeConfig);
+const Header = ( {navigation,}: any) => {
+  const size = useSizeConfig();
+  const styles = getStyles(size);
 
   return (
-    <View style={styles.MainContainer}>
+    <View style={styles.mainContainer}>
       <Image
         source={require('../../../assets/images/home/logo.png')}
-        style={styles.LogoStyle}
+        style={styles.logoStyle}
         resizeMode="contain"
       />
 
    
-      <View style={styles.RightContainer}>
-        <TouchableOpacity style={styles.IconButton}>
-          {/* <Ionicons
+      <View style={styles.rightContainer}>
+        <TouchableOpacity style={styles.iconButton}
+         onPress={() => navigation.navigate('SearchScreen')}>
+          <Ionicons
             name="search-outline"
-            size={SizeConfig.width * 5}
+            size={size.width * 5}
             color="#1A1A1A"
-          /> */}
-         <Image
-            source={require('../../../assets/images/home/search.png')}
-            style={styles.IconStyle}
-            resizeMode="contain"  />
-
+          />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.IconButton}>
-          <Image
-            source={require('../../../assets/images/home/bell.png')}
-            style={styles.IconStyle}
-            resizeMode="contain"  />
+        <TouchableOpacity style={styles.iconButton}>
+
+          <Ionicons
+            name="notifications-outline"
+            size={size.width * 5}
+            color="#1A1A1A"
+          />
 
         </TouchableOpacity>
       </View>
@@ -47,41 +46,41 @@ const Header = () => {
   );
 };
 
-const getStyles = (SizeConfig: any) =>
+const getStyles = (size: any) =>
   StyleSheet.create({
-    MainContainer: {
+    mainContainer: {
       width: '100%',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
 
-      paddingHorizontal: SizeConfig.width * 5,
-      paddingTop: SizeConfig.height * 3,
-      paddingBottom: SizeConfig.height * 1,
+      paddingHorizontal: size.width * 5,
+      paddingTop: size.height * 3,
+      paddingBottom: size.height * 1,
     },
 
-    LogoStyle: {
-      width: SizeConfig.width * 30,
-      height: SizeConfig.width * 13,
+    logoStyle: {
+      width: size.width * 30,
+      height: size.width * 13,
     },
 
-    RightContainer: {
+    rightContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: SizeConfig.width * 2.5,
+      gap: size.width * 2.5,
     },
 
-    IconButton: {
-      width: SizeConfig.width * 10,
-      height: SizeConfig.width * 10,
-      borderRadius: SizeConfig.width * 10,
+    iconButton: {
+      width: size.width * 10,
+      height: size.width * 10,
+      borderRadius: size.width * 10,
       backgroundColor: colors.white,
       alignItems: 'center',
       justifyContent: 'center',
     },
-      IconStyle: {
-          width: SizeConfig.width * 5.5,
-          height: SizeConfig.width * 5.5,
+      iconStyle: {
+          width: size.width * 5.5,
+          height: size.width * 5.5,
       },
   });
 

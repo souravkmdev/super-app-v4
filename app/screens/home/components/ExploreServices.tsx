@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
-import theme from '../../../utils/constants/Theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { colors, fonts } from '../../../utils/constants/Theme';
+import LinearGradient from 'react-native-linear-gradient';
 
 const servicesData = [
   {
@@ -29,36 +29,39 @@ const servicesData = [
 ];
 
 const ExploreServices = () => {
-  const SizeConfig = useSizeConfig();
-  const styles = getStyles(SizeConfig);
+  const size = useSizeConfig();
+  const styles = getStyles(size);
 
   return (
-    <View style={styles.MainContainer}>
+    <View style={styles.mainContainer}>
      
-      <Text style={styles.SectionTitle}>
+      <Text style={styles.sectionTitle}>
         Explore Our Services
       </Text>
 
-      <View style={styles.Row}>
+      <View style={styles.row}>
         {servicesData.map(item => {
           return (
             <TouchableOpacity
               key={item.id}
               activeOpacity={0.9}
-              style={[
-                styles.Card,
-                {
-                  backgroundColor: item.backgroundColor,
-                },
-              ]}
             >
+              <LinearGradient
+                colors={
+                  item.id === 1
+                    ? ['#8B7BFF', '#6C63FF']
+                    : ['#9BC3A5', '#7EA58A']
+                }
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.card}>
              
-              <View style={styles.TextContainer}>
-                <Text style={styles.CardTitle}>
+              <View style={styles.textContainer}>
+                <Text style={styles.cardTitle}>
                   {item.title}
                 </Text>
 
-                <Text style={styles.CardSubtitle}>
+                <Text style={styles.cardSubtitle}>
                   {item.subtitle}
                 </Text>
               </View>
@@ -66,21 +69,34 @@ const ExploreServices = () => {
             
               <Image
                 source={item.image}
-                style={styles.CardImage}
+                style={styles.cardImage}
                 resizeMode="contain"
               />
 
              
               <TouchableOpacity
                 activeOpacity={0.8}
-                style={styles.ArrowButton}
+                // style={styles.arrowButton}
+                style={[
+                  styles.arrowButton,
+                  {
+                    backgroundColor:
+                      item.id === 1
+                        ? 'rgba(148, 134, 250, 0.78)'
+                        : 'rgba(126,165,138,0.78)',
+                  },
+                ]}
               >
                 <Ionicons
-                  name="arrow-forward"
-                  size={SizeConfig.width * 3.8}
-                  color={theme.colors.white}
+                  name="chevron-forward-outline"
+                  size={size.width * 4.2}
+                  color={colors.white}
+                    style={{
+                      marginLeft: size.width * 0.4,
+                    }}
                 />
               </TouchableOpacity>
+              </LinearGradient>
             </TouchableOpacity>
           );
         })}
@@ -89,74 +105,69 @@ const ExploreServices = () => {
   );
 };
 
-const getStyles = (SizeConfig: any) =>
+const getStyles = (size: any) =>
   StyleSheet.create({
-    MainContainer: {
-      marginTop: SizeConfig.height * 3.5,
+    mainContainer: {
+      marginTop: size.height * 3.5,
     },
-      TextContainer: {
+      textContainer: {
        zIndex: 10,
-       marginTop: SizeConfig.height * -2,
+       marginTop: size.height * -2,
       },
-    SectionTitle: {
-      paddingHorizontal: SizeConfig.width * 4,
-      color: theme.colors.text_Primary,
-      fontSize: SizeConfig.fontSize * 3.5,
-      fontFamily: theme.fonts.bold,
-      marginBottom: SizeConfig.height * 1.8,
+    sectionTitle: {
+      paddingHorizontal: size.width * 4,
+      color: colors.text_Primary,
+      fontSize: size.fontSize * 3.8,
+      fontFamily: fonts.semibold,
+      marginBottom: size.height * 1.8,
     },
 
-    Row: {
+    row: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingHorizontal: SizeConfig.width * 4,
+      paddingHorizontal: size.width * 4,
     },
 
-    Card: {
-      width: SizeConfig.width * 44,
-      height: SizeConfig.height * 30,
-      borderRadius: SizeConfig.width * 5,
+    card: {
+      width: size.width * 44,
+      height: size.height * 30,
+      borderRadius: size.width * 5,
       overflow: 'hidden',
-      padding: SizeConfig.width * 4,
+      padding: size.width * 4,
       justifyContent:'flex-start',
     },
 
-    CardTitle: {
-      color: theme.colors.white,
-      fontSize: SizeConfig.fontSize * 4.5,
-      fontFamily: theme.fonts.bold,
+    cardTitle: {
+      color: colors.white,
+      fontSize: size.fontSize * 4.5,
+      fontFamily: fonts.bold,
     },
 
-    CardSubtitle: {
+    cardSubtitle: {
       color: 'rgba(255,255,255,0.85)',
-      fontSize: SizeConfig.fontSize * 2.6,
-      fontFamily: theme.fonts.medium,
+      fontSize: size.fontSize * 2.6,
+      fontFamily: fonts.medium,
     },
 
-    CardImage: {
+    cardImage: {
       position: 'absolute',
-      right: -SizeConfig.width * 3,
+      right: -size.width * 3,
       bottom: 0,
-      width: SizeConfig.width * 34,
-      height: SizeConfig.width * 28,
+      width: size.width * 34,
+      height: size.width * 28,
     },
 
-    ArrowButton: {
+    arrowButton: {
       position: 'absolute',
-      right: SizeConfig.width * 3,
-      bottom: SizeConfig.height * 1.2,
-      width: SizeConfig.width * 7.5,
-      height: SizeConfig.width * 7.5,
-      borderRadius: SizeConfig.width * 7.5,
-      backgroundColor: 'rgba(245, 230, 230, 0.25)',
+      right: size.width * 1.2,
+      bottom: size.height * 1.5,
+      width: size.width * 7,
+      height: size.width * 7,
+      borderRadius: size.width * 4,
+      borderWidth: 1.2,
+      borderColor: 'rgba(255,255,255,0.25)',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-
-    ArrowText: {
-      color: theme.colors.white,
-      fontSize: SizeConfig.fontSize * 5,
-      marginTop: -SizeConfig.height * 0.3,
     },
   });
 
