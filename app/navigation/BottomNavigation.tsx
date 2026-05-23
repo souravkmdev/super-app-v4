@@ -12,6 +12,7 @@ import Profile from '../screens/profile';
 import { Text } from '../globalComponents/CustomText';
 import { useSizeConfig } from '../utils/context/SizeConfig';
 import { fonts } from '../utils/constants/Theme';
+import Payments from '../screens/payment';
 
 type RouteName = 'Home' | 'ResQ' | 'Explore' | 'Payment' | 'Profile';
 
@@ -94,7 +95,7 @@ const TabItem = memo(({ route, isFocused, onPress, size }: TabItemProps) => {
       {iconConfig && (
         <Image
           source={isFocused ? iconConfig.active : iconConfig.inactive}
-          style={{ width: iconSize, height: iconSize, resizeMode: 'contain',  }}
+          style={{ width: iconSize, height: iconSize, resizeMode: 'contain' }}
         />
       )}
       <TabLabel size={size} title={route.name} focused={isFocused} />
@@ -109,7 +110,6 @@ function MyTabBar({ state, navigation }: any) {
     () => ({
       paddingHorizontal: size.width * 3,
       paddingVertical: size.height * 3,
-      
     }),
     [size],
   );
@@ -153,10 +153,10 @@ const BottomNavigation = () => (
     screenOptions={{ headerShown: false }}
     tabBar={props => <MyTabBar {...props} />}
   >
+    <Tab.Screen name="Payment" component={Payments} />
     <Tab.Screen name="Home" component={Home} />
     <Tab.Screen name="ResQ" component={Home} />
     <Tab.Screen name="Explore" component={Home} />
-    <Tab.Screen name="Payment" component={Home} />
     <Tab.Screen name="Profile" component={Profile} />
   </Tab.Navigator>
 );

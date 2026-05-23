@@ -10,7 +10,6 @@ import {
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { colors, fonts } from '../../utils/constants/Theme';
@@ -23,6 +22,7 @@ import Variants from './components/Variants';
 import Specifications from './components/Specifications';
 import ImageGallery from './components/ImageGallery';
 import carDetailsData from './data';
+import Header from '../../globalComponents/Header';
 
 const Details = () => {
   const size = useSizeConfig();
@@ -118,19 +118,7 @@ const Details = () => {
             />
           </View>
 
-          <View style={styles.headerContainer}>
-            <View style={styles.backButton}>
-              <Feather
-                name="chevron-left"
-                size={size.width * 5}
-                color={colors.primary}
-              />
-            </View>
-
-            <Text style={styles.title}>{carDetailsData.info.name}</Text>
-
-            <View style={styles.emptyView} />
-          </View>
+          <Header onPress={() => {}} title="Details" />
         </View>
 
         <View style={styles.contentContainer}>
