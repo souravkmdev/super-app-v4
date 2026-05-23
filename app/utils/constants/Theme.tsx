@@ -7,8 +7,8 @@ export const colors = {
   success: 'green',
   warning: 'orange',
   buttonColor: 'white',
-  Background: '#FAFAFA',
-  buttonBgColor: '#5278C7',
+  backGround: '#FAFAFA',
+  buttonBgColor: '#846AF4',
   buttonBgLightColor: '#5278C7',
   lightGray: '#808080',
   lightBorder: '#CBD5E1',
@@ -21,6 +21,7 @@ export const colors = {
   text_Secondary: '#6B7280',
   ligh_borderColor: '#E3DDDD',
   borderColor: '#8A8A8A',
+  Color_5346EE: '#5346EE',
 };
 
 export const fonts = {
