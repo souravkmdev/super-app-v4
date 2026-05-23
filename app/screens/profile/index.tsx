@@ -107,7 +107,7 @@ const getStyles = (size: any, insets: any) =>
     },
 
     listContent: {
-      paddingBottom: size.height * 3,
+      paddingBottom: size.height * 25,
       gap: size.height,
     },
 
@@ -125,7 +125,7 @@ const getStyles = (size: any, insets: any) =>
 
     overlayContainer: {
       paddingTop: insets.top + size.width * 7,
-      gap: size.height * 2,
+      gap: size.height * 4,
       marginBottom: size.height * 2,
     },
 
@@ -143,8 +143,8 @@ const getStyles = (size: any, insets: any) =>
     },
 
     avatarOuterContainer: {
-      width: size.width * 16,
-      height: size.width * 16,
+      width: size.width * 15,
+      height: size.width * 15,
       borderRadius: size.width * 8,
 
       backgroundColor: '#9580f540',

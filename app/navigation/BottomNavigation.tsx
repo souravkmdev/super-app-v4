@@ -13,6 +13,7 @@ import { Text } from '../globalComponents/CustomText';
 import { useSizeConfig } from '../utils/context/SizeConfig';
 import { fonts } from '../utils/constants/Theme';
 import ResqScreen from '../screens/resq/ResqScreen';
+import Payments from '../screens/payment';
 
 type RouteName = 'Home' | 'ResQ' | 'Explore' | 'Payment' | 'Profile';
 
@@ -154,10 +155,10 @@ const BottomNavigation = () => (
     screenOptions={{ headerShown: false }}
     tabBar={props => <MyTabBar {...props} />}
   >
+    <Tab.Screen name="Payment" component={Payments} />
     <Tab.Screen name="Home" component={Home} />
     <Tab.Screen name="ResQ" component={ResqScreen} />
     <Tab.Screen name="Explore" component={Home} />
-    <Tab.Screen name="Payment" component={Home} />
     <Tab.Screen name="Profile" component={Profile} />
   </Tab.Navigator>
 );

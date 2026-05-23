@@ -1,11 +1,10 @@
 import { ScrollView, StatusBar, View } from 'react-native';
 import { Text } from '../../globalComponents/CustomText';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Home = () => {
   return (
-    <SafeAreaView style={{ flex: 1, paddingHorizontal: 16 }}>
-      <StatusBar backgroundColor={'red'} translucent={false} />
+    <View style={{ flex: 1, paddingHorizontal: 16 }}>
+      {/* <StatusBar backgroundColor={'red'} translucent={false} /> */}
       <ScrollView>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque,
@@ -75,7 +74,7 @@ const Home = () => {
           expedita odit iste adipisci atque architecto esse itaque perferendis.
         </Text>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
