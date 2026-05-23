@@ -21,12 +21,13 @@ export const colors = {
   text_Secondary: '#6B7280',
   borderColor: '#E3DDDD',
   ligh_borderColor: '#8A8A8A',
+  Color_5346EE: '#5346EE',
 };
 
 export const fonts = {
   extraBold: 'PlusJakartaSans-ExtraBold',
   bold: 'PlusJakartaSans-Bold',
-  semibold: 'PlusJakartaSans-SemiBold',
+  semiBold: 'PlusJakartaSans-SemiBold',
   regular: 'PlusJakartaSans-Regular',
   medium: 'PlusJakartaSans-Medium',
   light: 'PlusJakartaSans-Light',
