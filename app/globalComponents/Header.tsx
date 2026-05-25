@@ -1,12 +1,30 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  StyleSheet,
+  TextStyle,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { Text } from './CustomText';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useSizeConfig } from '../utils/context/SizeConfig';
 import Feather from 'react-native-vector-icons/Feather';
 import { colors, fonts } from '../utils/constants/Theme';
 
-const Header = ({ onPress, title }: { onPress: () => void; title: string }) => {
+const Header = ({
+  onPress,
+  title,
+  textStyle,
+  iconComp,
+  iconColor,
+}: {
+  onPress: () => void;
+  title: string;
+  textStyle?: TextStyle;
+  iconComp?: ViewStyle;
+  iconColor?: string;
+}) => {
   const insets = useSafeAreaInsets();
   const size = useSizeConfig();
 
@@ -14,22 +32,22 @@ const Header = ({ onPress, title }: { onPress: () => void; title: string }) => {
 
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={onPress} style={styles.backButton}>
+      <TouchableOpacity onPress={onPress} style={[styles.backButton, iconComp]}>
         <Feather
           name="chevron-left"
           size={size.width * 5}
-          color={colors.primary}
+          color={iconColor ?? colors.primary}
         />
       </TouchableOpacity>
 
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, textStyle]}>{title}</Text>
 
       <View style={styles.emptyView} />
     </View>
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
