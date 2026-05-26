@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
 import { colors, fonts } from '../../../utils/constants/Theme';
@@ -15,7 +10,7 @@ const suggestionsData = [
     title: 'Services',
     subtitle: 'Recommended\nin 12 days',
     image: require('../../../assets/images/home/serv.png'),
-    backgroundColor: '#F3EEFF',
+    backgroundColor: '#EAECFC',
   },
   {
     id: 2,
@@ -23,17 +18,16 @@ const suggestionsData = [
     subtitle: 'Expires on',
     extra: '23 Oct 2026',
     image: require('../../../assets/images/home/sheild.png'),
-    backgroundColor: '#FFF1F3',
+    backgroundColor: '#F5EAF2',
   },
   {
     id: 3,
     title: 'Recommend',
     subtitle: 'Based on your\nPreference',
     image: require('../../../assets/images/home/recommend.png'),
-    backgroundColor: '#F7EEFF',
+    backgroundColor: '#EFE9FA',
   },
 ];
-
 
 const SmartSuggestions = () => {
   const size = useSizeConfig();
@@ -41,9 +35,7 @@ const SmartSuggestions = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.sectionTitle}>
-        Smart Suggestions
-      </Text>
+      <Text style={styles.sectionTitle}>Smart Suggestions</Text>
 
       <View style={styles.row}>
         {suggestionsData.map(item => {
@@ -58,19 +50,11 @@ const SmartSuggestions = () => {
                 },
               ]}
             >
-              <Text style={styles.cardTitle}>
-                {item.title}
-              </Text>
+              <Text style={styles.cardTitle}>{item.title}</Text>
 
-              <Text style={styles.cardSubTitle}>
-                {item.subtitle}
-              </Text>
+              <Text style={styles.cardSubTitle}>{item.subtitle}</Text>
 
-              {item.extra && (
-                <Text style={styles.extraText}>
-                  {item.extra}
-                </Text>
-              )}
+              {item.extra && <Text style={styles.extraText}>{item.extra}</Text>}
 
               <View style={styles.iconContainer}>
                 <Image
@@ -90,15 +74,14 @@ const SmartSuggestions = () => {
 const getStyles = (size: any) =>
   StyleSheet.create({
     mainContainer: {
-      marginTop: size.height * 3.5,
       paddingHorizontal: size.width * 4,
+      gap: size.height * 3,
     },
 
     sectionTitle: {
       color: colors.text_Primary,
-      fontSize: size.fontSize * 3.8,
-      fontFamily: fonts.semibold,
-      marginBottom: size.height * 3.5,
+      fontSize: size.fontSize * 3.5,
+      fontFamily: fonts.bold,
     },
 
     row: {

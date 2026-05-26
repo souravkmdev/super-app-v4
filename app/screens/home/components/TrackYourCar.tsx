@@ -1,15 +1,10 @@
 import React from 'react';
 
-import {
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
-import  { colors, fonts } from '../../../utils/constants/Theme';
+import { colors, fonts } from '../../../utils/constants/Theme';
 
 const trackingData = [
   {
@@ -45,40 +40,28 @@ const TrackYourCar = () => {
 
   return (
     <View style={styles.mainContainer}>
-      
       <View style={styles.headerRow}>
-        <Text style={styles.title}>
-          Track Your Car
-        </Text>
+        <Text style={styles.title}>Track Your Car</Text>
 
         <TouchableOpacity activeOpacity={0.8}>
-          <Text style={styles.viewTracking}>
-            View Tracking
-          </Text>
+          <Text style={styles.viewTracking}>View Tracking</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.cardContainer}>
-
         {trackingData.map(item => {
           return (
-            <View
-              key={item.id}
-              style={styles.stepContainer}
-            >
-
+            <View key={item.id} style={styles.stepContainer}>
               {item.id !== 4 && (
                 <View
                   style={[
                     styles.lineContainer,
 
-                    item.id === 3
-                      ? styles.dottedLine
-                      : styles.solidLine,
+                    item.id === 3 ? styles.dottedLine : styles.solidLine,
                   ]}
                 />
               )}
-      
+
               {item.id === 4 ? (
                 <View style={styles.deliveredOuterCircle}>
                   <View style={styles.deliveredInnerCircle}>
@@ -101,13 +84,9 @@ const TrackYourCar = () => {
                 </View>
               )}
 
-              <Text style={styles.stepTitle}>
-                {item.title}
-              </Text>
+              <Text style={styles.stepTitle}>{item.title}</Text>
 
-              <Text style={styles.stepDate}>
-                {item.date}
-              </Text>
+              <Text style={styles.stepDate}>{item.date}</Text>
             </View>
           );
         })}
@@ -119,21 +98,20 @@ const TrackYourCar = () => {
 const getStyles = (size: any) =>
   StyleSheet.create({
     mainContainer: {
-      marginTop: size.height * 4,
       paddingHorizontal: size.width * 4,
+      gap: size.height * 3,
     },
 
     headerRow: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: size.height * 2,
     },
 
     title: {
-      color: '#1F1733',
-      fontSize: size.fontSize * 3.8,
-      fontFamily: fonts.semibold,
+      color: colors.text_Primary,
+      fontSize: size.fontSize * 3.5,
+      fontFamily: fonts.bold,
     },
 
     viewTracking: {
@@ -143,7 +121,7 @@ const getStyles = (size: any) =>
     },
 
     cardContainer: {
-      backgroundColor: '#F5F2FF',
+      backgroundColor: '#ebe7fc',
       borderRadius: size.width * 5,
       paddingTop: size.height * 2.2,
       paddingBottom: size.height * 2.4,
@@ -236,7 +214,7 @@ const getStyles = (size: any) =>
       alignItems: 'center',
       justifyContent: 'center',
     },
-    
+
     deliveredOuterCircle: {
       width: size.width * 13,
       height: size.width * 13,
@@ -261,7 +239,6 @@ const getStyles = (size: any) =>
       width: size.width * 8.7,
       height: size.width * 8.7,
     },
-
-  })
+  });
 
 export default TrackYourCar;
