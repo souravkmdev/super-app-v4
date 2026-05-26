@@ -279,7 +279,7 @@ const getStyles = (size: any) =>
         },
         sectionTitle: {
             fontSize: size.fontSize * 4,
-            fontFamily: fonts.semibold,
+            fontFamily: fonts.semiBold,
             color: colors.text_Primary,
         },
         sectionSub: {
@@ -339,7 +339,7 @@ const getStyles = (size: any) =>
         needAsstTitle: {
             color: colors.text_Primary,
             fontSize: size.width * 3.5,
-            fontFamily: fonts.semibold,
+            fontFamily: fonts.semiBold,
         },
         needAsstDesc: {
             color: colors.text_Primary,
@@ -359,7 +359,7 @@ const getStyles = (size: any) =>
             color: colors.white,
             padding: 15,
             fontSize: size.fontSize * 2.8,
-            fontFamily: fonts.semibold,
+            fontFamily: fonts.semiBold,
         },
         benefitsCard: {
             backgroundColor: colors.primary2,

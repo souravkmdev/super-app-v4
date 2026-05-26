@@ -30,7 +30,7 @@ const SubSections = ({ title }: { title: string }) => {
         return (
           <MaterialCommunityIcons
             name="cart-outline"
-            size={size.width * 7}
+            size={size.width * 6}
             color={colors.primary}
           />
         );
@@ -39,7 +39,7 @@ const SubSections = ({ title }: { title: string }) => {
         return (
           <Ionicons
             name="location-outline"
-            size={size.width * 7}
+            size={size.width * 6}
             color={colors.primary}
           />
         );
@@ -48,7 +48,7 @@ const SubSections = ({ title }: { title: string }) => {
         return (
           <Ionicons
             name="document-text-outline"
-            size={size.width * 7}
+            size={size.width * 6}
             color={colors.primary}
           />
         );
@@ -57,7 +57,7 @@ const SubSections = ({ title }: { title: string }) => {
         return (
           <Feather
             name="message-circle"
-            size={size.width * 6.7}
+            size={size.width * 6.5}
             color={colors.primary}
           />
         );
@@ -71,7 +71,7 @@ const SubSections = ({ title }: { title: string }) => {
         return (
           <MaterialCommunityIcons
             name="credit-card-edit-outline"
-            size={size.width * 6.7}
+            size={size.width * 6.5}
             color={colors.primary}
           />
         );
@@ -85,7 +85,7 @@ const SubSections = ({ title }: { title: string }) => {
         return (
           <Ionicons
             name="exit-outline"
-            size={size.width * 7}
+            size={size.width * 6}
             color={colors.primary}
           />
         );
@@ -94,7 +94,7 @@ const SubSections = ({ title }: { title: string }) => {
         return (
           <Ionicons
             name="settings-outline"
-            size={size.width * 7}
+            size={size.width * 6}
             color={colors.primary}
           />
         );
@@ -111,7 +111,7 @@ const SubSections = ({ title }: { title: string }) => {
 
       <MaterialIcons
         name="chevron-right"
-        size={size.width * 7}
+        size={size.width * 6.5}
         color="#13131380"
       />
     </TouchableOpacity>
@@ -143,7 +143,7 @@ const getStyles = (size: any, insets: any) =>
     title: {
       includeFontPadding: false,
 
-      fontSize: size.fontSize * 3.7,
+      fontSize: size.fontSize * 3.6,
       fontFamily: fonts.medium,
 
       color: colors.text_Primary,

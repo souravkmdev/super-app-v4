@@ -19,8 +19,8 @@ export const colors = {
   Color_2d3142: '#2D3142',
   Color_F2F2F2: '#F2F2F2',
   text_Secondary: '#6B7280',
-  borderColor: '#E3DDDD',
-  ligh_borderColor: '#8A8A8A',
+  ligh_borderColor: '#E3DDDD',
+  borderColor: '#8A8A8A',
   Color_5346EE: '#5346EE',
 };
 
