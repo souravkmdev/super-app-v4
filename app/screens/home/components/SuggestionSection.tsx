@@ -1,52 +1,68 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Image,
   StyleSheet,
   TouchableOpacity,
   View,
 } from 'react-native';
+
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
 import { colors, fonts } from '../../../utils/constants/Theme';
 
-const suggestionsData = [
+export interface SuggestionItem {
+  id: number;
+  title: string;
+  subtitle: string;
+  extra?: string;
+}
+
+type Props = {
+  title: string;
+  data: SuggestionItem[];
+};
+
+const cardConfig = [
   {
-    id: 1,
-    title: 'Services',
-    subtitle: 'Recommended\nin 12 days',
     image: require('../../../assets/images/home/serv.png'),
-    backgroundColor: '#F3EEFF',
+    backgroundColor: '#F6F2FF',
   },
+
   {
-    id: 2,
-    title: 'Insurance Expire',
-    subtitle: 'Expires on',
-    extra: '23 Oct 2026',
     image: require('../../../assets/images/home/sheild.png'),
-    backgroundColor: '#FFF1F3',
+    backgroundColor: '#FFF5F6',
   },
+
   {
-    id: 3,
-    title: 'Recommend',
-    subtitle: 'Based on your\nPreference',
     image: require('../../../assets/images/home/recommend.png'),
-    backgroundColor: '#F7EEFF',
+    backgroundColor: '#FAF4FF',
   },
 ];
 
-
-const SmartSuggestions = () => {
+const SuggestionSection = ({
+  title,
+  data,
+}: Props) => {
   const size = useSizeConfig();
-  const styles = getStyles(size);
+
+  const styles = useMemo(() => getStyles(size), [size]);
 
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.sectionTitle}>
-        Smart Suggestions
-      </Text>
+      <View style={styles.headerRow}>
+        <Text style={styles.sectionTitle}>
+          {title}
+        </Text>
+
+        <TouchableOpacity activeOpacity={0.8}>
+          <Text style={styles.viewAllText}>
+            View All
+          </Text>
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.row}>
-        {suggestionsData.map(item => {
+        {data.map((item, index) => {
           return (
             <TouchableOpacity
               key={item.id}
@@ -54,7 +70,8 @@ const SmartSuggestions = () => {
               style={[
                 styles.card,
                 {
-                  backgroundColor: item.backgroundColor,
+                  backgroundColor:
+                    cardConfig[index].backgroundColor,
                 },
               ]}
             >
@@ -74,7 +91,7 @@ const SmartSuggestions = () => {
 
               <View style={styles.iconContainer}>
                 <Image
-                  source={item.image}
+                  source={cardConfig[index].image}
                   style={styles.iconImage}
                   resizeMode="contain"
                 />
@@ -87,18 +104,31 @@ const SmartSuggestions = () => {
   );
 };
 
+export default SuggestionSection;
+
 const getStyles = (size: any) =>
   StyleSheet.create({
     mainContainer: {
       marginTop: size.height * 3.5,
       paddingHorizontal: size.width * 4,
     },
+    headerRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: size.height * 3.5,
+    },
+
+    viewAllText: {
+      color: colors.text_Primary,
+      fontSize: size.fontSize * 3,
+      fontFamily: fonts.semiBold,
+    },
 
     sectionTitle: {
       color: colors.text_Primary,
       fontSize: size.fontSize * 3.8,
-      fontFamily: fonts.semibold,
-      marginBottom: size.height * 3.5,
+      fontFamily: fonts.semiBold,
     },
 
     row: {
@@ -114,6 +144,8 @@ const getStyles = (size: any) =>
       paddingBottom: size.height * 1.8,
       minHeight: size.height * 23,
       position: 'relative',
+      borderWidth:0.4,
+      borderColor: colors.border,
     },
 
     cardTitle: {
@@ -125,7 +157,7 @@ const getStyles = (size: any) =>
     cardSubTitle: {
       marginTop: size.height * 0.8,
       color: '#3E345B',
-      fontSize: size.fontSize * 2.6,
+      fontSize: size.fontSize * 2.7,
       fontFamily: fonts.medium,
     },
 
@@ -143,15 +175,13 @@ const getStyles = (size: any) =>
       width: size.width * 7,
       height: size.width * 7,
       borderRadius: size.width * 6,
-      backgroundColor: 'rgba(255,255,255,0.55)',
+      backgroundColor: 'rgba(255,255,255,0.75)',
       alignItems: 'center',
       justifyContent: 'center',
     },
 
     iconImage: {
-      width: size.width * 4.4,
+      width: size.width * 4.5,
       height: size.width * 4.5,
     },
   });
-
-export default SmartSuggestions;

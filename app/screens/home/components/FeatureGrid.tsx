@@ -9,7 +9,6 @@ import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
 import  { colors, fonts } from '../../../utils/constants/Theme';
 
-
 const featureData = [
   {
     id: 1,
@@ -72,8 +71,8 @@ const getStyles = (size:any) =>
       height: size.width * 20.5,
       backgroundColor: '#FCFCFE',
       borderRadius: size.width * 4,
-      borderColor:colors.borderColor,
-      borderWidth: 0.3,
+      borderColor:colors.border,
+      borderWidth: 0.5,
       alignItems: 'center',
       justifyContent: 'center',
     },

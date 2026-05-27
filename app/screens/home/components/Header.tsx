@@ -24,7 +24,7 @@ const Header = ( {navigation,}: any) => {
    
       <View style={styles.rightContainer}>
         <TouchableOpacity style={styles.iconButton}
-         onPress={() => navigation.navigate('SearchScreen')}>
+         onPress={() => navigation.navigate('Search')}>
           <Ionicons
             name="search-outline"
             size={size.width * 5}
@@ -35,7 +35,7 @@ const Header = ( {navigation,}: any) => {
         <TouchableOpacity style={styles.iconButton}>
 
           <Ionicons
-            name="notifications-outline"
+            name="heart-outline"
             size={size.width * 5}
             color="#1A1A1A"
           />
