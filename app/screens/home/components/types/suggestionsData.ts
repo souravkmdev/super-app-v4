@@ -1,11 +1,11 @@
-import { SuggestionItem } from "./types";
+import { SuggestionItem } from "./suggestionitem";
 
 export const suggestionsData: SuggestionItem[] = [
   {
     id: 1,
     title: 'Services',
     subtitle: 'Recommended\nin 12 days',
-    image: require('../../../assets/images/home/serv.png'),
+    image: require('../../../../assets/images/home/serv.png'),
     backgroundColor: '#F3EEFF',
   },
 
@@ -14,7 +14,7 @@ export const suggestionsData: SuggestionItem[] = [
     title: 'Insurance Expire',
     subtitle: 'Expires on',
     extra: '23 Oct 2026',
-    image: require('../../../assets/images/home/sheild.png'),
+    image: require('../../../../assets/images/home/sheild.png'),
     backgroundColor: '#FFF1F3',
   },
 
@@ -22,7 +22,7 @@ export const suggestionsData: SuggestionItem[] = [
     id: 3,
     title: 'Recommend',
     subtitle: 'Based on your\nPreference',
-    image: require('../../../assets/images/home/recommend.png'),
+    image: require('../../../../assets/images/home/recommend.png'),
     backgroundColor: '#F7EEFF',
   },
 ];

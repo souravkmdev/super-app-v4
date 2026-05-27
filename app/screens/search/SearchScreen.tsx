@@ -19,7 +19,7 @@ import BodyTypeSection from './components/BodyTypeSection';
 import Header from '../../globalComponents/Header';
 import CarListingCard from '../home/components/CarListingCard';
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }: any) => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
 
@@ -96,7 +96,7 @@ const SearchScreen = () => {
       >
         <Header
           title="Search"
-          onPress={() => { }}
+          onPress={() => navigation.goBack()}
         />
 
         <View style={styles.searchContainer}>

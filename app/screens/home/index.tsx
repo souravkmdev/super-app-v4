@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TrackYourCar from './components/TrackYourCar';
 import CarListingCard from './components/CarListingCard';
 import SuggestionSection from './components/SuggestionSection';
-import { suggestionsData } from './components/suggestionsData'
+import { suggestionsData } from './components/types/suggestionsData'
 import Banner from './components/Banners';
 
 const HomeScreen = ({navigation}: any) => {
