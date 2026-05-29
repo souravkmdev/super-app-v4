@@ -89,15 +89,18 @@ const CarListingCard = ({
               </Text>
             </View>
 
-            <Text style={styles.priceText}>
-              {item.price}
+            <Text style={styles.priceText}
+              numberOfLines={1}
+              ellipsizeMode="tail">
+              {/* {item.price} */}
+              ₹{item.price.toLocaleString('en-IN')}
             </Text>
           </View>
         </View>
       </TouchableOpacity>
     );
   };
-  //
+  
   return (
     <View style={styles.mainContainer}>
 
@@ -145,7 +148,7 @@ const getStyles = (size: any) =>
     },
 
     viewAllText: {
-      color: '#8B7BFF',
+      color:'colors.text_Primary',
       fontSize: size.fontSize * 3.1,
       fontFamily: fonts.medium,
     },
@@ -157,7 +160,7 @@ const getStyles = (size: any) =>
     },
 
     card: {
-      width: size.width * 80,
+      width: size.width * 68,
       backgroundColor: colors.white,
       borderRadius: size.width * 5,
       marginRight: size.width * 4,
@@ -211,16 +214,14 @@ const getStyles = (size: any) =>
     },
 
     subtitle: {
-      // marginTop: size.height * 1,
       color: '#42C05C',
       fontSize: size.fontSize * 3.1,
-      fontFamily: fonts.medium,
+      fontFamily: fonts.regular,
     },
 
     ratingContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      // gap: size.width * 1,
       marginTop: size.height * 0.5,
     },
 
@@ -241,14 +242,13 @@ const getStyles = (size: any) =>
     variantRow: {
       flexDirection: 'row',
       alignItems: 'center',
-
     },
 
     variantText: {
       marginLeft: size.width * 1.2,
       color: colors.text_Primary,
       fontSize: size.fontSize * 3.3,
-      fontFamily: fonts.semiBold,
+      fontFamily: fonts.medium,
     },
 
     priceText: {

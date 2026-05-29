@@ -9,7 +9,7 @@ import {
 
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
-import  { colors, fonts } from '../../../utils/constants/Theme';
+import { colors, fonts } from '../../../utils/constants/Theme';
 
 const trackingData = [
   {
@@ -45,7 +45,7 @@ const TrackYourCar = () => {
 
   return (
     <View style={styles.mainContainer}>
-      
+
       <View style={styles.headerRow}>
         <Text style={styles.title}>
           Track Your Car
@@ -78,7 +78,7 @@ const TrackYourCar = () => {
                   ]}
                 />
               )}
-      
+
               {item.id === 4 ? (
                 <View style={styles.deliveredOuterCircle}>
                   <View style={styles.deliveredInnerCircle}>
@@ -120,7 +120,7 @@ const getStyles = (size: any) =>
   StyleSheet.create({
     mainContainer: {
       marginTop: size.height * 4,
-      paddingHorizontal: size.width * 4,
+      paddingHorizontal: size.width * 3.5,
     },
 
     headerRow: {
@@ -133,7 +133,7 @@ const getStyles = (size: any) =>
     title: {
       color: '#1F1733',
       fontSize: size.fontSize * 3.8,
-      fontFamily: fonts.semibold,
+      fontFamily: fonts.semiBold,
     },
 
     viewTracking: {
@@ -236,7 +236,7 @@ const getStyles = (size: any) =>
       alignItems: 'center',
       justifyContent: 'center',
     },
-    
+
     deliveredOuterCircle: {
       width: size.width * 13,
       height: size.width * 13,

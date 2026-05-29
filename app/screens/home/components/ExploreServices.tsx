@@ -34,7 +34,6 @@ const ExploreServices = () => {
 
   return (
     <View style={styles.mainContainer}>
-     
       <Text style={styles.sectionTitle}>
         Explore Our Services
       </Text>
@@ -55,7 +54,6 @@ const ExploreServices = () => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 style={styles.card}>
-             
               <View style={styles.textContainer}>
                 <Text style={styles.cardTitle}>
                   {item.title}
@@ -66,17 +64,16 @@ const ExploreServices = () => {
                 </Text>
               </View>
 
-            
+
               <Image
                 source={item.image}
                 style={styles.cardImage}
                 resizeMode="contain"
               />
 
-             
+
               <TouchableOpacity
                 activeOpacity={0.8}
-                // style={styles.arrowButton}
                 style={[
                   styles.arrowButton,
                   {
@@ -110,15 +107,15 @@ const getStyles = (size: any) =>
     mainContainer: {
       marginTop: size.height * 3.5,
     },
-      textContainer: {
-       zIndex: 10,
-       marginTop: size.height * -2,
-      },
+    textContainer: {
+      zIndex: 10,
+      marginTop: size.height * -2,
+    },
     sectionTitle: {
       paddingHorizontal: size.width * 4,
       color: colors.text_Primary,
       fontSize: size.fontSize * 3.8,
-      fontFamily: fonts.semibold,
+      fontFamily: fonts.semiBold,
       marginBottom: size.height * 1.8,
     },
 
@@ -134,7 +131,7 @@ const getStyles = (size: any) =>
       borderRadius: size.width * 5,
       overflow: 'hidden',
       padding: size.width * 4,
-      justifyContent:'flex-start',
+      justifyContent: 'flex-start',
     },
 
     cardTitle: {

@@ -146,6 +146,7 @@ const getStyles = (size: any) =>
       color: colors.white,
       fontSize: size.fontSize * 2.5,
       fontFamily: fonts.regular,
+      paddingBottom: size.height * 1,
     },
 
 
@@ -210,7 +211,7 @@ const getStyles = (size: any) =>
     percentContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginRight: size.width * 2,
+      marginRight: size.width * 1,
     },
 
     petrolIcon: {
@@ -227,7 +228,7 @@ const getStyles = (size: any) =>
     },
 
     progressBar: {
-      width: '38%',
+      width: '35%',
       height: size.height * 2,
       backgroundColor: 'rgba(255,255,255,0.25)',
       borderRadius: size.width * 10,

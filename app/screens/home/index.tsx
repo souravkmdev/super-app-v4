@@ -9,15 +9,17 @@ import Header from './components/Header';
 import GarageCard from './components/GarageCard';
 import FeatureGrid from './components/FeatureGrid';
 import ExploreServices from './components/ExploreServices';
-import RoadSideBanner from './components/Banners';
-import SmartSuggestions from './components/SmartSuggestions';
+import SmartSuggestions from './components/SuggestionSection';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { colors } from '../../utils/constants/Theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TrackYourCar from './components/TrackYourCar';
 import CarListingCard from './components/CarListingCard';
+import SuggestionSection from './components/SuggestionSection';
+import { suggestionsData } from './components/types/suggestionsData'
+import Banner from './components/Banners';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
 
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
@@ -31,7 +33,7 @@ const HomeScreen = () => {
       image: require('../../assets/images/home/recommendcar.png'),
       rating: '5.00',
       variants: '4 Variants',
-      price: '₹12,80,000',
+      price: 1280000,
     },
     {
       id: '2',
@@ -40,7 +42,7 @@ const HomeScreen = () => {
       image: require('../../assets/images/home/recommendcar.png'),
       rating: '5.00',
       variants: '4 Variants',
-      price: '₹11,40,000',
+      price: 1140000,
     },
   ];
   return (
@@ -48,7 +50,8 @@ const HomeScreen = () => {
 
       <StatusBar barStyle={'dark-content'} />
       <View style={styles.headerContainer}>
-        <Header />
+        <Header 
+        navigation={navigation}  />
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
@@ -57,8 +60,11 @@ const HomeScreen = () => {
         <FeatureGrid />
         <ExploreServices />
         <TrackYourCar />
-        <RoadSideBanner />
-        <SmartSuggestions />
+        <Banner />
+        <SuggestionSection
+          title="Smart Suggestions"
+          data={suggestionsData}
+        />
         <CarListingCard
           title="Top Rated Cars"
           data={recommendedCarsData}
