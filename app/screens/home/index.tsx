@@ -57,7 +57,7 @@ const HomeScreen = ({navigation}: any) => {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
 
         <GarageCard />
-        <FeatureGrid />
+        <FeatureGrid navigation={navigation} />
         <ExploreServices />
         <TrackYourCar />
         <Banner />

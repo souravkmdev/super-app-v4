@@ -18,7 +18,7 @@ const Header = ({ onPress, title }: { onPress: () => void; title: string }) => {
         <Feather
           name="chevron-left"
           size={size.width * 5}
-          color={colors.primary}
+          color={colors.text_Primary}
         />
       </TouchableOpacity>
 
@@ -51,6 +51,8 @@ const getStyles = (size: any, insets: any) =>
       borderRadius: size.width * 2.5,
       alignItems: 'center',
       justifyContent: 'center',
+      borderColor: colors.border,
+      borderWidth: 1,
     },
 
     title: {

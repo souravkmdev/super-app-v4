@@ -28,7 +28,7 @@ const featureData = [
     icon: require('../../../assets/images/home/tools.png'),},
 ];
 
-const FeatureGrid = () => {
+const FeatureGrid = ({ navigation }: any) => {
   const size = useSizeConfig();
   const styles = getStyles(size);
 
@@ -40,6 +40,11 @@ const FeatureGrid = () => {
             key={item.id}
             activeOpacity={0.8}
             style={styles.card}
+            onPress={() => {
+              if (item.title === 'Insurance') {
+                navigation.navigate('Insurance');
+              }
+            }}
           >
             <Image
               source={item.icon}
