@@ -143,7 +143,7 @@ const getStyles = (size: any) =>
     },
 
     cardContainer: {
-      backgroundColor: '#F5F2FF',
+      backgroundColor: '#967ef31a',
       borderRadius: size.width * 5,
       paddingTop: size.height * 2.2,
       paddingBottom: size.height * 2.4,

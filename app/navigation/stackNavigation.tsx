@@ -4,13 +4,20 @@ import Profile from '../screens/profile';
 import BottomNavigation from './BottomNavigation';
 import Details from '../screens/details';
 import SearchScreen from '../screens/search/SearchScreen';
+import InsuranceScreen from '../screens/insurance/InsuranceScreen';
+import VehicleDetailsScreen from '../screens/insurance/VehicleDetailsScreen';
+import BookingForScreen from '../screens/booking/BookForScreen';
+import EBookingScreen from '../screens/booking/EBookingScreen';
+import OutletScreen from '../screens/insurance/OutletScreen';
+import EBookingSecondScreen from '../screens/booking/EBookingSecondScreen';
+import EBookingThirdScreen from '../screens/booking/EBookingThirdScreen';
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName ='BottomNavigation'
+      initialRouteName='BottomNavigation'
       screenOptions={{
         headerShown: false,
       }}
@@ -18,7 +25,14 @@ const StackNavigation = () => {
       <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Details" component={Details} />
-        <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="Insurance" component={InsuranceScreen} />
+      <Stack.Screen name="VehicleDetailsScreen" component={VehicleDetailsScreen} />
+      <Stack.Screen name="OutletScreen" component={OutletScreen} />
+      <Stack.Screen name="BookingForScreen" component={BookingForScreen} />
+      <Stack.Screen name="EBookingScreen" component={EBookingScreen} />
+      <Stack.Screen name="EBookingSecondScreen" component={EBookingSecondScreen} />
+      <Stack.Screen name="EBookingThirdScreen" component={EBookingThirdScreen} />
     </Stack.Navigator>
   );
 };

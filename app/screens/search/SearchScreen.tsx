@@ -73,7 +73,8 @@ const SearchScreen = ({ navigation }: any) => {
   ];
 
   const [selectedBudget, setSelectedBudget] = useState<any>(null);
-
+  const [searchText, setSearchText] = useState('');
+  
   const filteredCars = selectedBudget
   ? recommendedCarsData.filter(
       (item) =>
@@ -100,7 +101,9 @@ const SearchScreen = ({ navigation }: any) => {
         />
 
         <View style={styles.searchContainer}>
-          <SearchInput />
+          <SearchInput 
+          value={searchText}
+          onChangeText={setSearchText} />
         </View>
       </LinearGradient>
 
@@ -117,7 +120,7 @@ const SearchScreen = ({ navigation }: any) => {
           onSelectBudget={setSelectedBudget}
         />
         
-        <BodyTypeSection />
+        <BodyTypeSection  />
 
         <CarListingCard
           title="Recommended For You"
