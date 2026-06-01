@@ -1,29 +1,33 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Profile from '../screens/profile';
+
 import BottomNavigation from './BottomNavigation';
+
 import Details from '../screens/details';
 import SearchScreen from '../screens/search/SearchScreen';
+
 import InsuranceScreen from '../screens/insurance/InsuranceScreen';
 import VehicleDetailsScreen from '../screens/insurance/VehicleDetailsScreen';
+import OutletScreen from '../screens/insurance/OutletScreen';
+
 import BookingForScreen from '../screens/booking/BookForScreen';
 import EBookingScreen from '../screens/booking/EBookingScreen';
-import OutletScreen from '../screens/insurance/OutletScreen';
 import EBookingSecondScreen from '../screens/booking/EBookingSecondScreen';
 import EBookingThirdScreen from '../screens/booking/EBookingThirdScreen';
 
-const Stack = createNativeStackNavigator();
+import { RootStackParamList } from './RootStackParamList';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName='BottomNavigation'
+      initialRouteName="BottomNavigation"
       screenOptions={{
         headerShown: false,
       }}
     >
       <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
-      <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Details" component={Details} />
       <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen name="Insurance" component={InsuranceScreen} />
