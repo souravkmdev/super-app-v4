@@ -5,13 +5,14 @@ import Details from '../screens/details';
 import Wishlist from '../screens/wishlist';
 import NewCarsScreen from '../screens/newcar';
 import Notification from '../screens/notification';
+import BookingType from '../screens/booking';
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="BottomNavigation"
+      initialRouteName="BookingType"
       screenOptions={{
         headerShown: false,
         animation: 'fade',
@@ -24,6 +25,7 @@ const StackNavigation = () => {
       <Stack.Screen name="NewCarsScreen" component={NewCarsScreen} />
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="NewCars" component={NewCarsScreen} />
+      <Stack.Screen name="BookingType" component={BookingType} />
     </Stack.Navigator>
   );
 };
