@@ -2,20 +2,20 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomNavigation from './BottomNavigation';
-
 import Details from '../screens/details';
 import SearchScreen from '../screens/search/SearchScreen';
-
 import InsuranceScreen from '../screens/insurance/InsuranceScreen';
 import VehicleDetailsScreen from '../screens/insurance/VehicleDetailsScreen';
 import OutletScreen from '../screens/insurance/OutletScreen';
-
 import BookingForScreen from '../screens/booking/BookForScreen';
 import EBookingScreen from '../screens/booking/EBookingScreen';
 import EBookingSecondScreen from '../screens/booking/EBookingSecondScreen';
 import EBookingThirdScreen from '../screens/booking/EBookingThirdScreen';
-
 import { RootStackParamList } from './RootStackParamList';
+import ServiceScreen from '../screens/service/ServiceScreen';
+import ServiceDetailScreen from '../screens/service/ServiceDetailScreen';
+import NewCarsScreen from '../screens/newcar/NewCarScreen';
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -37,6 +37,9 @@ const StackNavigation = () => {
       <Stack.Screen name="EBookingScreen" component={EBookingScreen} />
       <Stack.Screen name="EBookingSecondScreen" component={EBookingSecondScreen} />
       <Stack.Screen name="EBookingThirdScreen" component={EBookingThirdScreen} />
+      <Stack.Screen name="ServiceScreen" component={ServiceScreen} />
+      <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
+      <Stack.Screen name="NewCarScreen" component={NewCarsScreen} />
     </Stack.Navigator>
   );
 };
