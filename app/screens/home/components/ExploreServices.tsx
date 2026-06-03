@@ -10,14 +10,29 @@ import { Text } from '../../../globalComponents/CustomText';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors, fonts } from '../../../utils/constants/Theme';
 import LinearGradient from 'react-native-linear-gradient';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../navigation/RootStackParamList';
+import { useNavigation } from '@react-navigation/native';
 
-const servicesData = [
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
+type ServiceItem = {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: any;
+  backgroundColor: string;
+  screen: keyof RootStackParamList;
+};
+
+const servicesData: ServiceItem[] = [
   {
     id: 1,
     title: 'New Cars',
     subtitle: 'Latest Models',
     image: require('../../../assets/images/home/car.png'),
     backgroundColor: '#7D73FF',
+    screen: 'NewCarScreen',
   },
   {
     id: 2,
@@ -25,10 +40,12 @@ const servicesData = [
     subtitle: 'Expert Care',
     image: require('../../../assets/images/home/service.png'),
     backgroundColor: '#8FB39A',
+    screen: 'ServiceScreen',
   },
 ];
 
 const ExploreServices = () => {
+  const navigation = useNavigation<NavigationProp>();
   const size = useSizeConfig();
   const styles = getStyles(size);
 
@@ -44,6 +61,7 @@ const ExploreServices = () => {
             <TouchableOpacity
               key={item.id}
               activeOpacity={0.9}
+              onPress={() => navigation.navigate(item.screen as never)}
             >
               <LinearGradient
                 colors={
@@ -54,45 +72,45 @@ const ExploreServices = () => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 style={styles.card}>
-              <View style={styles.textContainer}>
-                <Text style={styles.cardTitle}>
-                  {item.title}
-                </Text>
+                <View style={styles.textContainer}>
+                  <Text style={styles.cardTitle}>
+                    {item.title}
+                  </Text>
 
-                <Text style={styles.cardSubtitle}>
-                  {item.subtitle}
-                </Text>
-              </View>
-
-
-              <Image
-                source={item.image}
-                style={styles.cardImage}
-                resizeMode="contain"
-              />
+                  <Text style={styles.cardSubtitle}>
+                    {item.subtitle}
+                  </Text>
+                </View>
 
 
-              <TouchableOpacity
-                activeOpacity={0.8}
-                style={[
-                  styles.arrowButton,
-                  {
-                    backgroundColor:
-                      item.id === 1
-                        ? 'rgba(148, 134, 250, 0.78)'
-                        : 'rgba(126,165,138,0.78)',
-                  },
-                ]}
-              >
-                <Ionicons
-                  name="chevron-forward-outline"
-                  size={size.width * 4.2}
-                  color={colors.white}
+                <Image
+                  source={item.image}
+                  style={styles.cardImage}
+                  resizeMode="contain"
+                />
+
+
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  style={[
+                    styles.arrowButton,
+                    {
+                      backgroundColor:
+                        item.id === 1
+                          ? 'rgba(148, 134, 250, 0.78)'
+                          : 'rgba(126,165,138,0.78)',
+                    },
+                  ]}
+                >
+                  <Ionicons
+                    name="chevron-forward-outline"
+                    size={size.width * 4.2}
+                    color={colors.white}
                     style={{
                       marginLeft: size.width * 0.4,
                     }}
-                />
-              </TouchableOpacity>
+                  />
+                </TouchableOpacity>
               </LinearGradient>
             </TouchableOpacity>
           );
