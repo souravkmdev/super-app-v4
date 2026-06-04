@@ -10,19 +10,19 @@ import InsuranceScreen from '../screens/insurance/InsuranceScreen';
 import VehicleDetailsScreen from '../screens/insurance/VehicleDetailsScreen';
 import OutletScreen from '../screens/insurance/OutletScreen';
 
-import BookingForScreen from '../screens/booking/BookForScreen';
-import EBookingScreen from '../screens/booking/EBookingScreen';
 import EBookingSecondScreen from '../screens/booking/EBookingSecondScreen';
 import EBookingThirdScreen from '../screens/booking/EBookingThirdScreen';
 
 import { RootStackParamList } from './RootStackParamList';
+import PersonalDetails from '../screens/booking/PersonalDetails';
+import BookingType from '../screens/booking';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="BottomNavigation"
+      initialRouteName="PersonalDetails"
       screenOptions={{
         headerShown: false,
       }}
@@ -33,8 +33,8 @@ const StackNavigation = () => {
       <Stack.Screen name="Insurance" component={InsuranceScreen} />
       <Stack.Screen name="VehicleDetailsScreen" component={VehicleDetailsScreen} />
       <Stack.Screen name="OutletScreen" component={OutletScreen} />
-      <Stack.Screen name="BookingForScreen" component={BookingForScreen} />
-      <Stack.Screen name="EBookingScreen" component={EBookingScreen} />
+      <Stack.Screen name="BookingType" component={BookingType} />
+      <Stack.Screen name="PersonalDetails" component={PersonalDetails} />
       <Stack.Screen name="EBookingSecondScreen" component={EBookingSecondScreen} />
       <Stack.Screen name="EBookingThirdScreen" component={EBookingThirdScreen} />
     </Stack.Navigator>

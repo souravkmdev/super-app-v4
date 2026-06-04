@@ -15,7 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { colors, fonts } from '../../utils/constants/Theme';
 import { Text } from '../../globalComponents/CustomText';
 import LinearGradient from 'react-native-linear-gradient';
-import Highlights from './components/Highlights';
+import Highlights from '../../globalComponents/Highlights';
 import SelectColor from './components/SelectColor';
 import CustomButton from '../../globalComponents/CustomButton';
 import Variants from './components/Variants';

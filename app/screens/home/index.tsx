@@ -1,35 +1,18 @@
 import React from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 import Header from './components/Header';
 import GarageCard from './components/GarageCard';
 import FeatureGrid from './components/FeatureGrid';
 import ExploreServices from './components/ExploreServices';
-import SmartSuggestions from './components/SuggestionSection';
+import RoadSideBanner from './components/Banners';
+import SuggestionSection from './components/SuggestionSection';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
-import { colors } from '../../utils/constants/Theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TrackYourCar from './components/TrackYourCar';
 import CarListingCard from './components/CarListingCard';
-import SuggestionSection from './components/SuggestionSection';
-import { suggestionsData } from './components/types/suggestionsData'
-import Banner from './components/Banners';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootStackParamList';
-import { useNavigation } from '@react-navigation/native';
+import { suggestionsData } from './components/types/suggestionsData';
 
-type NavigationProp =
-  NativeStackNavigationProp<RootStackParamList>;
-
-
-const HomeScreen = () => {
-
-  const navigation = useNavigation<NavigationProp>();
-
+const Home = () => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
   const styles = getStyles(size, insets);
@@ -42,7 +25,7 @@ const HomeScreen = () => {
       image: require('../../assets/images/home/recommendcar.png'),
       rating: '5.00',
       variants: '4 Variants',
-      price: 1280000,
+      price: '₹12,80,000',
     },
     {
       id: '2',
@@ -51,49 +34,46 @@ const HomeScreen = () => {
       image: require('../../assets/images/home/recommendcar.png'),
       rating: '5.00',
       variants: '4 Variants',
-      price: 1140000,
+      price: '₹11,40,000',
     },
   ];
   return (
     <View style={styles.container}>
-
       <StatusBar barStyle={'dark-content'} />
       <View style={styles.headerContainer}>
-        <Header
-          navigation={navigation} />
+        <Header />
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
-
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContainer}
+      >
         <GarageCard />
-        <FeatureGrid navigation={navigation} />
+        <FeatureGrid />
         <ExploreServices />
         <TrackYourCar />
-        <Banner />
-        <SuggestionSection
-          title="Smart Suggestions"
-          data={suggestionsData}
-        />
-        <CarListingCard
-          title="Top Rated Cars"
-          data={recommendedCarsData}
-        />
+        <RoadSideBanner />
+        <SuggestionSection title="Smart Suggestions" data={suggestionsData} />
+        <CarListingCard title="Top Rated Cars" data={recommendedCarsData} />
       </ScrollView>
     </View>
   );
 };
 
-export default HomeScreen;
+export default Home;
 
 const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: colors.backGround,
+      backgroundColor: '#F2F2FB',
+      // gap: size.height * 5,
     },
 
     scrollContainer: {
       paddingBottom: size.height * 30,
+      gap: size.height * 3,
+      paddingTop: size.height * 5,
     },
     headerContainer: {
       paddingTop: insets.top,
