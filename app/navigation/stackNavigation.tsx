@@ -58,6 +58,8 @@ const StackNavigation = () => {
                   <Stack.Screen name="AccessoriesScreen" component={AccessoriesScreen} />
                   <Stack.Screen name="Notification" component={Notification} />
                   <Stack.Screen name="WishList" component={Wishlist} />
+                  <Stack.Screen name="ServiceScreen" component={ServiceScreen} />
+                  <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
             </Stack.Navigator>
       );
 };
