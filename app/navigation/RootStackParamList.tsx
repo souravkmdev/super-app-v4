@@ -17,7 +17,7 @@ export type RootStackParamList = {
     VehicleDetailsScreen: undefined;
     OutletScreen: undefined;
     BookingType: undefined;
-    EBookingScreen: undefined;
+    BookingPersonalDetails: undefined;
     EBookingSecondScreen: undefined;
     EBookingThirdScreen: undefined;
     ServiceScreen: undefined;

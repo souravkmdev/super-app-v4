@@ -11,12 +11,17 @@ import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { colors, fonts } from '../../utils/constants/Theme';
 import { Text } from '../../globalComponents/CustomText';
 import { bookingOptions } from './data';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { useNavigation } from '@react-navigation/native';
 
 type BookingOption = 'myself' | 'others';
+type NavigationalProp = NativeStackScreenProps<RootStackParamList>;
 
 const BookingType = () => {
     const size = useSizeConfig();
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation<NavigationalProp>();
 
     const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 

@@ -7,7 +7,6 @@ import SearchScreen from '../screens/search';
 import InsuranceScreen from '../screens/insurance/InsuranceScreen';
 import VehicleDetailsScreen from '../screens/insurance/VehicleDetailsScreen';
 import OutletScreen from '../screens/insurance/OutletScreen'
-import EBookingScreen from '../screens/booking/EBookingScreen';
 import EBookingSecondScreen from '../screens/booking/EBookingSecondScreen';
 import EBookingThirdScreen from '../screens/booking/EBookingThirdScreen';
 import { RootStackParamList } from './RootStackParamList';
@@ -20,6 +19,7 @@ import AccessoriesScreen from '../screens/accessories';
 import Notification from '../screens/notification';
 import BookingType from '../screens/booking';
 import Wishlist from '../screens/wishlist';
+import BookingPersonalDetails from '../screens/booking/BookingPersonalDetails';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -39,7 +39,7 @@ const StackNavigation = () => {
       <Stack.Screen name="VehicleDetailsScreen" component={VehicleDetailsScreen} />
       <Stack.Screen name="OutletScreen" component={OutletScreen} />
       <Stack.Screen name="BookingType" component={BookingType} />
-      <Stack.Screen name="EBookingScreen" component={EBookingScreen} />
+      <Stack.Screen name="BookingPersonalDetails" component={BookingPersonalDetails} />
       <Stack.Screen name="EBookingSecondScreen" component={EBookingSecondScreen} />
       <Stack.Screen name="EBookingThirdScreen" component={EBookingThirdScreen} />
       <Stack.Screen name="ServiceScreen" component={ServiceScreen} />

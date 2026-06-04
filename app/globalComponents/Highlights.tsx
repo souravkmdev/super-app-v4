@@ -1,13 +1,27 @@
 import React, { memo, useMemo } from 'react';
-import { Image, ImageBackground, StyleSheet } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  ImageStyle,
+  StyleSheet,
+  TextStyle,
+} from 'react-native';
 
-import { useSizeConfig } from '../../../utils/context/SizeConfig';
-import { colors, fonts } from '../../../utils/constants/Theme';
-import { Text } from '../../../globalComponents/CustomText';
+import { useSizeConfig } from '../utils/context/SizeConfig';
+import { colors, fonts } from '../utils/constants/Theme';
+import { Text } from './CustomText';
 
-const backgroundImage = require('../../../assets/images/detail/highlights_card.png');
+const backgroundImage = require('../assets/images/global/highlights_card.png');
 
-const Highlights = ({ title }: { title: { key: string; title: string } }) => {
+const Highlights = ({
+  title,
+  textStyle,
+  imageStyle,
+}: {
+  title: { key: string; title: string };
+  textStyle?: TextStyle;
+  imageStyle?: ImageStyle;
+}) => {
   const size = useSizeConfig();
 
   const styles = useMemo(() => getStyles(size), [size]);
@@ -17,29 +31,29 @@ const Highlights = ({ title }: { title: { key: string; title: string } }) => {
       case 'Hybrid':
         return (
           <Image
-            source={require('../../../assets/images/detail/hybrid.png')}
-            style={styles.icon}
+            source={require('../assets/images/global/hybrid.png')}
+            style={[styles.icon, imageStyle]}
           />
         );
       case 'Km':
         return (
           <Image
-            source={require('../../../assets/images/detail/km.png')}
-            style={styles.icon}
+            source={require('../assets/images/global/km.png')}
+            style={[styles.icon, imageStyle]}
           />
         );
       case 'Ac':
         return (
           <Image
-            source={require('../../../assets/images/detail/ac.png')}
-            style={styles.icon}
+            source={require('../assets/images/global/ac.png')}
+            style={[styles.icon, imageStyle]}
           />
         );
       default:
         return (
           <Image
-            source={require('../../../assets/images/detail/highlight.png')}
-            style={styles.icon}
+            source={require('../assets/images/global/highlight.png')}
+            style={[styles.icon, imageStyle]}
           />
         );
     }
@@ -53,7 +67,7 @@ const Highlights = ({ title }: { title: { key: string; title: string } }) => {
     >
       {renderIcon()}
 
-      <Text style={styles.title}>{title.title}</Text>
+      <Text style={[styles.title, textStyle]}>{title.title}</Text>
     </ImageBackground>
   );
 };

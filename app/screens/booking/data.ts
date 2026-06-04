@@ -12,3 +12,22 @@ export const bookingOptions = [
         icon: 'users',
     },
 ];
+
+export const HighlightsImages = [
+    {
+        key: 'Hybrid',
+        title: 'Hybrid',
+    },
+    {
+        key: 'Km',
+        title: '23.Km/l',
+    },
+    {
+        key: 'Ac',
+        title: 'A/C',
+    },
+    {
+        key: 'Ac',
+        title: 'A/C',
+    },
+];
