@@ -13,7 +13,15 @@ import { Text } from '../../../globalComponents/CustomText';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors, fonts } from '../../../utils/constants/Theme';
 
-const SubSections = ({ title }: { title: string }) => {
+interface Props {
+  title: string;
+  onPress?: () => void;
+}
+
+const SubSections = ({
+  title,
+  onPress,
+}: Props) => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
 
@@ -102,7 +110,7 @@ const SubSections = ({ title }: { title: string }) => {
   };
 
   return (
-    <TouchableOpacity activeOpacity={0.6} style={styles.container}>
+    <TouchableOpacity activeOpacity={0.6} style={styles.container} onPress={onPress}>
       <View style={styles.leftContainer}>
         {renderIcon()}
 

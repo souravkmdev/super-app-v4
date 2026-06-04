@@ -23,6 +23,13 @@ export type RootStackParamList = {
     ServiceScreen: undefined;
     ServiceDetailScreen: { item: ServiceItem };
     NewCarScreen: undefined;
+    Profile: undefined;
+    ProfileVerification: undefined;
+    RewardsScreen: undefined;
+    YourOrdersScreen: undefined;
+    MyAddressScreen: undefined;
+    ContactUs: undefined;
+    WebViewScreen: undefined;
     UsedCarsScreen: undefined;
     DrivingSchool: undefined;
     AccessoriesScreen: undefined;

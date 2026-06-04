@@ -161,16 +161,15 @@ const getStyles = (size: any) =>
             borderTopLeftRadius: size.width * 6,
             borderTopRightRadius: size.width * 6,
             padding: size.width * 5,
-            // height: size.height * 85,
         },
 
         handle: {
             width: size.width * 15,
-            height: 5,
+            height: size.height * 0.6,
             backgroundColor: '#D8D2FF',
             borderRadius: 10,
             alignSelf: 'center',
-            marginBottom: size.height * 2,
+            marginBottom: size.height * 5,
         },
 
         title: {

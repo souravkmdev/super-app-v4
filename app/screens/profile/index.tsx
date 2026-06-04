@@ -11,8 +11,9 @@ import { colors, fonts } from '../../utils/constants/Theme';
 import SubSections from './components/subSections';
 import CustomButton from '../../globalComponents/CustomButton';
 import { logIn, logOut } from './data';
+import { WEB_URLS } from '../../utils/context/WebUrls';
 
-const Profile = () => {
+const Profile = ({ navigation }: any) => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
 
@@ -29,7 +30,42 @@ const Profile = () => {
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
-        renderItem={({ item }) => <SubSections title={item} />}
+        renderItem={({ item }) => <SubSections title={item}
+          onPress={() => {
+            if (item === 'Profile') {
+              navigation.navigate('ProfileVerification');
+            }
+            if (item === 'Reward Points') {
+              navigation.navigate('RewardsScreen');
+            }
+            if (item === 'Your Orders') {
+              navigation.navigate('YourOrdersScreen');
+            }
+            if (item === 'My address') {
+              navigation.navigate('MyAddressScreen');
+            }
+            if (item === 'Contact Us') {
+              navigation.navigate('ContactUs');
+            }
+            if (item === 'Terms and conditions') {
+              navigation.navigate('WebViewScreen', {
+                title: 'TERMS AND CONDITIONS',
+                url: WEB_URLS.TERMS,
+              });
+            }
+            if (item === 'Privacy Policy') {
+              navigation.navigate('WebViewScreen', {
+                title: 'PRIVACY POLICY',
+                url: WEB_URLS.PRIVACY,
+              });
+            }
+            if (item === 'Cancellation & Refund Policy') {
+              navigation.navigate('WebViewScreen', {
+                title: 'CANCELLATION & REFUND POLICY', 
+                url: WEB_URLS.CANCELLATION,
+              });
+            }
+          }} />}
         ListHeaderComponent={
           <View style={styles.headerContainer}>
             <Image
