@@ -63,7 +63,7 @@ const NEXA_CARS: CarItem[] = [
     },
 ];
 
-const NewCarsScreen: React.FC = () => {
+const NewCarsScreen: React.FC = ({navigation}:any) => {
     const [activeTab, setActiveTab] = useState<'Arena' | 'Nexa'>('Arena');
     const [arenaCars, setArenaCars] = useState<CarItem[]>(ARENA_CARS);
     const [nexaCars, setNexaCars] = useState<CarItem[]>(NEXA_CARS);

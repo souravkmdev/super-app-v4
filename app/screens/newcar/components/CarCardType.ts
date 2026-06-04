@@ -8,4 +8,8 @@ export interface CarItem {
     availability: string;
     image: string;
     isFavorite: boolean;
+
+    paymentStatus?: string;
+    bookingStatus?: string;
+    dateTime?: string;
 }

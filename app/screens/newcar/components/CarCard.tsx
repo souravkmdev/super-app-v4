@@ -1,5 +1,3 @@
-// components/CarCard.tsx
-
 import React from 'react';
 import {
     View,
@@ -32,6 +30,13 @@ interface CarCardProps {
     onFavoriteToggle: (id: string) => void;
     onDetailsPress: (id: string) => void;
     isDark?: boolean;
+
+    showFavorite?: boolean;
+    showPrice?: boolean;
+    showRating?: boolean;
+    showAvailability?: boolean;
+    showDetailsButton?: boolean;
+    showOrderInfo?: boolean;
 }
 
 const CarCard: React.FC<CarCardProps> = ({
@@ -39,6 +44,13 @@ const CarCard: React.FC<CarCardProps> = ({
     onFavoriteToggle,
     onDetailsPress,
     isDark = false,
+
+    showFavorite = true,
+    showPrice = true,
+    showRating = true,
+    showAvailability = true,
+    showDetailsButton = true,
+    showOrderInfo = false,
 }) => {
 
     const size = useSizeConfig();
@@ -46,26 +58,38 @@ const CarCard: React.FC<CarCardProps> = ({
 
     return (
         <View style={[styles.card, isDark && styles.cardDark]}>
-            {/* Car Image */}
+
             <View style={styles.imageContainer}>
-                <Image
+                {/* <Image
                     source={{ uri: item.image }}
                     style={styles.carImage}
                     resizeMode='cover'
+                /> */}
+
+                <Image
+                    source={
+                        typeof item.image === 'string'
+                            ? { uri: item.image }
+                            : item.image
+                    }
+                    style={styles.carImage}
+                   resizeMode = 'cover'
                 />
 
                 {/* Heart Icon */}
-                <TouchableOpacity
-                    style={styles.heartButton}
-                    onPress={() => onFavoriteToggle(item.id)}
-                    activeOpacity={0.7}
-                >
-                    {item.isFavorite ? (
-                        <FontAwesome name='heart' size={20} color='#e92121cd' />
-                    ) : (
-                        <FontAwesome name='heart-o' size={20} color={colors.white} />
-                    )}
-                </TouchableOpacity>
+                {showFavorite && (
+                    <TouchableOpacity
+                        style={styles.heartButton}
+                        onPress={() => onFavoriteToggle?.(item.id)}
+                        activeOpacity={0.7}
+                    >
+                        {item.isFavorite ? (
+                            <FontAwesome name='heart' size={20} color='#e92121cd' />
+                        ) : (
+                            <FontAwesome name='heart-o' size={20} color={colors.white} />
+                        )}
+                    </TouchableOpacity>
+                )}
             </View>
 
             {/* Card Content */}
@@ -74,35 +98,58 @@ const CarCard: React.FC<CarCardProps> = ({
                     <Text style={[styles.carName, isDark && styles.textLight]}>
                         {item.name}
                     </Text>
-                    <Text style={[styles.carPrice, isDark && styles.textLight]}>
-                        {item.price}
-                    </Text>
+                    {showPrice && (
+                        <Text style={[styles.carPrice, isDark && styles.textLight]}>
+                            {item.price}
+                        </Text>
+                    )}
                 </View>
+
+                {showOrderInfo && (
+                    <View>
+                        <Text>
+                            Payment Status : {item.paymentStatus}
+                        </Text>
+
+                        <Text>
+                            Booking Status : {item.bookingStatus}
+                        </Text>
+
+                        <Text>
+                            {item.dateTime}
+                        </Text>
+                    </View>
+                )}
 
                 <View style={styles.cardBottomRow}>
                     <View>
-                        <View style={styles.ratingVariantRow}>
-                            <StarRating rating={item.rating} isDark={isDark} />
-                            <View style={[styles.dot, isDark && styles.dotDark]} />
-                            <Text style={[styles.variantsText, isDark && styles.variantsTextDark]}>
-                                {item.variants} Variants
+                        {showRating && (
+                            <View style={styles.ratingVariantRow}>
+                                <StarRating rating={item.rating} isDark={isDark} />
+                                <View style={[styles.dot, isDark && styles.dotDark]} />
+                                <Text style={[styles.variantsText, isDark && styles.variantsTextDark]}>
+                                    {item.variants} Variants
+                                </Text>
+                            </View>
+                        )}
+                        {showAvailability && (
+                            <Text style={[styles.availabilityText, isDark && styles.availabilityTextDark]}>
+                                {item.availability}
                             </Text>
-                        </View>
-
-                        <Text style={[styles.availabilityText, isDark && styles.availabilityTextDark]}>
-                            {item.availability}
-                        </Text>
+                        )}
                     </View>
 
-                    <TouchableOpacity
-                        style={[styles.detailsButton, isDark && styles.detailsButtonDark]}
-                        onPress={() => onDetailsPress(item.id)}
-                        activeOpacity={0.8}
-                    >
-                        <Text style={styles.detailsButtonText}>
-                            Details
-                        </Text>
-                    </TouchableOpacity>
+                    {showDetailsButton && (
+                        <TouchableOpacity
+                            style={[styles.detailsButton, isDark && styles.detailsButtonDark]}
+                            onPress={() => onDetailsPress?.(item.id)}
+                            activeOpacity={0.8}
+                        >
+                            <Text style={styles.detailsButtonText}>
+                                Details
+                            </Text>
+                        </TouchableOpacity>
+                    )}
                 </View>
             </View>
         </View>
@@ -119,7 +166,7 @@ const getStyles = (size: any) => StyleSheet.create({
         borderRadius: size.width * 4.5,
         overflow: 'hidden',
         borderWidth: 1,
-        borderColor: colors.borderColor,
+        borderColor: colors.border,
     },
 
     cardDark: {
