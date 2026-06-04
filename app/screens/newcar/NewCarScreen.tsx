@@ -1,74 +1,29 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     TouchableOpacity,
     StatusBar,
     FlatList,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import CarCard from './components/CarCard';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import CarCard from '../../globalComponents/CarCard';
+import Header from '../../globalComponents/Header';
+
 import { colors, fonts } from '../../utils/constants/Theme';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Text } from '../../globalComponents/CustomText';
+import { ARENA_CARS, CarItem, NEXA_CARS } from './data';
 
-interface CarItem {
-    id: string;
-    name: string;
-    price: string;
-    rating: number;
-    variants: number;
-    availability: string;
-    image: string;
-    isFavorite: boolean;
-}
-
-const ARENA_CARS: CarItem[] = [
-    {
-        id: '1',
-        name: 'Grand Vitara ',
-        price: '₹12,80,000',
-        rating: 5.0,
-        variants: 4,
-        availability: 'Available from 2 August',
-        image:
-            'https://assets.kalyanicrm.com/app-version4-development/Card/breeza.png',
-        isFavorite: false,
-    },
-    {
-        id: '2',
-        name: 'Grand Vitara',
-        price: '₹12,80,000',
-        rating: 5.0,
-        variants: 4,
-        availability: 'Available from 2 August',
-        image:
-            'https://assets.kalyanicrm.com/app-version4-development/Card/dzire.png',
-        isFavorite: false,
-    },
-];
-
-const NEXA_CARS: CarItem[] = [
-    {
-        id: '3',
-        name: 'Fronx',
-        price: '₹7,51,500',
-        rating: 4.8,
-        variants: 6,
-        availability: 'Latest launch...',
-        image:
-            'https://assets.kalyanicrm.com/app-version4-development/Card/fronx.png',
-        isFavorite: false,
-    },
-];
-
-const NewCarsScreen: React.FC = ({navigation}:any) => {
+const NewCarsScreen = () => {
     const [activeTab, setActiveTab] = useState<'Arena' | 'Nexa'>('Arena');
     const [arenaCars, setArenaCars] = useState<CarItem[]>(ARENA_CARS);
     const [nexaCars, setNexaCars] = useState<CarItem[]>(NEXA_CARS);
+
     const size = useSizeConfig();
-    const styles = useMemo(() => getStyles(size), [size]);
+    const insets = useSafeAreaInsets();
+    const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 
     const isDark = activeTab === 'Nexa';
     const currentCars = activeTab === 'Arena' ? arenaCars : nexaCars;
@@ -89,187 +44,152 @@ const NewCarsScreen: React.FC = ({navigation}:any) => {
         }
     };
 
-    const handleDetailsPress = (id: string) => {
-        console.log('Details clicked for:', id);
-    };
+    const renderItem = useCallback(
+        ({ item }: any) => (
+            <CarCard
+                item={item}
+                onFavoriteToggle={handleFavoriteToggle}
+                onDetailsPress={() => { }}
+                isDark={isDark}
+            />
+        ),
+        [activeTab],
+    );
+
+    const keyExtractor = useCallback((item: any) => item.id.toString(), []);
 
     return (
         <View style={[styles.safeArea, isDark && styles.safeAreaDark]}>
-            <StatusBar
-                barStyle={isDark ? 'light-content' : 'dark-content'}
-                backgroundColor={isDark ? '#0A0A0A' : '#FFFFFF'}
+            <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
+
+            <Header
+                onPress={() => { }}
+                title="New Cars"
+                textStyle={{ color: isDark ? colors.white : colors.text_Primary }}
+                iconColor={isDark ? colors.white : colors.text_Primary}
+                iconComp={{
+                    backgroundColor: isDark ? colors.text_Primary : colors.white,
+                }}
             />
 
-            {/* Header */}
-            <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton}>
-                    <MaterialIcons
-                        name="arrow-back-ios"
-                        size={size.width * 4.5}
-                        color={isDark ? '#FFFFFF' : colors.text_Primary}
-                    />
-                </TouchableOpacity>
-
-                <Text style={[styles.headerTitle, isDark && styles.textLight]}>
-                    New Cars
-                </Text>
-
-                <View style={styles.headerSpacer} />
-            </View>
-
-            {/* Tabs */}
-            <View style={styles.tabContainer}>
-                <View style={[styles.tabWrapper, isDark && styles.tabWrapperDark]}>
-                    <TouchableOpacity
-                        style={[
-                            styles.tab,
-                            activeTab === 'Arena' && styles.tabActive,
-                        ]}
-                        onPress={() => setActiveTab('Arena')}
-                    >
-                        <Text
-                            style={[
-                                styles.tabText,
-                                isDark && styles.tabTextDark,
-                                activeTab === 'Arena' && styles.tabTextActive,
-                            ]}
+            <View style={styles.contentContainer}>
+                <View style={styles.tabContainer}>
+                    <View style={[styles.tabWrapper, isDark && styles.tabWrapperDark]}>
+                        <TouchableOpacity
+                            style={[styles.tab, activeTab === 'Arena' && styles.tabActive]}
+                            onPress={() => setActiveTab('Arena')}
                         >
-                            Arena
-                        </Text>
-                    </TouchableOpacity>
+                            <Text
+                                style={[
+                                    styles.tabText,
+                                    isDark && styles.tabTextDark,
+                                    activeTab === 'Arena' && styles.tabTextActive,
+                                ]}
+                            >
+                                Arena
+                            </Text>
+                        </TouchableOpacity>
 
-                    <TouchableOpacity
-                        style={[
-                            styles.tab,
-                            activeTab === 'Nexa' && styles.tabActiveDark,
-                        ]}
-                        onPress={() => setActiveTab('Nexa')}
-                    >
-                        <Text
-                            style={[
-                                styles.tabText,
-                                isDark && styles.tabTextDark,
-                                activeTab === 'Nexa' && styles.tabTextActive,
-                            ]}
+                        <TouchableOpacity
+                            style={[styles.tab, activeTab === 'Nexa' && styles.tabActiveDark]}
+                            onPress={() => setActiveTab('Nexa')}
                         >
-                            Nexa
-                        </Text>
-                    </TouchableOpacity>
+                            <Text
+                                style={[
+                                    styles.tabText,
+                                    isDark && styles.tabTextDark,
+                                    activeTab === 'Nexa' && styles.tabTextActive,
+                                ]}
+                            >
+                                Nexa
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            {/* Car List */}
-            <FlatList
-                data={currentCars}
-                keyExtractor={item => item.id}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.listContent}
-                renderItem={({ item }) => (
-                    <CarCard
-                        item={item}
-                        onFavoriteToggle={handleFavoriteToggle}
-                        onDetailsPress={handleDetailsPress}
-                        isDark={isDark}
-                    />
-                )}
-            />
+                <FlatList
+                    data={currentCars}
+                    renderItem={renderItem}
+                    keyExtractor={keyExtractor}
+                    showsVerticalScrollIndicator={false}
+                    contentContainerStyle={styles.listContent}
+                    removeClippedSubviews
+                    maxToRenderPerBatch={5}
+                    initialNumToRender={5}
+                    windowSize={5}
+                    updateCellsBatchingPeriod={50}
+                />
+            </View>
         </View>
     );
 };
 
 export default NewCarsScreen;
 
-const getStyles = (size: any) => StyleSheet.create({
-    safeArea: {
-        flex: 1,
-        backgroundColor: colors.backGround,
-    },
+const getStyles = (size: any, insets: any) =>
+    StyleSheet.create({
+        safeArea: {
+            flex: 1,
+            backgroundColor: colors.backGround,
+        },
+        contentContainer: {
+            paddingTop: insets.top + size.height * 18,
+        },
+        safeAreaDark: {
+            backgroundColor: '#0A0A0A',
+        },
 
-    safeAreaDark: {
-        backgroundColor: '#0A0A0A',
-    },
+        tabContainer: {
+            paddingHorizontal: size.width * 3.7,
+            paddingBottom: size.width * 6,
+        },
 
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: size.width * 3.3,
-        paddingVertical: size.width * 2.7,
-    },
+        tabWrapper: {
+            flexDirection: 'row',
+            backgroundColor: '#EAECFC',
+            borderRadius: size.width * 6.2,
+            padding: size.width * 0.83,
+        },
 
-    backButton: {
-        width: size.width * 7.4,
-        height: size.width * 7.4,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+        tabWrapperDark: {
+            backgroundColor: '#1C1C1E',
+        },
 
-    headerTitle: {
-        flex: 1,
-        textAlign: 'center',
-        fontSize: size.fontSize * 4,
-        fontFamily: fonts.bold,
-        color: colors.text_Primary,
-    },
+        tab: {
+            flex: 1,
+            borderRadius: size.width * 5.4,
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: size.width * 9.5,
+        },
 
-    textLight: {
-        color: '#FFFFFF',
-    },
+        tabActive: {
+            backgroundColor: colors.buttonBgColor,
+            elevation: 4,
+        },
 
-    headerSpacer: {
-        width: size.width * 4.5,
-    },
+        tabActiveDark: {
+            backgroundColor: '#2C2C2E',
+            elevation: 4,
+        },
 
-    tabContainer: {
-        paddingHorizontal: size.width * 3.7,
-        paddingBottom: size.width * 6,
-    },
+        tabText: {
+            fontSize: size.fontSize * 3.6,
+            fontFamily: fonts.bold,
+            color: colors.text_Primary,
+        },
 
-    tabWrapper: {
-        flexDirection: 'row',
-        backgroundColor: '#EAECFC',
-        borderRadius: size.width * 6.2,
-        padding: size.width * 0.83,
-    },
+        tabTextDark: {
+            color: '#888888',
+        },
 
-    tabWrapperDark: {
-        backgroundColor: '#1C1C1E',
-    },
+        tabTextActive: {
+            color: colors.white,
+        },
 
-    tab: {
-        flex: 1,
-        borderRadius: size.width * 5.4,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: size.width * 9.5,
-    },
-
-    tabActive: {
-        backgroundColor: colors.buttonBgColor,
-        elevation: 4,
-    },
-
-    tabActiveDark: {
-        backgroundColor: '#2C2C2E',
-        elevation: 4,
-    },
-
-    tabText: {
-        fontSize: size.fontSize * 3.6,
-        fontFamily: fonts.bold,
-        color: colors.text_Primary,
-    },
-
-    tabTextDark: {
-        color: '#888888',
-    },
-
-    tabTextActive: {
-        color: colors.white,
-    },
-
-    listContent: {
-        paddingHorizontal: size.width * 3.3,
-        paddingBottom: size.width * 5,
-        gap: size.width * 3.3,
-    },
-});
+        listContent: {
+            paddingHorizontal: size.width * 3.3,
+            paddingBottom: size.width * 25,
+            gap: size.width * 3.3,
+        },
+    });

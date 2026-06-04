@@ -15,6 +15,7 @@ import { fonts } from '../utils/constants/Theme';
 import ResqScreen from '../screens/resq/ResqScreen';
 import Payments from '../screens/payment';
 import Explorescreen from '../screens/explore/Explorescreen';
+import { BottomTabParamList } from './RootStackParamList';
 
 type RouteName = 'Home' | 'ResQ' | 'Explore' | 'Payment' | 'Profile';
 
@@ -149,20 +150,24 @@ function MyTabBar({ state, navigation }: any) {
   );
 }
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
-const BottomNavigation = () => (
-  <Tab.Navigator
-    screenOptions={{ headerShown: false }}
-    tabBar={props => <MyTabBar {...props} />}
-  >
-    <Tab.Screen name="Home" component={Home} />
-    <Tab.Screen name="ResQ" component={ResqScreen} />
-    <Tab.Screen name="Explore" component={Explorescreen} />
-    <Tab.Screen name="Payment" component={Payments} />
-    <Tab.Screen name="Profile" component={Profile} />
-  </Tab.Navigator>
-);
+const BottomNavigation = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      tabBar={props => <MyTabBar {...props} />}
+    >
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="ResQ" component={ResqScreen} />
+      <Tab.Screen name="Explore" component={Explorescreen} />
+      <Tab.Screen name="Payment" component={Payments} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+};
 
 export default BottomNavigation;
 

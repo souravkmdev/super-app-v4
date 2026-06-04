@@ -18,8 +18,17 @@ import CarListingCard from './components/CarListingCard';
 import SuggestionSection from './components/SuggestionSection';
 import { suggestionsData } from './components/types/suggestionsData'
 import Banner from './components/Banners';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { useNavigation } from '@react-navigation/native';
 
-const HomeScreen = ({navigation}: any) => {
+type NavigationProp =
+  NativeStackNavigationProp<RootStackParamList>;
+
+
+const HomeScreen = () => {
+
+  const navigation = useNavigation<NavigationProp>();
 
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
@@ -50,8 +59,8 @@ const HomeScreen = ({navigation}: any) => {
 
       <StatusBar barStyle={'dark-content'} />
       <View style={styles.headerContainer}>
-        <Header 
-        navigation={navigation}  />
+        <Header
+          navigation={navigation} />
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
