@@ -57,7 +57,7 @@ const getStyles = (size: any) =>
 
         headerTitle: {
             fontSize: size.width * 4,
-            fontFamily: fonts.semiBold,
+            fontFamily: fonts.extraBold,
             color: colors.text_Primary,
             textAlign: 'center',
         },

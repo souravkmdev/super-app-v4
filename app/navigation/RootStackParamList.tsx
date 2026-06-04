@@ -13,17 +13,16 @@ export type RootStackParamList = {
     BottomNavigation: NavigatorScreenParams<BottomTabParamList>;
     Details: undefined;
     Search: undefined;
-    Insurance: undefined;
+    InsuranceScreen: undefined;
     VehicleDetailsScreen: undefined;
     OutletScreen: undefined;
-    BookingForScreen: undefined;
-    EBookingScreen: undefined;
+    BookingType: undefined;
+    BookingPersonalDetails: undefined;
     EBookingSecondScreen: undefined;
     EBookingThirdScreen: undefined;
     ServiceScreen: undefined;
     ServiceDetailScreen: { item: ServiceItem };
     NewCarScreen: undefined;
-
     Profile: undefined;
     ProfileVerification: undefined;
     RewardsScreen: undefined;
@@ -31,5 +30,9 @@ export type RootStackParamList = {
     MyAddressScreen: undefined;
     ContactUs: undefined;
     WebViewScreen: undefined;
-
+    UsedCarsScreen: undefined;
+    DrivingSchool: undefined;
+    AccessoriesScreen: undefined;
+    Notification: undefined;
+    WishList: undefined;
 };

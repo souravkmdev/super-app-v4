@@ -18,10 +18,16 @@ import BudgetSection from './components/BudgetSection';
 import BodyTypeSection from './components/BodyTypeSection';
 import Header from '../../globalComponents/Header';
 import CarListingCard from '../home/components/CarListingCard';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { useNavigation } from '@react-navigation/native';
 
-const SearchScreen = ({ navigation }: any) => {
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
+const SearchScreen = () => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<NavigationProp>();
 
   const styles = useMemo(
     () => getStyles(size, insets),
@@ -50,7 +56,7 @@ const SearchScreen = ({ navigation }: any) => {
       image: require('../../assets/images/home/car1.png'),
     },
   ]);
-  
+
   const recommendedCarsData = [
     {
       id: '1',
@@ -74,14 +80,14 @@ const SearchScreen = ({ navigation }: any) => {
 
   const [selectedBudget, setSelectedBudget] = useState<any>(null);
   const [searchText, setSearchText] = useState('');
-  
+
   const filteredCars = selectedBudget
-  ? recommendedCarsData.filter(
+    ? recommendedCarsData.filter(
       (item) =>
         item.price >= selectedBudget.min &&
         item.price <= selectedBudget.max
     )
-  : recommendedCarsData;
+    : recommendedCarsData;
 
   return (
     <View style={styles.container}>
@@ -101,9 +107,9 @@ const SearchScreen = ({ navigation }: any) => {
         />
 
         <View style={styles.searchContainer}>
-          <SearchInput 
-          value={searchText}
-          onChangeText={setSearchText} />
+          <SearchInput
+            value={searchText}
+            onChangeText={setSearchText} />
         </View>
       </LinearGradient>
 
@@ -119,8 +125,8 @@ const SearchScreen = ({ navigation }: any) => {
           selectedBudget={selectedBudget}
           onSelectBudget={setSelectedBudget}
         />
-        
-        <BodyTypeSection  />
+
+        <BodyTypeSection />
 
         <CarListingCard
           title="Recommended For You"

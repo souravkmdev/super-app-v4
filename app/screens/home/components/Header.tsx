@@ -1,15 +1,17 @@
 import React from 'react';
-import {
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors } from '../../../utils/constants/Theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../navigation/RootStackParamList';
 
-const Header = ( {navigation,}: any) => {
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
+const Header = () => {
+  const navigation = useNavigation<NavigationProp>();
+
   const size = useSizeConfig();
   const styles = getStyles(size);
 
@@ -21,10 +23,11 @@ const Header = ( {navigation,}: any) => {
         resizeMode="contain"
       />
 
-   
       <View style={styles.rightContainer}>
-        <TouchableOpacity style={styles.iconButton}
-         onPress={() => navigation.navigate('Search')}>
+        <TouchableOpacity
+          style={styles.iconButton}
+          onPress={() => navigation.navigate('Search')}
+        >
           <Ionicons
             name="search-outline"
             size={size.width * 5}
@@ -32,14 +35,15 @@ const Header = ( {navigation,}: any) => {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconButton}>
-
+        <TouchableOpacity
+          onPress={() => navigation.navigate('WishList')}
+          style={styles.iconButton}
+        >
           <Ionicons
             name="heart-outline"
             size={size.width * 5}
             color="#1A1A1A"
           />
-
         </TouchableOpacity>
       </View>
     </View>
@@ -78,10 +82,10 @@ const getStyles = (size: any) =>
       alignItems: 'center',
       justifyContent: 'center',
     },
-      iconStyle: {
-          width: size.width * 5.5,
-          height: size.width * 5.5,
-      },
+    iconStyle: {
+      width: size.width * 5.5,
+      height: size.width * 5.5,
+    },
   });
 
 export default Header;

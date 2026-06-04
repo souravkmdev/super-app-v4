@@ -103,7 +103,7 @@ const ServiceDetailScreen = ({ route }: { route: RoutePropType }) => {
                                 Wishlist
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('BookingForScreen')}>
+                        <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('BookingType')}>
                             <LinearGradient
                                 colors={['#6C63FF', '#9B97FF']}
                                 start={{ x: 0, y: 0 }}

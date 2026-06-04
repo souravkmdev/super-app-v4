@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import { Text } from '../../../globalComponents/CustomText';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors, fonts } from '../../../utils/constants/Theme';
@@ -34,14 +34,7 @@ const StepperBar: React.FC<StepperBarProps> = ({
 
                 return (
                     <React.Fragment key={step.id}>
-                        {index > 0 && (
-                            <View
-                                style={[
-                                    styles.stepLine,
-                                    step.id <= currentStep && styles.stepLineActive,
-                                ]}
-                            />
-                        )}
+                        {index > 0 && <View style={styles.stepLine} />}
 
                         <View style={styles.stepItem}>
                             <View
@@ -52,17 +45,14 @@ const StepperBar: React.FC<StepperBarProps> = ({
                                 ]}
                             >
                                 {isCompleted || isActive ? (
-                                    <Ionicons name="checkmark" size={14} color="#fff" />
+                                    <Entypo name="check" size={size.width * 3.5} color="#fff" />
                                 ) : (
                                     <View style={styles.stepDotInactive} />
                                 )}
                             </View>
 
                             <Text
-                                style={[
-                                    styles.stepLabel,
-                                    isActive && styles.stepLabelActive,
-                                ]}
+                                style={[styles.stepLabel, isActive && styles.stepLabelActive]}
                             >
                                 {step.label}
                             </Text>
@@ -86,7 +76,6 @@ const getStyles = (size: any) =>
 
         stepItem: {
             alignItems: 'center',
-            width: size.width * 12,
         },
 
         stepCircle: {
@@ -94,7 +83,7 @@ const getStyles = (size: any) =>
             height: size.width * 5.8,
             borderRadius: size.width * 2.9,
             borderWidth: 2,
-            borderColor: '#C5C0E8',
+            borderColor: '#846AF470',
             backgroundColor: 'transparent',
             alignItems: 'center',
             justifyContent: 'center',
@@ -107,7 +96,7 @@ const getStyles = (size: any) =>
         },
 
         stepCircleCompleted: {
-            backgroundColor: colors.Color_5346EE,
+            backgroundColor: '#6354f0',
             borderColor: colors.Color_5346EE,
         },
 
@@ -115,14 +104,17 @@ const getStyles = (size: any) =>
             width: size.width * 1.7,
             height: size.width * 1.7,
             borderRadius: size.width * 0.85,
-            backgroundColor: '#C5C0E8',
+            backgroundColor: '#6354f0',
         },
 
         stepLabel: {
-            fontSize: size.fontSize * 2.3,
+            fontSize: size.fontSize * 2.4,
             color: colors.text_Secondary,
-            fontFamily: fonts.semiBold,
+            fontFamily: fonts.bold,
             textAlign: 'center',
+            position: 'absolute',
+            width: size.width * 17,
+            bottom: -size.width * 3.5,
         },
 
         stepLabelActive: {
@@ -132,13 +124,9 @@ const getStyles = (size: any) =>
         stepLine: {
             flex: 1,
             height: 2,
-            backgroundColor: '#D4D0EE',
+            backgroundColor: '#846AF470',
             marginTop: size.width * 2.6,
             borderRadius: 1,
-        },
-
-        stepLineActive: {
-            backgroundColor: '#846AF470',
         },
     });
 

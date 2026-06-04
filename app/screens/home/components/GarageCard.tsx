@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Image,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
@@ -16,75 +12,51 @@ const GarageCard = () => {
 
   return (
     <LinearGradient
-      colors={['#6B63F6', "#9B94FF", '#7C74FF',]}
+      colors={['#604bfd', '#817bf9', '#604bfd', '#604bfd']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.mainContainer}
     >
-
       <Image
         source={require('../../../assets/images/../images/home/car.png')}
         style={styles.carImage}
         resizeMode="contain"
       />
 
-
       <View style={styles.topRow}>
         <View style={styles.garageTitleRow}>
-
           <View style={styles.dot} />
 
-          <Text style={styles.garageText}>
-            My Garage
-          </Text>
+          <Text style={styles.garageText}>My Garage</Text>
         </View>
 
-         <MaterialIcons
-         name="chevron-right"
-         size={size.width * 3.5}
-         color={colors.white}
-         style={styles.arrowIcon}
-       />
+        <MaterialIcons
+          name="chevron-right"
+          size={size.width * 3.5}
+          color={colors.white}
+          style={styles.arrowIcon}
+        />
       </View>
 
+      <Text style={styles.carName}>BMW X5 xDrive 40i</Text>
 
-      <Text style={styles.carName}>
-        BMW X5 xDrive 40i
-      </Text>
-
-
-      <Text style={styles.numberText}>
-        MH 12 AB 1234
-      </Text>
-
+      <Text style={styles.numberText}>MH 12 AB 1234</Text>
 
       <View style={styles.statusRow}>
-        <Text style={styles.statusLabel}>
-          Status
-        </Text>
+        <Text style={styles.statusLabel}>Status</Text>
 
         <View style={styles.activeBadge}>
-          <Text style={styles.activeText}>
-            Active
-          </Text>
+          <Text style={styles.activeText}>Active</Text>
         </View>
       </View>
 
-
       <View style={styles.kmRow}>
-        <Text style={styles.kmValue}>
-          128
-        </Text>
+        <Text style={styles.kmValue}>128</Text>
 
-        <Text style={styles.kmText}>
-          Km
-        </Text>
+        <Text style={styles.kmText}>Km</Text>
       </View>
 
-      <Text style={styles.rangeText}>
-        Total Range
-      </Text>
-
+      <Text style={styles.rangeText}>Total Range</Text>
 
       <View style={styles.bottomRow}>
         <View style={styles.percentContainer}>
@@ -94,9 +66,7 @@ const GarageCard = () => {
             resizeMode="contain"
           />
 
-          <Text style={styles.percentText}>
-            75%
-          </Text>
+          <Text style={styles.percentText}>75%</Text>
         </View>
 
         <View style={styles.progressBar}>
@@ -111,7 +81,7 @@ const getStyles = (size: any) =>
   StyleSheet.create({
     mainContainer: {
       marginHorizontal: size.width * 3.5,
-      marginTop: size.height * 2.5,
+      // marginTop: size.height * 2.5,
       borderRadius: size.width * 7,
       padding: size.width * 4,
       overflow: 'hidden',
@@ -146,12 +116,10 @@ const getStyles = (size: any) =>
       color: colors.white,
       fontSize: size.fontSize * 2.5,
       fontFamily: fonts.regular,
-      paddingBottom: size.height * 1,
     },
 
-
     garageText: {
-      color:  colors.white,
+      color: colors.white,
       fontSize: size.fontSize * 2.8,
       fontFamily: fonts.medium,
     },
@@ -168,7 +136,6 @@ const getStyles = (size: any) =>
       fontFamily: fonts.medium,
       marginTop: size.height * 0.2,
     },
-
 
     statusLabel: {
       color: colors.white,
@@ -211,7 +178,7 @@ const getStyles = (size: any) =>
     percentContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginRight: size.width * 1,
+      marginRight: size.width * 2,
     },
 
     petrolIcon: {
@@ -228,7 +195,7 @@ const getStyles = (size: any) =>
     },
 
     progressBar: {
-      width: '35%',
+      width: '38%',
       height: size.height * 2,
       backgroundColor: 'rgba(255,255,255,0.25)',
       borderRadius: size.width * 10,
@@ -248,7 +215,7 @@ const getStyles = (size: any) =>
       height: size.width * 50,
     },
     arrowIcon: {
-     marginTop: size.height * 1,
+      marginTop: size.height * 1,
     },
     garageTitleRow: {
       flexDirection: 'row',

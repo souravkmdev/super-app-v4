@@ -15,7 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { colors, fonts } from '../../utils/constants/Theme';
 import { Text } from '../../globalComponents/CustomText';
 import LinearGradient from 'react-native-linear-gradient';
-import Highlights from './components/Highlights';
+import Highlights from '../../globalComponents/Highlights';
 import SelectColor from './components/SelectColor';
 import CustomButton from '../../globalComponents/CustomButton';
 import Variants from './components/Variants';
@@ -23,10 +23,16 @@ import Specifications from './components/Specifications';
 import ImageGallery from './components/ImageGallery';
 import carDetailsData from './data';
 import Header from '../../globalComponents/Header';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { useNavigation } from '@react-navigation/native';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Details = () => {
   const size = useSizeConfig();
   const flatListRef = useRef<FlatList>(null);
+  const navigation = useNavigation<NavigationProp>();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isWishlisted, setWishlisted] = useState(false);
@@ -118,7 +124,7 @@ const Details = () => {
             />
           </View>
 
-          <Header onPress={() => {}} title="Details" />
+          <Header onPress={() => { }} title="Details" />
         </View>
 
         <View style={styles.contentContainer}>
@@ -256,6 +262,7 @@ const Details = () => {
           GradientColors={['#846AF4', '#846AF4']}
           mainstyle={styles.bookNowButton}
           TextValue="Book Now"
+          OnPress={() => navigation.navigate('BookingType')}
         />
       </View>
 
