@@ -3,18 +3,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomNavigation from './BottomNavigation';
 import Details from '../screens/details';
-import SearchScreen from '../screens/search/SearchScreen';
+import SearchScreen from '../screens/search';
 import InsuranceScreen from '../screens/insurance/InsuranceScreen';
 import VehicleDetailsScreen from '../screens/insurance/VehicleDetailsScreen';
-import OutletScreen from '../screens/insurance/OutletScreen';
-import BookingForScreen from '../screens/booking/BookForScreen';
+import OutletScreen from '../screens/insurance/OutletScreen'
 import EBookingScreen from '../screens/booking/EBookingScreen';
 import EBookingSecondScreen from '../screens/booking/EBookingSecondScreen';
 import EBookingThirdScreen from '../screens/booking/EBookingThirdScreen';
 import { RootStackParamList } from './RootStackParamList';
-import ServiceScreen from '../screens/service/ServiceScreen';
 import ServiceDetailScreen from '../screens/service/ServiceDetailScreen';
 import NewCarsScreen from '../screens/newcar/NewCarScreen';
+import ServiceScreen from '../screens/service/index';
+import UsedCarsScreen from '../screens/usedCars';
+import DrivingSchool from '../screens/drivingSchool';
+import AccessoriesScreen from '../screens/accessories';
+import Notification from '../screens/notification';
+import BookingType from '../screens/booking';
+import Wishlist from '../screens/wishlist';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -30,16 +35,21 @@ const StackNavigation = () => {
       <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
       <Stack.Screen name="Details" component={Details} />
       <Stack.Screen name="Search" component={SearchScreen} />
-      <Stack.Screen name="Insurance" component={InsuranceScreen} />
+      <Stack.Screen name="InsuranceScreen" component={InsuranceScreen} />
       <Stack.Screen name="VehicleDetailsScreen" component={VehicleDetailsScreen} />
       <Stack.Screen name="OutletScreen" component={OutletScreen} />
-      <Stack.Screen name="BookingForScreen" component={BookingForScreen} />
+      <Stack.Screen name="BookingType" component={BookingType} />
       <Stack.Screen name="EBookingScreen" component={EBookingScreen} />
       <Stack.Screen name="EBookingSecondScreen" component={EBookingSecondScreen} />
       <Stack.Screen name="EBookingThirdScreen" component={EBookingThirdScreen} />
       <Stack.Screen name="ServiceScreen" component={ServiceScreen} />
       <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
       <Stack.Screen name="NewCarScreen" component={NewCarsScreen} />
+      <Stack.Screen name="UsedCarsScreen" component={UsedCarsScreen} />
+      <Stack.Screen name="DrivingSchool" component={DrivingSchool} />
+      <Stack.Screen name="AccessoriesScreen" component={AccessoriesScreen} />
+      <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen name="WishList" component={Wishlist} />
     </Stack.Navigator>
   );
 };

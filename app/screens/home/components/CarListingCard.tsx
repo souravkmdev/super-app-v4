@@ -10,25 +10,31 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Text } from '../../../globalComponents/CustomText';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors, fonts } from '../../../utils/constants/Theme';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../navigation/RootStackParamList';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 interface Props {
   title: string;
   data: any[];
 }
-const CarListingCard = ({
-  title,
-  data,
-}: Props) => {
+const CarListingCard = ({ title, data }: Props) => {
+  const navigation = useNavigation<NavigationProp>();
+
   const size = useSizeConfig();
   const styles = getStyles(size);
 
   const renderItem = ({ item }: any) => {
     return (
       <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Details');
+        }}
         activeOpacity={0.9}
         style={styles.card}
       >
-
         <View style={styles.imageContainer}>
           <Image
             source={item.image}
@@ -36,11 +42,7 @@ const CarListingCard = ({
             resizeMode="cover"
           />
 
-
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.heartButton}
-          >
+          <TouchableOpacity activeOpacity={0.8} style={styles.heartButton}>
             <Ionicons
               name="heart-outline"
               size={size.width * 4.5}
@@ -50,28 +52,17 @@ const CarListingCard = ({
         </View>
 
         <View style={styles.contentContainer}>
-
           <View style={styles.rowBetween}>
             <View>
-              <Text style={styles.carName}>
-                {item.name}
-              </Text>
+              <Text style={styles.carName}>{item.name}</Text>
 
-              <Text style={styles.subtitle}>
-                {item.subtitle}
-              </Text>
+              <Text style={styles.subtitle}>{item.subtitle}</Text>
             </View>
 
             <View style={styles.ratingContainer}>
-              <Ionicons
-                name="star"
-                size={size.width * 3.8}
-                color="#F6C90E"
-              />
+              <Ionicons name="star" size={size.width * 3.8} color="#F6C90E" />
 
-              <Text style={styles.ratingText}>
-                {item.rating}
-              </Text>
+              <Text style={styles.ratingText}>{item.rating}</Text>
             </View>
           </View>
 
@@ -84,42 +75,34 @@ const CarListingCard = ({
                 style={{ marginTop: size.height * 1 }}
               />
 
-              <Text style={styles.variantText}>
-                {item.variants}
-              </Text>
+              <Text style={styles.variantText}>{item.variants}</Text>
             </View>
 
-            <Text style={styles.priceText}
-              numberOfLines={1}
-              ellipsizeMode="tail">
-              {/* {item.price} */}
-              ₹{item.price.toLocaleString('en-IN')}
-            </Text>
+            <Text style={styles.priceText}>{item.price}</Text>
           </View>
         </View>
       </TouchableOpacity>
     );
   };
-  
-  return (
-    <View style={styles.mainContainer}>
 
+  return (
+    <View
+      style={{
+        gap: size.height * 3,
+      }}
+    >
       <View style={styles.headerRow}>
-        <Text style={styles.sectionTitle}>
-          {title}
-        </Text>
+        <Text style={styles.sectionTitle}>{title}</Text>
 
         <TouchableOpacity activeOpacity={0.8}>
-          <Text style={styles.viewAllText}>
-            View All
-          </Text>
+          <Text style={styles.viewAllText}>View All</Text>
         </TouchableOpacity>
       </View>
 
       <FlatList
         horizontal
         data={data}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         showsHorizontalScrollIndicator={false}
         renderItem={renderItem}
         contentContainerStyle={styles.listContent}
@@ -130,10 +113,6 @@ const CarListingCard = ({
 
 const getStyles = (size: any) =>
   StyleSheet.create({
-    mainContainer: {
-      marginTop: size.height * 2.3,
-    },
-
     headerRow: {
       paddingHorizontal: size.width * 4,
       flexDirection: 'row',
@@ -143,12 +122,12 @@ const getStyles = (size: any) =>
 
     sectionTitle: {
       color: colors.text_Primary,
-      fontSize: size.fontSize * 4,
-      fontFamily: fonts.semiBold,
+      fontSize: size.fontSize * 3.5,
+      fontFamily: fonts.bold,
     },
 
     viewAllText: {
-      color:'colors.text_Primary',
+      color: '#8B7BFF',
       fontSize: size.fontSize * 3.1,
       fontFamily: fonts.medium,
     },
@@ -156,11 +135,10 @@ const getStyles = (size: any) =>
     listContent: {
       paddingLeft: size.width * 4,
       paddingRight: size.width * 2,
-      marginTop: size.height * 2,
     },
 
     card: {
-      width: size.width * 68,
+      width: size.width * 80,
       backgroundColor: colors.white,
       borderRadius: size.width * 5,
       marginRight: size.width * 4,
@@ -216,7 +194,7 @@ const getStyles = (size: any) =>
     subtitle: {
       color: '#42C05C',
       fontSize: size.fontSize * 3.1,
-      fontFamily: fonts.regular,
+      fontFamily: fonts.medium,
     },
 
     ratingContainer: {
@@ -248,7 +226,7 @@ const getStyles = (size: any) =>
       marginLeft: size.width * 1.2,
       color: colors.text_Primary,
       fontSize: size.fontSize * 3.3,
-      fontFamily: fonts.medium,
+      fontFamily: fonts.semiBold,
     },
 
     priceText: {

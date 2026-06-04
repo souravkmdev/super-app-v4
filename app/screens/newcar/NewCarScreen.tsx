@@ -15,6 +15,11 @@ import { colors, fonts } from '../../utils/constants/Theme';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { Text } from '../../globalComponents/CustomText';
 import { ARENA_CARS, CarItem, NEXA_CARS } from './data';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { useNavigation } from '@react-navigation/native';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const NewCarsScreen = () => {
     const [activeTab, setActiveTab] = useState<'Arena' | 'Nexa'>('Arena');
@@ -24,6 +29,7 @@ const NewCarsScreen = () => {
     const size = useSizeConfig();
     const insets = useSafeAreaInsets();
     const styles = useMemo(() => getStyles(size, insets), [size, insets]);
+    const navigation = useNavigation<NavigationProp>();
 
     const isDark = activeTab === 'Nexa';
     const currentCars = activeTab === 'Arena' ? arenaCars : nexaCars;
@@ -49,7 +55,7 @@ const NewCarsScreen = () => {
             <CarCard
                 item={item}
                 onFavoriteToggle={handleFavoriteToggle}
-                onDetailsPress={() => { }}
+                onDetailsPress={(id) => { navigation.navigate('Details') }}
                 isDark={isDark}
             />
         ),

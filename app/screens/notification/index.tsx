@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { Text } from '../../globalComponents/CustomText';
 import { colors, fonts } from '../../utils/constants/Theme';
-import { notificationData } from './data';
+import { notificationData } from './Data';
 
 import Header from '../../globalComponents/Header';
 import CustomButton from '../../globalComponents/CustomButton';
