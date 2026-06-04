@@ -182,7 +182,7 @@ const getStyles = (size: any) =>
     StyleSheet.create({
         safeArea: {
             flex: 1,
-            backgroundColor: colors.white,
+            backgroundColor: "#F3F3FD",
         },
 
         barStyle: {
