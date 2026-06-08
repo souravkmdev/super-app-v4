@@ -61,7 +61,6 @@ const getStyles = (size: any, insets: any) =>
       right: 0,
       paddingHorizontal: size.width * 4,
     },
-
     backButton: {
       backgroundColor: colors.white,
       width: size.width * 8,

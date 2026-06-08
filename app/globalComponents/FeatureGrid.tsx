@@ -1,51 +1,27 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useSizeConfig } from '../../../utils/context/SizeConfig';
-import { Text } from '../../../globalComponents/CustomText';
-import { colors, fonts } from '../../../utils/constants/Theme';
+import {
+  Image,
+  StyleSheet,
+  TextStyle,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { useSizeConfig } from '../utils/context/SizeConfig';
+import { Text } from './CustomText';
+import { colors, fonts } from '../utils/constants/Theme';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigation/RootStackParamList';
+import { RootStackParamList } from '../navigation/RootStackParamList';
 import { useNavigation } from '@react-navigation/native';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-const featureData = [
-  {
-    id: 1,
-    title: 'Used Cars',
-    icon: require('../../../assets/images/home/usedcars.png'),
-    iconWidth: 8.5,
-    iconHeight: 8.5,
-    screenName: 'UsedCarsScreen',
-
-  },
-  {
-    id: 2,
-    title: 'Insurance',
-    icon: require('../../../assets/images/home/insurance.png'),
-    iconWidth: 7,
-    iconHeight: 7,
-    screenName: 'InsuranceScreen',
-  },
-  {
-    id: 3,
-    title: 'Driving school',
-    icon: require('../../../assets/images/home/school.png'),
-    iconWidth: 7.5,
-    iconHeight: 7.5,
-    screenName: 'DrivingSchool',
-  },
-  {
-    id: 4,
-    title: 'Accessories',
-    icon: require('../../../assets/images/home/tools.png'),
-    iconWidth: 6.5,
-    iconHeight: 6.5,
-    screenName: 'AccessoriesScreen',
-  },
-];
-
-const FeatureGrid = () => {
+const FeatureGrid = ({
+  featureData,
+  textStyle,
+}: {
+  featureData: any[];
+  textStyle?: TextStyle;
+}) => {
   const navigation = useNavigation<NavigationProp>();
   const size = useSizeConfig();
   const styles = getStyles(size);
@@ -59,7 +35,8 @@ const FeatureGrid = () => {
             activeOpacity={0.8}
             style={styles.card}
             onPress={() => {
-              navigation.navigate(item.screenName as never);
+              if (item.screenName)
+                navigation.navigate(item.screenName as never);
             }}
           >
             <Image
@@ -74,7 +51,7 @@ const FeatureGrid = () => {
               resizeMode="contain"
             />
 
-            <Text style={styles.title}>{item.title}</Text>
+            <Text style={[styles.title, textStyle]}>{item.title}</Text>
           </TouchableOpacity>
         );
       })}
@@ -87,8 +64,6 @@ const getStyles = (size: any) =>
     mainContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingHorizontal: size.width * 4,
-      // marginTop: size.height * 3.5,
     },
 
     card: {
@@ -110,7 +85,7 @@ const getStyles = (size: any) =>
       textAlign: 'center',
       color: colors.text_Primary,
       fontSize: size.fontSize * 2.5,
-      fontFamily: fonts.medium,
+      fontFamily: fonts.bold,
     },
   });
 
