@@ -22,11 +22,6 @@ interface FeatureRowProps {
     isLast: boolean;
 }
 
-const PURPLE = '#7B5EA7';
-const TEXT_DARK = '#1A1A2E';
-const TEXT_SUB = '#7A7A9A';
-const DIVIDER = '#EFEFEF';
-
 const FeatureRow: React.FC<FeatureRowProps> = ({
     item,
     isLast,
