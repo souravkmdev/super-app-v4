@@ -35,4 +35,5 @@ export type RootStackParamList = {
     AccessoriesScreen: undefined;
     Notification: undefined;
     WishList: undefined;
+    AccessoriesLists: undefined;
 };

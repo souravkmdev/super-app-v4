@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 import Header from './components/Header';
 import GarageCard from './components/GarageCard';
-import FeatureGrid from './components/FeatureGrid';
+import FeatureGrid from '../../globalComponents/FeatureGrid';
 import ExploreServices from './components/ExploreServices';
 import RoadSideBanner from './components/Banners';
 import SmartSuggestions from './components/SmartSuggestions';
@@ -10,6 +10,8 @@ import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TrackYourCar from './components/TrackYourCar';
 import CarListingCard from './components/CarListingCard';
+import { fonts } from '../../utils/constants/Theme';
+import { featureData } from './data';
 
 const Home = () => {
   const size = useSizeConfig();
@@ -48,7 +50,14 @@ const Home = () => {
         contentContainerStyle={styles.scrollContainer}
       >
         <GarageCard />
-        <FeatureGrid />
+        <View style = {{
+          paddingHorizontal : size.width * 5
+        }} >
+          <FeatureGrid
+            featureData={featureData}
+            textStyle={{ fontFamily: fonts.medium }}
+          />
+        </View>
         <ExploreServices />
         <TrackYourCar />
         <RoadSideBanner />
