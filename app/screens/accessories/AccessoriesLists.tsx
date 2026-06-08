@@ -1,6 +1,5 @@
 import { FlatList, Image, StyleSheet, View } from 'react-native';
 import React, { useMemo } from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Header from '../../globalComponents/Header';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
@@ -8,6 +7,7 @@ import { Text } from '../../globalComponents/CustomText';
 import { colors, fonts } from '../../utils/constants/Theme';
 import AccessoriesCard from './components/AccessoriesCard';
 import { cardItemLists } from './data';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 const AccessoriesLists = () => {
   const size = useSizeConfig();
@@ -16,15 +16,14 @@ const AccessoriesLists = () => {
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={['#b7b7fe', '#d7d7fb', '#f3f3fd']}
-        style={styles.gradient}
-      />
+      <HeaderLinearGradient />
 
       <Header title="Accessories" onPress={() => {}} />
 
       <FlatList
         data={cardItemLists}
+        columnWrapperStyle={styles.columnWrapper}
+        contentContainerStyle={styles.variantsList}
         ListHeaderComponent={() => (
           <View>
             <Image
@@ -34,10 +33,7 @@ const AccessoriesLists = () => {
             <Text style={styles.headerTitle}> Accessories </Text>
           </View>
         )}
-        columnWrapperStyle={styles.columnWrapper}
-        contentContainerStyle={styles.variantsList}
         numColumns={2}
-        scrollEnabled={false}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => <AccessoriesCard />}
       />
@@ -51,12 +47,13 @@ const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#F3F3FE',
+      backgroundColor: '#F7F7Fe',
     },
     variantsList: {
       gap: size.height * 3,
-      marginTop: size.height * 20 + insets.top,
+      marginTop: size.height * 5,
       paddingHorizontal: size.width * 5,
+      paddingBottom: size.height * 10,
     },
     columnWrapper: {
       justifyContent: 'space-between',

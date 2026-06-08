@@ -1,6 +1,6 @@
 export const colors = {
   primary: '#9580F5',
-  primary2: '#F3F0FF',
+  primary2: '#846AF4',
   primary3: '#0077b6',
   white: 'white',
   error: 'red',

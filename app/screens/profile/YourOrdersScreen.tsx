@@ -1,12 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Header from '../../globalComponents/Header';
@@ -15,31 +9,22 @@ import { useSizeConfig } from '../../utils/context/SizeConfig';
 import OrderCard from './components/OrderCard';
 import { carOrders, serviceOrders } from './data';
 import ProfileDetailCard from './components/DetialsCard';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 const YourOrdersScreen = ({ navigation }: any) => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState('Cars');
 
-  const styles = useMemo(
-    () => getStyles(size, insets),
-    [size, insets],
-  );
-
+  const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 
   return (
-     <View style={styles.container}>
+    <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
 
-      <LinearGradient
-        colors={['#D3CAFB', '#E3DCFF', '#F3F3FF']}
-        style={styles.headerGradient}
-      >
-        <Header
-          title="Your Orders"
-          onPress={() => navigation.goBack()}
-        />
-      </LinearGradient>
+      <HeaderLinearGradient />
+
+      <Header title="Your Orders" onPress={() => navigation.goBack()} />
 
       <View style={styles.tabContainer}>
         <CustomTabSwitcher
@@ -53,7 +38,6 @@ const YourOrdersScreen = ({ navigation }: any) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-
         {/* Cars Orders */}
         {activeTab === 'Cars' && (
           <>
@@ -82,9 +66,7 @@ const YourOrdersScreen = ({ navigation }: any) => {
                 subTitle={item.vehicleName}
                 status={item.bookingStatus}
                 statusColor={
-                  item.bookingStatus === 'Booked'
-                    ? '#45B649'
-                    : '#FF6B6B'
+                  item.bookingStatus === 'Booked' ? '#45B649' : '#FF6B6B'
                 }
                 footerText={`Pickup At : ${item.pickupAt}`}
               />
@@ -100,7 +82,7 @@ const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#F3F3FF'
+      backgroundColor: '#F7F7Fe',
     },
 
     headerGradient: {

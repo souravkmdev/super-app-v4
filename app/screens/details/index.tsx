@@ -124,7 +124,11 @@ const Details = () => {
             />
           </View>
 
-          <Header onPress={() => { }} title="Details" />
+          <Header
+            onPress={() => {}}
+            title="Details"
+            mainComp={{ position: 'absolute' }}
+          />
         </View>
 
         <View style={styles.contentContainer}>

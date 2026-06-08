@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
-import { colors } from '../../utils/constants/Theme';
 import ExploreBanner from './components/ExploreBanner';
 import Header from './components/Header';
 import TestDriveCard from './components/TestDriveCard';
@@ -15,9 +9,10 @@ import CarListingCard from '../home/components/CarListingCard';
 import Banner from '../home/components/Banners';
 import CompareCarsCard from './components/CompareCarsCard';
 import SuggestionSection from '../home/components/SuggestionSection';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 export default function Explorescree({ navigation }: any) {
-   const recommendedCarsData = [
+  const recommendedCarsData = [
     {
       id: '1',
       name: 'Grand Vitara',
@@ -42,41 +37,22 @@ export default function Explorescree({ navigation }: any) {
   const styles = getStyles(size);
 
   return (
-  <View style={styles.container}>
-  <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.scrollContainer}
-    >
-    <LinearGradient
-      colors={['#F4EEFF', '#FFFFFF']}
-      start={{ x: 0.5, y: 0 }}
-      end={{ x: 0.5, y: 1 }}
-      style={[
-        styles.headerContainer,
-        {
-          borderBottomLeftRadius: size.width * 6,
-          borderBottomRightRadius: size.width * 6,
-        },
-      ]}
-    >
-      <Header
-        title="Explore"
-        showBackButton={false}
-      />
-    </LinearGradient>
+    <View style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContainer}
+      >
+        <HeaderLinearGradient />
+        <Header title="Explore" showBackButton={false} />
 
-  
-      <ExploreBanner />
+        <ExploreBanner />
 
-      <TestDriveCard />
+        <TestDriveCard />
 
-      <CarListingCard
-        title="Picked For You"
-        data={recommendedCarsData}
-      />
-      <CompareCarsCard/>
-     
-       <Banner/>
+        <CarListingCard title="Picked For You" data={recommendedCarsData} />
+        <CompareCarsCard />
+
+        <Banner />
 
         <SuggestionSection
           title="Trending This Week"
@@ -101,18 +77,16 @@ export default function Explorescree({ navigation }: any) {
             },
           ]}
         />
-    
-    </ScrollView>
-
-  </View>
-);
+      </ScrollView>
+    </View>
+  );
 }
 
 const getStyles = (size: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: colors.white,
+      backgroundColor: "#F7F7Fe",
     },
 
     headerContainer: {
