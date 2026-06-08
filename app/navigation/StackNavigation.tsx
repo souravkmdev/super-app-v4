@@ -32,7 +32,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="BottomNavigation"
+      initialRouteName="ServiceDetailScreen"
       screenOptions={{
         headerShown: false,
       }}

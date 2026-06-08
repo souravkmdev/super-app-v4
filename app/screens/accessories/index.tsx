@@ -1,6 +1,5 @@
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import React, { useMemo } from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Header from '../../globalComponents/Header';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
@@ -9,6 +8,7 @@ import CustomButton from '../../globalComponents/CustomButton';
 import { colors, fonts } from '../../utils/constants/Theme';
 import FeatureGrid from '../../globalComponents/FeatureGrid';
 import { accessoriesData } from './data';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 const AccessoriesScreen = () => {
   const size = useSizeConfig();
@@ -17,10 +17,7 @@ const AccessoriesScreen = () => {
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={['#b7b7fe', '#d7d7fb', '#f3f3fd']}
-        style={styles.gradient}
-      />
+      <HeaderLinearGradient />
 
       <Header title="Accessories" onPress={() => {}} />
 
@@ -70,7 +67,7 @@ const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#F3F3FE',
+      backgroundColor: '#F7F7Fe',
     },
     gradient: {
       width: '100%',
@@ -79,7 +76,7 @@ const getStyles = (size: any, insets: any) =>
       zIndex: 0,
     },
     scrollView: {
-      marginTop: size.height * 20 + insets.top,
+      marginTop: size.height * 4,
     },
     scrollContent: {
       gap: size.height * 3,

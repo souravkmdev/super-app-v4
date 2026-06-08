@@ -8,66 +8,42 @@ import {
   View,
 } from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
 import Header from '../../globalComponents/Header';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { colors } from '../../utils/constants/Theme';
 import InsuranceHeroSection from './components/InsuranceHeroSection';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 const InsuranceScreen = ({ navigation }: any) => {
   const size = useSizeConfig();
-  const styles = useMemo(() => getStyles(size),[size],);
-  const [registrationNumber, setRegistrationNumber] = useState("")
-   
-   const registrationRegex =
-          /^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/;
-  
-      const isValidRegistration =
-          registrationRegex.test(
-              registrationNumber.replace(/\s/g, ''),
-          );
+  const styles = useMemo(() => getStyles(size), [size]);
+  const [registrationNumber, setRegistrationNumber] = useState('');
+
+  const registrationRegex = /^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/;
+
+  const isValidRegistration = registrationRegex.test(
+    registrationNumber.replace(/\s/g, ''),
+  );
 
   return (
-    <LinearGradient
-      colors={['#F3F3FF', '#F3F3FD', '#F3F3FF']}
-      style={styles.container}
-    >
-      <StatusBar
-        barStyle="dark-content"
-      />
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" />
+      <HeaderLinearGradient />
+      <Header title="Insurance" onPress={() => navigation.goBack()} />
 
-      <LinearGradient
-        colors={['#d3cafb', '#e3dcffd2', '#F3F3FF']}
-        style={styles.gradientContainer}>
-
-        <Header
-          title="Insurance"
-          onPress={() => navigation.goBack()}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={styles.scrollContent}
+      >
+        <InsuranceHeroSection
+          navigation={navigation}
+          registrationNumber={registrationNumber}
+          setRegistrationNumber={setRegistrationNumber}
+          isValidRegistration={isValidRegistration}
         />
-      </LinearGradient>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={
-          Platform.OS === 'ios'
-            ? 'padding'
-            : 'height'
-        }>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={styles.scrollContent}>
-
-          <InsuranceHeroSection
-            navigation={navigation}
-            registrationNumber={registrationNumber}
-            setRegistrationNumber={setRegistrationNumber}
-            isValidRegistration={isValidRegistration} />
-            
-            
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </LinearGradient>
-
+      </ScrollView>
+    </View>
   );
 };
 
@@ -77,6 +53,7 @@ const getStyles = (size: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: '#F7F7Fe',
     },
 
     gradientContainer: {
@@ -87,5 +64,4 @@ const getStyles = (size: any) =>
     scrollContent: {
       paddingBottom: size.height * 10,
     },
-
   });
