@@ -50,13 +50,8 @@ const Home = () => {
         contentContainerStyle={styles.scrollContainer}
       >
         <GarageCard />
-        <View style = {{
-          paddingHorizontal : size.width * 5
-        }} >
-          <FeatureGrid
-            featureData={featureData}
-            textStyle={{ fontFamily: fonts.medium }}
-          />
+        <View style={{ marginHorizontal: size.width * 3.6 }}>
+          <FeatureGrid featureData={featureData} textStyle={{ fontFamily: fonts.medium }} />
         </View>
         <ExploreServices />
         <TrackYourCar />

@@ -26,6 +26,8 @@ import ContactUs from '../screens/profile/ContactUs';
 import WebViewScreen from '../screens/profile/WebViewScreen';
 import AccessoriesScreen from '../screens/accessories';
 import AccessoriesLists from '../screens/accessories/AccessoriesLists';
+import DrivingCourseDetail from '../screens/drivingSchool/DrivingCourseDetail';
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -80,8 +82,10 @@ const StackNavigation = () => {
         name="ServiceDetailScreen"
         component={ServiceDetailScreen}
       />
+      <Stack.Screen name="DrivingCourseDetail" component={DrivingCourseDetail} />
     </Stack.Navigator>
   );
+
 };
 
 export default StackNavigation;
