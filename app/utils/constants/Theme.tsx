@@ -22,6 +22,7 @@ export const colors = {
   ligh_borderColor: '#E3DDDD',
   borderColor: '#8A8A8A',
   Color_5346EE: '#5346EE',
+  Color_EDE3FF: '#EDE3FF'
 };
 
 export const fonts = {
