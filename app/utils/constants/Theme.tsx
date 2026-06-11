@@ -1,6 +1,6 @@
 export const colors = {
   primary: '#9580F5',
-  primary2: '#F3F0FF',
+  primary2: '#846AF4',
   primary3: '#0077b6',
   white: 'white',
   error: 'red',
@@ -22,6 +22,7 @@ export const colors = {
   ligh_borderColor: '#E3DDDD',
   borderColor: '#8A8A8A',
   Color_5346EE: '#5346EE',
+  Color_EDE3FF: '#EDE3FF'
 };
 
 export const fonts = {

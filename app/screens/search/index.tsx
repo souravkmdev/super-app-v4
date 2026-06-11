@@ -7,10 +7,8 @@ import {
   View,
 } from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
-import { colors, fonts } from '../../utils/constants/Theme';
 
 import SearchInput from './components/SearchInput';
 import RecentSearches from './components/RecentSearches';
@@ -21,6 +19,7 @@ import CarListingCard from '../home/components/CarListingCard';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { useNavigation } from '@react-navigation/native';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -29,10 +28,7 @@ const SearchScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
 
-  const styles = useMemo(
-    () => getStyles(size, insets),
-    [size, insets],
-  );
+  const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 
   const [recentSearches, setRecentSearches] = useState([
     {
@@ -83,35 +79,21 @@ const SearchScreen = () => {
 
   const filteredCars = selectedBudget
     ? recommendedCarsData.filter(
-      (item) =>
-        item.price >= selectedBudget.min &&
-        item.price <= selectedBudget.max
-    )
+        item =>
+          item.price >= selectedBudget.min && item.price <= selectedBudget.max,
+      )
     : recommendedCarsData;
 
   return (
     <View style={styles.container}>
-      <StatusBar
-        barStyle="dark-content"
-      />
+      <StatusBar barStyle="dark-content" />
 
-      <LinearGradient
-        colors={['#F4EEFF', '#FFFFFF']}
-        start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
-        style={styles.headerContainer}
-      >
-        <Header
-          title="Search"
-          onPress={() => navigation.goBack()}
-        />
+      <HeaderLinearGradient />
+      <Header title="Search" onPress={() => navigation.goBack()} />
 
-        <View style={styles.searchContainer}>
-          <SearchInput
-            value={searchText}
-            onChangeText={setSearchText} />
-        </View>
-      </LinearGradient>
+      <View style={styles.searchContainer}>
+        <SearchInput value={searchText} onChangeText={setSearchText} />
+      </View>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -128,24 +110,17 @@ const SearchScreen = () => {
 
         <BodyTypeSection />
 
-        <CarListingCard
-          title="Recommended For You"
-          data={filteredCars}
-        />
-
+        <CarListingCard title="Recommended For You" data={filteredCars} />
       </ScrollView>
     </View>
   );
-}
+};
 
-const getStyles = (
-  size: any,
-  insets: any,
-) =>
+const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: colors.white,
+      backgroundColor: "#F7F7Fe",
     },
 
     headerContainer: {
@@ -155,7 +130,7 @@ const getStyles = (
       borderBottomRightRadius: size.width * 6,
     },
     searchContainer: {
-      marginTop: size.height * 6,
+      marginTop: size.height * 3,
       paddingHorizontal: size.width * 5,
     },
     scrollContent: {

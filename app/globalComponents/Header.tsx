@@ -18,12 +18,14 @@ const Header = ({
   textStyle,
   iconComp,
   iconColor,
+  mainComp,
 }: {
   onPress: () => void;
   title: string;
   textStyle?: TextStyle;
   iconComp?: ViewStyle;
   iconColor?: string;
+  mainComp?: ViewStyle;
 }) => {
   const insets = useSafeAreaInsets();
   const size = useSizeConfig();
@@ -31,7 +33,7 @@ const Header = ({
   const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 
   return (
-    <View style={styles.headerContainer}>
+    <View style={[styles.headerContainer, mainComp]}>
       <TouchableOpacity onPress={onPress} style={[styles.backButton, iconComp]}>
         <Feather
           name="chevron-left"
@@ -55,8 +57,7 @@ const getStyles = (size: any, insets: any) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      position: 'absolute',
-      top: insets.top + size.height * 4,
+      marginTop: insets.top + size.height * 4,
       left: 0,
       right: 0,
       paddingHorizontal: size.width * 4,

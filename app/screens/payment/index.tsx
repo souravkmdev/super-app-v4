@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native';
 import Header from '../../globalComponents/Header';
-import LinearGradient from 'react-native-linear-gradient';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { useCallback, useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -14,6 +13,7 @@ import { colors, fonts } from '../../utils/constants/Theme';
 import { Text } from '../../globalComponents/CustomText';
 import PaymentsCard from './components/PaymentsCard';
 import { paymentsData } from './data';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 const Payments = () => {
   const size = useSizeConfig();
@@ -39,13 +39,8 @@ const Payments = () => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <LinearGradient
-          colors={['#b7b7fe', '#d7d7fb', '#f3f3fd']}
-          style={styles.gradient}
-        />
-        <Header onPress={() => {}} title="Payments" />
-      </View>
+      <HeaderLinearGradient />
+      <Header onPress={() => {}} title="Payments" />
 
       <View style={styles.contentContainer}>
         <ImageBackground
@@ -100,7 +95,7 @@ const getStyles = (size: any, insets: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#f3f3fd',
+      backgroundColor: '#F7F7Fe',
     },
     gradient: {
       width: '100%',
@@ -109,7 +104,7 @@ const getStyles = (size: any, insets: any) =>
       zIndex: 0,
     },
     contentContainer: {
-      paddingTop: insets.top + size.height * 18,
+      paddingTop: size.height * 3,
     },
     banner: {
       width: size.width * 90,

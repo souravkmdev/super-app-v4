@@ -1,16 +1,8 @@
 import React, { useMemo, useState } from 'react';
-import {
-  Modal,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
 import Header from '../../globalComponents/Header';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
-import { colors } from '../../utils/constants/Theme';
 import StepperBar from '../booking/components/StepperBar';
 import ClaimBannerCard from './components/ClaimBannerCard';
 import OutletForm from './components/OutletForm';
@@ -18,11 +10,11 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import SelectionModal from './components/SelectionModal';
 import ContactDetailsBottomSheet from './components/ContactDetailsBottomSheet';
 import ThankYouModal from '../../globalComponents/ThankYouModal';
+import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
 const OutletScreen = ({ navigation }: any) => {
-
   const size = useSizeConfig();
-  const styles = useMemo(() => getStyles(size), [size],);
+  const styles = useMemo(() => getStyles(size), [size]);
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
   const [city, setCity] = useState('');
@@ -57,30 +49,18 @@ const OutletScreen = ({ navigation }: any) => {
     { label: 'West', value: 'west' },
   ];
 
-
   return (
-    <LinearGradient
-      colors={['#F3F3FF', '#F3F3FD', '#F3F3FF']}
-      style={styles.container}
-    >
-      <StatusBar
-        barStyle="dark-content"
-      />
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" />
 
-      <LinearGradient
-        colors={['#d3cafb', '#e3dcffd2', '#F3F3FF']}
-        style={styles.gradientContainer}>
+      <HeaderLinearGradient />
 
-        <Header
-          title="Insurance"
-          onPress={() => navigation.goBack()}
-        />
-      </LinearGradient>
+      <Header title="Insurance" onPress={() => navigation.goBack()} />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}>
-
+        contentContainerStyle={styles.scrollContent}
+      >
         <StepperBar
           currentStep={2}
           steps={[
@@ -134,11 +114,7 @@ const OutletScreen = ({ navigation }: any) => {
             setShowYearPicker(false);
 
             if (selectedDate) {
-              setYear(
-                selectedDate
-                  .getFullYear()
-                  .toString(),
-              );
+              setYear(selectedDate.getFullYear().toString());
             }
           }}
         />
@@ -153,11 +129,9 @@ const OutletScreen = ({ navigation }: any) => {
             setShowMonthPicker(false);
 
             if (selectedDate) {
-              const monthName =
-                selectedDate.toLocaleString(
-                  'default',
-                  { month: 'long' },
-                );
+              const monthName = selectedDate.toLocaleString('default', {
+                month: 'long',
+              });
 
               setMonth(monthName);
             }
@@ -237,8 +211,7 @@ const OutletScreen = ({ navigation }: any) => {
           navigation.navigate('Home');
         }}
       />
-
-    </LinearGradient>
+    </View>
   );
 };
 
@@ -246,9 +219,9 @@ export default OutletScreen;
 
 const getStyles = (size: any) =>
   StyleSheet.create({
-
     container: {
       flex: 1,
+      backgroundColor: '#F7F7Fe',
     },
 
     gradientContainer: {
@@ -257,15 +230,14 @@ const getStyles = (size: any) =>
 
     scrollContent: {
       paddingHorizontal: size.width * 5,
-      paddingBottom: size.height * 10,
+      paddingBottom: size.height * 15,
     },
 
     bannerContainer: {
-      marginTop: size.height * 3,
+      marginTop: size.height * 9,
     },
 
     formContainer: {
       marginTop: size.height * 3,
     },
-
   });

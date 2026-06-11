@@ -32,9 +32,11 @@ export type RootStackParamList = {
     WebViewScreen: undefined;
     UsedCarsScreen: undefined;
     DrivingSchool: undefined;
+    DrivingCourseDetail: { item: any };
     AccessoriesScreen: undefined;
     Notification: undefined;
     WishList: undefined;
     UsedCarFilterScreen: undefined;
     UsedCarOverview: undefined;
+    AccessoriesLists: undefined;
 };

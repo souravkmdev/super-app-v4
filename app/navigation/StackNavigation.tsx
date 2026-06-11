@@ -5,7 +5,7 @@ import Details from '../screens/details';
 import SearchScreen from '../screens/search';
 import InsuranceScreen from '../screens/insurance/InsuranceScreen';
 import VehicleDetailsScreen from '../screens/insurance/VehicleDetailsScreen';
-import OutletScreen from '../screens/insurance/OutletScreen'
+import OutletScreen from '../screens/insurance/OutletScreen';
 import EBookingSecondScreen from '../screens/booking/EBookingSecondScreen';
 import EBookingThirdScreen from '../screens/booking/EBookingThirdScreen';
 import { RootStackParamList } from './RootStackParamList';
@@ -14,7 +14,6 @@ import NewCarsScreen from '../screens/newcar/NewCarScreen';
 import ServiceScreen from '../screens/service/index';
 import UsedCarsScreen from '../screens/usedCars/buy';
 import DrivingSchool from '../screens/drivingSchool';
-import AccessoriesScreen from '../screens/accessories';
 import Notification from '../screens/notification';
 import BookingType from '../screens/booking';
 import Wishlist from '../screens/wishlist';
@@ -27,6 +26,10 @@ import ContactUs from '../screens/profile/ContactUs';
 import WebViewScreen from '../screens/profile/WebViewScreen';
 import UsedCarFilterScreen from '../screens/usedCars/buy/UsedCarFilterScreen';
 import UsedCarOverview from '../screens/usedCars/buy/BuycarOverview';
+import AccessoriesScreen from '../screens/accessories';
+import AccessoriesLists from '../screens/accessories/AccessoriesLists';
+import DrivingCourseDetail from '../screens/drivingSchool/DrivingCourseDetail';
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -62,13 +65,10 @@ const StackNavigation = () => {
             <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
             <Stack.Screen name="UsedCarFilterScreen" component={UsedCarFilterScreen} />
             <Stack.Screen name="UsedCarOverview" component={UsedCarOverview} />
-
+            <Stack.Screen name="AccessoriesLists" component={AccessoriesLists} />
+            <Stack.Screen name="DrivingCourseDetail" component={DrivingCourseDetail}/>
         </Stack.Navigator>
-
     );
-
 };
-
-
 
 export default StackNavigation;
