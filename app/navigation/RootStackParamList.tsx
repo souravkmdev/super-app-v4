@@ -35,4 +35,6 @@ export type RootStackParamList = {
     AccessoriesScreen: undefined;
     Notification: undefined;
     WishList: undefined;
+    UsedCarFilterScreen: undefined;
+    UsedCarOverview: undefined;
 };

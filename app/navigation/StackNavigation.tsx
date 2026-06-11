@@ -12,7 +12,7 @@ import { RootStackParamList } from './RootStackParamList';
 import ServiceDetailScreen from '../screens/service/ServiceDetailScreen';
 import NewCarsScreen from '../screens/newcar/NewCarScreen';
 import ServiceScreen from '../screens/service/index';
-import UsedCarsScreen from '../screens/usedCars';
+import UsedCarsScreen from '../screens/usedCars/buy';
 import DrivingSchool from '../screens/drivingSchool';
 import AccessoriesScreen from '../screens/accessories';
 import Notification from '../screens/notification';
@@ -25,7 +25,8 @@ import YourOrdersScreen from '../screens/profile/YourOrdersScreen';
 import MyAddressScreen from '../screens/profile/MyAddressScreen';
 import ContactUs from '../screens/profile/ContactUs';
 import WebViewScreen from '../screens/profile/WebViewScreen';
-
+import UsedCarFilterScreen from '../screens/usedCars/buy/UsedCarFilterScreen';
+import UsedCarOverview from '../screens/usedCars/buy/BuycarOverview';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -59,6 +60,9 @@ const StackNavigation = () => {
             <Stack.Screen name="WishList" component={Wishlist} />
             <Stack.Screen name="ServiceScreen" component={ServiceScreen} />
             <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
+            <Stack.Screen name="UsedCarFilterScreen" component={UsedCarFilterScreen} />
+            <Stack.Screen name="UsedCarOverview" component={UsedCarOverview} />
+
         </Stack.Navigator>
 
     );

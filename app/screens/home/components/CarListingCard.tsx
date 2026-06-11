@@ -78,7 +78,9 @@ const CarListingCard = ({ title, data }: Props) => {
               <Text style={styles.variantText}>{item.variants}</Text>
             </View>
 
-            <Text style={styles.priceText}>{item.price}</Text>
+            <Text style={styles.priceText}>
+              ₹ {item.price.toLocaleString('en-IN')}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
