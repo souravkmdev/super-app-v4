@@ -29,7 +29,9 @@ import UsedCarOverview from '../screens/usedCars/buy/BuycarOverview';
 import AccessoriesScreen from '../screens/accessories';
 import AccessoriesLists from '../screens/accessories/AccessoriesLists';
 import DrivingCourseDetail from '../screens/drivingSchool/DrivingCourseDetail';
-
+import SellVehicleDetails from '../screens/usedCars/sell';
+import SellCarPersonalDetails from '../screens/usedCars/sell/SellCarPersonalDetails';
+import SellCarEvaluate from '../screens/usedCars/sell/SellCarEvaluate';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -67,6 +69,10 @@ const StackNavigation = () => {
             <Stack.Screen name="UsedCarOverview" component={UsedCarOverview} />
             <Stack.Screen name="AccessoriesLists" component={AccessoriesLists} />
             <Stack.Screen name="DrivingCourseDetail" component={DrivingCourseDetail}/>
+            <Stack.Screen name="SellVehicleDetails" component={SellVehicleDetails} />
+            <Stack.Screen name="SellCarPersonalDetails" component={SellCarPersonalDetails} /> 
+            <Stack.Screen name="SellCarEvaluate" component={SellCarEvaluate} />
+
         </Stack.Navigator>
     );
 };

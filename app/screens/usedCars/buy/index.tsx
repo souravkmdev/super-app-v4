@@ -109,6 +109,9 @@ const UsedCarsScreen = ({ navigation }: any) => {
                     <View style={styles.buttonRow}>
                         <CustomButton
                             TextValue="Sell Cars"
+                            OnPress={() =>
+                                navigation.navigate('SellVehicleDetails')
+                            }
                             GradientColors={['#F3F3FF', '#F3F3FF']}
                             mainstyle={styles.sellButton}
                             PressableStyle={styles.buttonPressable}

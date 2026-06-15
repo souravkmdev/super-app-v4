@@ -39,4 +39,7 @@ export type RootStackParamList = {
     UsedCarFilterScreen: undefined;
     UsedCarOverview: undefined;
     AccessoriesLists: undefined;
+    SellVehicleDetails: undefined;
+    SellCarPersonalDetails: undefined;
+    SellCarEvaluate: undefined;
 };
