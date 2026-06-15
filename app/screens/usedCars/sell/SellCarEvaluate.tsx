@@ -21,6 +21,7 @@ import { colors, fonts } from '../../../utils/constants/Theme';
 import SellCarEvaluationCard from './components/EvaluationCard';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import EvaluationTimeCard from './components/EvaluationTimeCard';
+import ThankYouModal from '../../../globalComponents/ThankYouModal';
 
 const SellCarEvaluate = ({ navigation }: any) => {
     const size = useSizeConfig();
@@ -37,7 +38,7 @@ const SellCarEvaluate = ({ navigation }: any) => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [evaluationDate, setEvaluationDate] = useState('');
     const [selectedTime, setSelectedTime] = useState('');
-
+    const [showThankYouModal, setShowThankYouModal] = useState(false);
     const sellCarSteps = [
         {
             id: 1,
@@ -180,7 +181,6 @@ const SellCarEvaluate = ({ navigation }: any) => {
                     Choose Evaluation Time
                 </Text>
 
-                {/* Time slots later */}
                 <View style={styles.timeContainer}>
                     {timeSlots.map(item => (
                         <EvaluationTimeCard
@@ -198,6 +198,20 @@ const SellCarEvaluate = ({ navigation }: any) => {
             <CustomButton
                 TextValue="Submit"
                 mainstyle={styles.buttonContainer}
+                 OnPress={() => setShowThankYouModal(true)}
+            />
+
+
+            <ThankYouModal
+                visible={showThankYouModal}
+                image={require('../../../assets/images/thankyou.png')}
+                title="Thank You!"
+                description="Your car evaluation request has been submitted successfully. Our team will contact you shortly."
+                buttonText="Back to home"
+                onButtonPress={() => {
+                    setShowThankYouModal(false);
+                    navigation.navigate('BottomNavigation');
+                }}
             />
         </View>
     );
