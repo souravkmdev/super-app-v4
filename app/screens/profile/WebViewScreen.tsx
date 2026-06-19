@@ -19,7 +19,7 @@ const WebViewScreen = ({ route, navigation }: any) => {
       <StatusBar barStyle="dark-content" />
 
       <HeaderLinearGradient
-        linearGradientProps={['#b7b7fe', '#d7d7fb', '#fafafe']}
+        linearGradientProps={['#b7b7fe', '#d7d7fb', '#fdfdfd']}
       />
       <Header
         title={route?.params?.title}

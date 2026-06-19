@@ -34,6 +34,15 @@ const SubSections = ({
           <Feather name="user" size={size.width * 6} color={colors.primary} />
         );
 
+      case 'Reward Points':
+        return (
+          <Ionicons
+            name="gift-outline"
+            size={size.width * 6}
+            color={colors.primary}
+          />
+        );
+
       case 'Your Orders':
         return (
           <MaterialCommunityIcons
@@ -52,10 +61,10 @@ const SubSections = ({
           />
         );
 
-      case 'Teams and conditions':
+      case 'Terms and conditions':
         return (
-          <Ionicons
-            name="document-text-outline"
+          <MaterialCommunityIcons
+            name="file-document-outline"
             size={size.width * 6}
             color={colors.primary}
           />
@@ -138,7 +147,7 @@ const getStyles = (size: any, insets: any) =>
       borderBottomWidth: 1,
       borderBottomColor: '#EEEEF2',
       marginHorizontal: size.width * 5,
-      paddingVertical : size.height * 3,
+      paddingVertical: size.height * 3,
     },
 
     leftContainer: {

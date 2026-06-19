@@ -71,19 +71,19 @@ const getStyles = (size: any) =>
             borderRadius: size.width * 3,
             alignItems: 'center',
             justifyContent: 'center',
-            paddingVertical: size.height * 3,
+            paddingVertical: size.height * 3.5,
             paddingHorizontal: size.width * 3,
         },
 
         icon: {
-            width: size.width * 8,
-            height: size.width * 8,
+            width: size.width * 7,
+            height: size.width * 7,
             marginBottom: size.height,
         },
 
         title: {
             fontFamily: fonts.semiBold,
-            fontSize: size.fontSize * 2.8,
+            fontSize: size.fontSize * 2.6,
             color: colors.text_Primary,
             textAlign: 'center',
         },
@@ -91,7 +91,7 @@ const getStyles = (size: any) =>
         subTitle: {
             marginTop: size.height * 0.4,
             fontFamily: fonts.semiBold,
-            fontSize: size.fontSize * 2.4,
+            fontSize: size.fontSize * 2.3,
             color: colors.text_Secondary,
             textAlign: 'center',
         },

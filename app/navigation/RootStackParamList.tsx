@@ -42,4 +42,7 @@ export type RootStackParamList = {
     SellVehicleDetails: undefined;
     SellCarPersonalDetails: undefined;
     SellCarEvaluate: undefined;
+    PanVerificationScreen: undefined;
+    RewardsHowItWorks: undefined;
+    AboutUs: undefined;
 };

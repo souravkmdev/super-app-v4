@@ -32,6 +32,9 @@ import DrivingCourseDetail from '../screens/drivingSchool/DrivingCourseDetail';
 import SellVehicleDetails from '../screens/usedCars/sell';
 import SellCarPersonalDetails from '../screens/usedCars/sell/SellCarPersonalDetails';
 import SellCarEvaluate from '../screens/usedCars/sell/SellCarEvaluate';
+import PanVerificationScreen from '../screens/profile/PanVerificationScreen';
+import RewardsHowItWorks from '../screens/profile/RewardsHowItWorks';
+import AboutUs from '../screens/profile/AboutUs';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -44,6 +47,7 @@ const StackNavigation = () => {
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
             <Stack.Screen name="ProfileVerification" component={ProfileVerification} />
             <Stack.Screen name="RewardsScreen" component={RewardsScreen} />
+            <Stack.Screen name="RewardsHowItWorks" component={RewardsHowItWorks}/>
             <Stack.Screen name="YourOrdersScreen" component={YourOrdersScreen} />
             <Stack.Screen name="MyAddressScreen" component={MyAddressScreen} />
             <Stack.Screen name="ContactUs" component={ContactUs} />
@@ -72,7 +76,8 @@ const StackNavigation = () => {
             <Stack.Screen name="SellVehicleDetails" component={SellVehicleDetails} />
             <Stack.Screen name="SellCarPersonalDetails" component={SellCarPersonalDetails} /> 
             <Stack.Screen name="SellCarEvaluate" component={SellCarEvaluate} />
-
+            <Stack.Screen name="PanVerificationScreen" component={PanVerificationScreen} />
+            <Stack.Screen name="AboutUs" component={AboutUs} />
         </Stack.Navigator>
     );
 };

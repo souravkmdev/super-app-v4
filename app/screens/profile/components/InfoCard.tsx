@@ -152,7 +152,7 @@ const getStyles = (size: any) =>
         },
 
         itemTitle: {
-            fontFamily: fonts.bold,
+            fontFamily: fonts.medium,
             fontSize: size.fontSize * 3.5,
             color: colors.text_Primary,
         },
@@ -182,14 +182,14 @@ const getStyles = (size: any) =>
         },
 
         valueText: {
-            fontFamily: fonts.semiBold,
+            fontFamily: fonts.medium,
             fontSize: size.fontSize * 3.5,
             color: colors.text_Primary,
         },
         highlightRow: {
             backgroundColor: '#F7F3FF',
             borderRadius: size.width * 2,
-            paddingVertical: size.height * 2,
+            paddingVertical: size.height * 2.5,
             paddingHorizontal: size.width * 2,
         },
 
