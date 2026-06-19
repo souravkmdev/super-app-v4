@@ -37,4 +37,8 @@ export type RootStackParamList = {
     Notification: undefined;
     WishList: undefined;
     AccessoriesLists: undefined;
+    LoginScreen: undefined;
+    PasswordScreen: undefined;
+    OTPScreen: undefined;
+    SplashScreen: undefined;
 };

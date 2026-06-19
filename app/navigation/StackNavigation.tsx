@@ -27,6 +27,10 @@ import WebViewScreen from '../screens/profile/WebViewScreen';
 import AccessoriesScreen from '../screens/accessories';
 import AccessoriesLists from '../screens/accessories/AccessoriesLists';
 import DrivingCourseDetail from '../screens/drivingSchool/DrivingCourseDetail';
+import LoginScreen from '../screens/auth/login';
+import PasswordScreen from '../screens/auth/login/PasswordScreen';
+import OTPScreen from '../screens/auth/login/OTPScreen';
+import SplashScreen from '../screens/auth/SplashScreen';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -34,7 +38,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="BottomNavigation"
+      initialRouteName="LoginScreen"
       screenOptions={{
         headerShown: false,
       }}
@@ -83,6 +87,10 @@ const StackNavigation = () => {
         component={ServiceDetailScreen}
       />
       <Stack.Screen name="DrivingCourseDetail" component={DrivingCourseDetail} />
+      <Stack.Screen name='LoginScreen' component={LoginScreen} />
+      <Stack.Screen name='PasswordScreen' component={PasswordScreen} />
+      <Stack.Screen name='OTPScreen' component={OTPScreen} />
+      <Stack.Screen name='SplashScreen' component={SplashScreen} />
     </Stack.Navigator>
   );
 
