@@ -3,7 +3,7 @@ import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 
 import Header from '../../globalComponents/Header';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
-import StepperBar from '../booking/components/StepperBar';
+import StepperBar from '../../globalComponents/StepperBar';
 import ClaimBannerCard from './components/ClaimBannerCard';
 import OutletForm from './components/OutletForm';
 import DateTimePicker from '@react-native-community/datetimepicker';

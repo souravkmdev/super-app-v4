@@ -3,7 +3,7 @@ import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 
 import Header from '../../globalComponents/Header';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
-import StepperBar from '../booking/components/StepperBar';
+import StepperBar from '../../globalComponents/StepperBar';
 import VehicleBannerCard from './components/VehicleBannerCard';
 import VehicleDetailsFormCard from './components/VehicleDetailsForm';
 import SelectionModal from './components/SelectionModal';

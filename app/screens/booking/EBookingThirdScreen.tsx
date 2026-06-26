@@ -18,7 +18,7 @@ import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { colors, fonts } from '../../utils/constants/Theme';
 
 import BookingHeader from './components/BookingHeader';
-import StepperBar from './components/StepperBar';
+import StepperBar from '../../globalComponents/StepperBar';
 import SummaryRow from './components/SummaryRow';
 import BookingBottomBar from './components/BookingBottomBar';
 import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';

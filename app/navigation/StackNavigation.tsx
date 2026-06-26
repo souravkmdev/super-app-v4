@@ -27,6 +27,7 @@ import WebViewScreen from '../screens/profile/WebViewScreen';
 import AccessoriesScreen from '../screens/accessories';
 import AccessoriesLists from '../screens/accessories/AccessoriesLists';
 import DrivingCourseDetail from '../screens/drivingSchool/DrivingCourseDetail';
+import VehicleDetails from '../screens/usedCars/sell';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -34,7 +35,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="BottomNavigation"
+      initialRouteName="Details"
       screenOptions={{
         headerShown: false,
       }}
@@ -83,6 +84,7 @@ const StackNavigation = () => {
         component={ServiceDetailScreen}
       />
       <Stack.Screen name="DrivingCourseDetail" component={DrivingCourseDetail} />
+      <Stack.Screen name="VehicleDetails" component={VehicleDetails} />
     </Stack.Navigator>
   );
 

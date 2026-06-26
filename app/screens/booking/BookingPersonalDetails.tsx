@@ -18,7 +18,7 @@ import { Text } from '../../globalComponents/CustomText';
 import { useSizeConfig } from '../../utils/context/SizeConfig';
 import { colors, fonts } from '../../utils/constants/Theme';
 
-import StepperBar from './components/StepperBar';
+import StepperBar from '../../globalComponents/StepperBar';
 import Highlights from '../../globalComponents/Highlights';
 import { HighlightsImages } from './data';
 import Header from '../../globalComponents/Header';
