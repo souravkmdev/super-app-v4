@@ -11,13 +11,17 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { stepperData } from './data';
-import RbSheetComp from '../../../globalComponents/RbSheetComp';
-import BottomSheet from '@gorhom/bottom-sheet';
+
+
+interface RbSheetRef {
+  open: () => void;
+  close: () => void;
+}
 
 const VehicleDetails = () => {
   const size = useSizeConfig();
   const styles = useMemo(() => getStyles(size), [size]);
-  const sheetRef = useRef<BottomSheet>(null);
+  const sheetRef = useRef<RbSheetRef>(null);
 
   const [regNo, setRegNo] = useState<string>('');
 
@@ -126,13 +130,12 @@ const VehicleDetails = () => {
           />
         </View>
       </ScrollView>
-      <RbSheetComp
+      {/* <RbSheetComp
         ref={sheetRef}
-        snapPoints={['40%', '50%']}
         onChange={index => console.log('Sheet Index:', index)}
       >
         <Text>Hello Gorhom Sheet 🚀</Text>
-      </RbSheetComp>
+      </RbSheetComp> */}
     </View>
   );
 };
