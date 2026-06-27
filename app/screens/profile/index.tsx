@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { FlatList, Image, StatusBar, StyleSheet, View } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,6 +12,7 @@ import SubSections from './components/subSections';
 import CustomButton from '../../globalComponents/CustomButton';
 import { logIn, logOut } from './data';
 import { WEB_URLS } from '../../utils/context/WebUrls';
+import LogoutModal from '../../globalComponents/LogoutModal';
 
 const Profile = ({ navigation }: any) => {
   const size = useSizeConfig();
@@ -20,6 +21,7 @@ const Profile = ({ navigation }: any) => {
   const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 
   const isLoggedIn = true;
+  const [logoutVisible, setLogoutVisible] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -33,7 +35,7 @@ const Profile = ({ navigation }: any) => {
         renderItem={({ item }) => <SubSections title={item}
           onPress={() => {
             if (item === 'Profile') {
-              navigation.navigate('ProfileVerification');
+              navigation.navigate('PanVerificationScreen');
             }
             if (item === 'Reward Points') {
               navigation.navigate('RewardsScreen');
@@ -61,9 +63,15 @@ const Profile = ({ navigation }: any) => {
             }
             if (item === 'Cancellation & Refund Policy') {
               navigation.navigate('WebViewScreen', {
-                title: 'CANCELLATION & REFUND POLICY', 
+                title: 'CANCELLATION & REFUND POLICY',
                 url: WEB_URLS.CANCELLATION,
               });
+            }
+            if (item === 'About Us') {
+              navigation.navigate('AboutUs');
+            }
+            if (item === 'Log Out') {
+              setLogoutVisible(true);
             }
           }} />}
         ListHeaderComponent={
@@ -130,6 +138,14 @@ const Profile = ({ navigation }: any) => {
             </View>
           </View>
         }
+      />
+      <LogoutModal
+        visible={logoutVisible} 
+        image={require('../../assets/images/logout.png')}
+        onCancel={() => setLogoutVisible(false)}
+        onLogout={() => {
+          setLogoutVisible(false);
+        }}
       />
     </View>
   );

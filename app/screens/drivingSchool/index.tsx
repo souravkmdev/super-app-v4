@@ -118,7 +118,7 @@ const DrivingSchool = ({ navigation }: NavigationProp) => {
     );
 
     return (
-        <View style={[styles.safeArea, { paddingTop: insets.top + size.height * 2 }]}>
+        <View style={[styles.safeArea]}>
             <StatusBar barStyle={'dark-content'} />
 
             <LinearGradient
@@ -137,7 +137,7 @@ const DrivingSchool = ({ navigation }: NavigationProp) => {
                 showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps="handled"
                 contentContainerStyle={styles.flatListContent}
-                style={{ marginTop: size.height * 15, }}
+                style={{ marginTop: size.height * 4, }}
                 ItemSeparatorComponent={() => <View style={styles.cardSeparator} />}
             />
         </View>
@@ -155,7 +155,7 @@ const getStyles = (size: any) =>
 
         barStyle: {
             width: '100%',
-            height: size.height * 21,
+            height: size.height * 25,
             position: 'absolute',
         },
 

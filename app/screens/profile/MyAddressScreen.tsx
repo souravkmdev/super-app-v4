@@ -77,16 +77,17 @@ const getStyles = (size: any, insets: any) =>
       paddingBottom: size.height * 5,
     },
     sectionTitle: {
-      marginTop: size.height * 2,
+      marginTop: size.height * 5,
       marginBottom: size.height,
-      fontFamily: fonts.bold,
+      fontFamily: fonts.medium,
       fontSize: size.fontSize * 4,
       color: colors.text_Primary,
     },
     bannerImage: {
       width: '100%',
       height: size.height * 30,
-      marginTop: size.height * 2,
+      marginTop: size.height * 5,
+      marginBottom: size.height * 3,
     },
   });
 

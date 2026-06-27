@@ -29,9 +29,15 @@ const ProfileVerification = ({ navigation }: any) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        <Verificationsub />
+        <Verificationsub
+          image={require('../../assets/images/profile/profileverify.png')}
+          title="You're All Set!"
+          subTitle="Your profile is already verified."
+          imageWidth={size.width * 80}
+          imageHeight={size.height * 70}
+        />
 
-        <View style={{ marginTop: size.height * 2 }}>
+        <View style={{ marginTop: size.height * 6 }}>
           <InfoCard
             data={[
               {
