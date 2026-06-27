@@ -15,12 +15,12 @@ import HeaderLinearGradient from '../../../globalComponents/HeaderLinearGradient
 import { Text } from '../../../globalComponents/CustomText';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors, fonts } from '../../../utils/constants/Theme';
-import StepperBar from '../../booking/components/StepperBar';
 import CustomInputComp from '../../../globalComponents/CustomInputComp';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import DropDownComp from '../../../globalComponents/DropDownComp';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import CustomButton from '../../../globalComponents/CustomButton';
+import StepperBar from '../../../globalComponents/StepperBar';
 
 const SellCarVehicleDetails = ({ navigation }: any) => {
   const size = useSizeConfig();

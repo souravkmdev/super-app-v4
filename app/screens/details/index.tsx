@@ -26,17 +26,29 @@ import Header from '../../globalComponents/Header';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { useNavigation } from '@react-navigation/native';
+import EMICalculator from './components/EMICalculator';
+import { RbSheetRef } from '../../globalComponents/RbSheetComp';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Details = () => {
   const size = useSizeConfig();
+
   const flatListRef = useRef<FlatList>(null);
+  const sheetRef = useRef<RbSheetRef>(null);
+
   const navigation = useNavigation<NavigationProp>();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isWishlisted, setWishlisted] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
+
+  const [onRoadPrice, setOnRoadPrice] = useState('1000000');
+  const [downPayment, setDownPayment] = useState('');
+  const [interestRate, setInterestRate] = useState('9');
+  const [tenureValue, setTenureValue] = useState('');
+  const [tenure, setTenure] = useState<'M' | 'Y'>('M');
+  const [duration, setDuration] = useState('12');
 
   const insets = useSafeAreaInsets();
 
@@ -188,6 +200,9 @@ const Details = () => {
                   fontFamily: fonts.semiBold,
                 }}
                 TextValue="EMI Calculate"
+                OnPress={() => {
+                  sheetRef.current?.open();
+                }}
               />
 
               <CustomButton
@@ -269,6 +284,22 @@ const Details = () => {
           OnPress={() => navigation.navigate('BookingType')}
         />
       </View>
+
+      <EMICalculator
+        sheetRef={sheetRef}
+        onRoadPrice={onRoadPrice}
+        setOnRoadPrice={setOnRoadPrice}
+        downPayment={downPayment}
+        setDownPayment={setDownPayment}
+        interestRate={interestRate}
+        setInterestRate={setInterestRate}
+        tenureValue={tenureValue}
+        setTenureValue={setTenureValue}
+        tenure={tenure}
+        setTenure={setTenure}
+        duration={duration}
+        setDuration={setDuration}
+      />
 
       <ImageGallery
         isVisible={isModalVisible}

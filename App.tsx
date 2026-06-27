@@ -9,7 +9,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function App() {
   return (
-    <GestureHandlerRootView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <SizeConfigProvider>
         <SafeAreaProvider>
           <StatusBar
@@ -17,7 +17,6 @@ function App() {
             backgroundColor="transparent"
             barStyle="dark-content"
           />
-
           <NavigationContainer>
             <StackNavigation />
           </NavigationContainer>

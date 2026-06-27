@@ -2,11 +2,11 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 import { ServiceItem } from '../screens/service/components/ServiceCard';
 
 export type BottomTabParamList = {
-    Home: undefined;
-    ResQ: undefined;
-    Explore: undefined;
-    Payment: undefined;
-    Profile: undefined;
+  Home: undefined;
+  ResQ: undefined;
+  Explore: undefined;
+  Payment: undefined;
+  Profile: undefined;
 };
 
 export type RootStackParamList = {
