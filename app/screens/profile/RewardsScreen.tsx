@@ -1,6 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import {
   FlatList,
+  Image,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -23,7 +24,6 @@ import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 const RewardsScreen = ({ navigation }: any) => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
-
   const styles = useMemo(() => getStyles(size, insets), [size, insets]);
 
   const pointsHistory = [
@@ -77,7 +77,8 @@ const RewardsScreen = ({ navigation }: any) => {
             <Text style={styles.userName}>PARASURAMAN HARI</Text>
           </View>
 
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity activeOpacity={0.7}
+            onPress={() => navigation.navigate('RewardsHowItWorks')}>
             <Text style={styles.howItWorks}>How it works?</Text>
           </TouchableOpacity>
         </View>

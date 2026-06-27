@@ -12,7 +12,7 @@ import { RootStackParamList } from './RootStackParamList';
 import ServiceDetailScreen from '../screens/service/ServiceDetailScreen';
 import NewCarsScreen from '../screens/newcar/NewCarScreen';
 import ServiceScreen from '../screens/service/index';
-import UsedCarsScreen from '../screens/usedCars';
+import UsedCarsScreen from '../screens/usedCars/buy';
 import DrivingSchool from '../screens/drivingSchool';
 import Notification from '../screens/notification';
 import BookingType from '../screens/booking';
@@ -24,68 +24,62 @@ import YourOrdersScreen from '../screens/profile/YourOrdersScreen';
 import MyAddressScreen from '../screens/profile/MyAddressScreen';
 import ContactUs from '../screens/profile/ContactUs';
 import WebViewScreen from '../screens/profile/WebViewScreen';
+import UsedCarFilterScreen from '../screens/usedCars/buy/UsedCarFilterScreen';
+import UsedCarOverview from '../screens/usedCars/buy/BuycarOverview';
 import AccessoriesScreen from '../screens/accessories';
 import AccessoriesLists from '../screens/accessories/AccessoriesLists';
 import DrivingCourseDetail from '../screens/drivingSchool/DrivingCourseDetail';
-
+import SellVehicleDetails from '../screens/usedCars/sell';
+import SellCarPersonalDetails from '../screens/usedCars/sell/SellCarPersonalDetails';
+import SellCarEvaluate from '../screens/usedCars/sell/SellCarEvaluate';
+import PanVerificationScreen from '../screens/profile/PanVerificationScreen';
+import RewardsHowItWorks from '../screens/profile/RewardsHowItWorks';
+import AboutUs from '../screens/profile/AboutUs';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigation = () => {
-  return (
-    <Stack.Navigator
-      initialRouteName="BottomNavigation"
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
-      <Stack.Screen
-        name="ProfileVerification"
-        component={ProfileVerification}
-      />
-      <Stack.Screen name="RewardsScreen" component={RewardsScreen} />
-      <Stack.Screen name="YourOrdersScreen" component={YourOrdersScreen} />
-      <Stack.Screen name="MyAddressScreen" component={MyAddressScreen} />
-      <Stack.Screen name="ContactUs" component={ContactUs} />
-      <Stack.Screen name="Details" component={Details} />
-      <Stack.Screen name="Search" component={SearchScreen} />
-      <Stack.Screen name="InsuranceScreen" component={InsuranceScreen} />
-      <Stack.Screen
-        name="VehicleDetailsScreen"
-        component={VehicleDetailsScreen}
-      />
-      <Stack.Screen name="OutletScreen" component={OutletScreen} />
-      <Stack.Screen name="BookingType" component={BookingType} />
-      <Stack.Screen
-        name="BookingPersonalDetails"
-        component={BookingPersonalDetails}
-      />
-      <Stack.Screen
-        name="EBookingSecondScreen"
-        component={EBookingSecondScreen}
-      />
-      <Stack.Screen
-        name="EBookingThirdScreen"
-        component={EBookingThirdScreen}
-      />
-      <Stack.Screen name="NewCarScreen" component={NewCarsScreen} />
-      <Stack.Screen name="WebViewScreen" component={WebViewScreen} />
-      <Stack.Screen name="UsedCarsScreen" component={UsedCarsScreen} />
-      <Stack.Screen name="DrivingSchool" component={DrivingSchool} />
-      <Stack.Screen name="AccessoriesScreen" component={AccessoriesScreen} />
-      <Stack.Screen name="AccessoriesLists" component={AccessoriesLists} />
-      <Stack.Screen name="Notification" component={Notification} />
-      <Stack.Screen name="WishList" component={Wishlist} />
-      <Stack.Screen name="ServiceScreen" component={ServiceScreen} />
-      <Stack.Screen
-        name="ServiceDetailScreen"
-        component={ServiceDetailScreen}
-      />
-      <Stack.Screen name="DrivingCourseDetail" component={DrivingCourseDetail} />
-    </Stack.Navigator>
-  );
 
+    return (
+        <Stack.Navigator
+            initialRouteName="BottomNavigation"
+            screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+            <Stack.Screen name="ProfileVerification" component={ProfileVerification} />
+            <Stack.Screen name="RewardsScreen" component={RewardsScreen} />
+            <Stack.Screen name="RewardsHowItWorks" component={RewardsHowItWorks}/>
+            <Stack.Screen name="YourOrdersScreen" component={YourOrdersScreen} />
+            <Stack.Screen name="MyAddressScreen" component={MyAddressScreen} />
+            <Stack.Screen name="ContactUs" component={ContactUs} />
+            <Stack.Screen name="Details" component={Details} />
+            <Stack.Screen name="Search" component={SearchScreen} />
+            <Stack.Screen name="InsuranceScreen" component={InsuranceScreen} />
+            <Stack.Screen name="VehicleDetailsScreen" component={VehicleDetailsScreen} />
+            <Stack.Screen name="OutletScreen" component={OutletScreen} />
+            <Stack.Screen name="BookingType" component={BookingType} />
+            <Stack.Screen name="BookingPersonalDetails" component={BookingPersonalDetails} />
+            <Stack.Screen name="EBookingSecondScreen" component={EBookingSecondScreen} />
+            <Stack.Screen name="EBookingThirdScreen" component={EBookingThirdScreen} />
+            <Stack.Screen name="NewCarScreen" component={NewCarsScreen} />
+            <Stack.Screen name="WebViewScreen" component={WebViewScreen} />
+            <Stack.Screen name="UsedCarsScreen" component={UsedCarsScreen} />
+            <Stack.Screen name="DrivingSchool" component={DrivingSchool} />
+            <Stack.Screen name="AccessoriesScreen" component={AccessoriesScreen} />
+            <Stack.Screen name="Notification" component={Notification} />
+            <Stack.Screen name="WishList" component={Wishlist} />
+            <Stack.Screen name="ServiceScreen" component={ServiceScreen} />
+            <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
+            <Stack.Screen name="UsedCarFilterScreen" component={UsedCarFilterScreen} />
+            <Stack.Screen name="UsedCarOverview" component={UsedCarOverview} />
+            <Stack.Screen name="AccessoriesLists" component={AccessoriesLists} />
+            <Stack.Screen name="DrivingCourseDetail" component={DrivingCourseDetail}/>
+            <Stack.Screen name="SellVehicleDetails" component={SellVehicleDetails} />
+            <Stack.Screen name="SellCarPersonalDetails" component={SellCarPersonalDetails} /> 
+            <Stack.Screen name="SellCarEvaluate" component={SellCarEvaluate} />
+            <Stack.Screen name="PanVerificationScreen" component={PanVerificationScreen} />
+            <Stack.Screen name="AboutUs" component={AboutUs} />
+        </Stack.Navigator>
+    );
 };
 
 export default StackNavigation;

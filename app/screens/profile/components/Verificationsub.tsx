@@ -1,73 +1,99 @@
 import React, { useMemo } from 'react';
 import {
-    Image,
-    StyleSheet,
-    View,
+  Image,
+  StyleSheet,
+  View,
 } from 'react-native';
 
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { Text } from '../../../globalComponents/CustomText';
 import { colors, fonts } from '../../../utils/constants/Theme';
 
-const Verificationsub = () => {
-    const size = useSizeConfig();
+interface Props {
+  image: any;
+  title?: string;
+  subTitle?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+}
 
-    const styles = useMemo(
-        () => getStyles(size),
-        [size],
-    );
+const Verificationsub = ({
+  image,
+  title,
+  subTitle,
+  imageWidth,
+  imageHeight,
+}: Props) => {
+  const size = useSizeConfig();
 
-    return (
-        <View style={styles.container}>
-            <Image
-                source={require('../../../assets/images/profile/profileverify.png')}
-                style={styles.image}
-                resizeMode="contain"
-            />
+  const styles = useMemo(
+    () => getStyles(size),
+    [size],
+  );
 
-            <View style={styles.textContainer}>
-                <Text style={styles.title}>
-                    You're All Set!
-                </Text>
+  return (
+    <View style={styles.container}>
+      <Image
+        source={image}
+        style={[
+          styles.image,
+          {
+            width: imageWidth ?? size.width * 80,
+            height: imageHeight ?? size.height * 70,
+          },
+        ]}
+        resizeMode="contain"
+      />
 
-                <Text style={styles.subTitle}>
-                    Your profile is already verified.
-                </Text>
-            </View>
+      {(title || subTitle) && (
+        <View style={styles.textContainer}>
+          {title && (
+            <Text style={styles.title}>
+              {title}
+            </Text>
+          )}
+
+          {subTitle && (
+            <Text style={styles.subTitle}>
+              {subTitle}
+            </Text>
+          )}
         </View>
-    );
+      )}
+    </View>
+  );
 };
 
 const getStyles = (size: any) =>
-    StyleSheet.create({
-        container: {
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: size.height * 6,
-        },
+  StyleSheet.create({
+    container: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: size.height * 6,
+    },
 
-        image: {
-            width: size.width * 80,
-            height: size.height * 70,
-        },
-        textContainer: {
-            alignItems: 'center',
-            marginTop: size.height * 8,
-        },
+    image: {},
 
-        title: {
-            fontFamily: fonts.bold,
-            fontSize: size.fontSize * 4.5,
-            color: colors.text_Primary,
-        },
+    textContainer: {
+      alignItems: 'center',
+      marginTop: size.height * 2,
+    },
 
-        subTitle: {
-            marginTop: size.height * 0.8,
-            fontFamily: fonts.medium,
-            fontSize: size.fontSize * 3.2,
-            color: colors.text_Secondary,
-            textAlign: 'center',
-        },
-    });
+    title: {
+      fontFamily: fonts.bold,
+      fontSize: size.fontSize * 4.5,
+      color: colors.text_Primary,
+      textAlign: 'center',
+    },
+
+    subTitle: {
+      marginTop: size.height * 0.8,
+      fontFamily: fonts.medium,
+      fontSize: size.fontSize * 3.2,
+      color: colors.text_Secondary,
+      textAlign: 'center',
+      paddingHorizontal: size.width * 8,
+    },
+  });
 
 export default Verificationsub;

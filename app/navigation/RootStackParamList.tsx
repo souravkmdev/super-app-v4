@@ -36,5 +36,13 @@ export type RootStackParamList = {
     AccessoriesScreen: undefined;
     Notification: undefined;
     WishList: undefined;
+    UsedCarFilterScreen: undefined;
+    UsedCarOverview: undefined;
     AccessoriesLists: undefined;
+    SellVehicleDetails: undefined;
+    SellCarPersonalDetails: undefined;
+    SellCarEvaluate: undefined;
+    PanVerificationScreen: undefined;
+    RewardsHowItWorks: undefined;
+    AboutUs: undefined;
 };

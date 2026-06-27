@@ -12,7 +12,13 @@ import CustomButton from '../../../globalComponents/CustomButton';
 import { useSizeConfig } from '../../../utils/context/SizeConfig';
 import { colors, fonts } from '../../../utils/constants/Theme';
 
-const RewardsCard = () => {
+interface RewardsCardProps {
+    onUpgradePress?: () => void;
+}
+
+const RewardsCard = ({
+    onUpgradePress,
+}: RewardsCardProps) => {
     const size = useSizeConfig();
 
     const styles = useMemo(
@@ -49,7 +55,7 @@ const RewardsCard = () => {
 
             <View style={styles.memberSection}>
                 <Image
-                    source={require('../../../assets/images/profile/shield.png')}
+                    source={require('../../../assets/images/profile/silver.png')}
                     style={styles.shieldImage}
                     resizeMode="contain"
                 />
@@ -74,6 +80,7 @@ const RewardsCard = () => {
                     TextValue="Upgrade Now"
                     PressableStyle={styles.button}
                     GradientColors={['#856add', '#846AF4']}
+                     OnPress={onUpgradePress}
                 />
             </View>
         </LinearGradient>
