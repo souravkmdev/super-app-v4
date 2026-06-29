@@ -24,7 +24,7 @@ const DrivingCourseDetail = () => {
         <View
             style={[
                 styles.safeArea,
-                { paddingTop: insets.top + size.height * 2 },
+                // { paddingTop: insets.top + size.height * 2 },
             ]}>
             <LinearGradient
                 colors={['#d3cafb', '#e3dcffd2', '#f3f3ff']}
@@ -103,7 +103,7 @@ const getStyles = (size: any) =>
         },
 
         scrollView: {
-            marginTop: size.height * 15,
+            marginTop: size.height * 5,
         },
 
         scrollContent: {
@@ -114,6 +114,7 @@ const getStyles = (size: any) =>
         bannerImg: {
             width: '100%',
             height: size.height * 40,
+            borderRadius: size.width * 4.8,
         },
 
         sectionTitle: {
@@ -126,7 +127,7 @@ const getStyles = (size: any) =>
         aboutContainer: {
             marginTop: size.width * 2.5,
             backgroundColor: '#F0ECFF',
-            borderRadius: size.width * 1.2,
+            borderRadius: size.width * 3.5,
             paddingHorizontal: size.width * 3,
             paddingVertical: size.width * 2.5,
             marginBottom: size.width * 5,
@@ -149,7 +150,7 @@ const getStyles = (size: any) =>
 
         cardContainer: {
             backgroundColor: colors.white,
-            borderRadius: size.width * 2,
+            borderRadius: size.width * 3.5,
             padding: size.width * 3,
             marginBottom: size.width * 3,
         },
