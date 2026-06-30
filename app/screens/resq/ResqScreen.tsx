@@ -362,7 +362,6 @@ const getStyles = (size: any) =>
             fontFamily: fonts.semiBold,
         },
         benefitsCard: {
-            backgroundColor: colors.primary2,
             marginTop: size.width * 3.8,
         },
         benefitRow: {
