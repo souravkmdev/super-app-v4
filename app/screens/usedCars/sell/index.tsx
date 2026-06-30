@@ -88,7 +88,6 @@ const SellCarVehicleDetails = ({ navigation }: any) => {
           steps={sellCarSteps}
         />
 
-        {/* Banner */}
         <Image
           source={require('../../../assets/images/usedcar/sellcarbanner.png')}
           resizeMode="contain"

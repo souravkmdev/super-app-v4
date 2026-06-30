@@ -10,7 +10,7 @@ import FeatureGrid from '../../globalComponents/FeatureGrid';
 import { accessoriesData } from './data';
 import HeaderLinearGradient from '../../globalComponents/HeaderLinearGradient';
 
-const AccessoriesScreen = () => {
+const AccessoriesScreen = ({ navigation } : any) => {
   const size = useSizeConfig();
   const insets = useSafeAreaInsets();
   const styles = useMemo(() => getStyles(size, insets), [size, insets]);
@@ -55,6 +55,9 @@ const AccessoriesScreen = () => {
           GradientColors={['#807AF4', '#A383FF', '#ADA9F6']}
           TextValue="Explore Products"
           mainstyle={styles.button}
+          OnPress={() => {
+            navigation.navigate('AccessoriesLists');
+          }}
         />
       </ScrollView>
     </View>

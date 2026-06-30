@@ -4,7 +4,15 @@ import React, {
   useImperativeHandle,
   useState,
 } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 import { SizeConfig } from '../assets/size/size';
 import { colors } from '../utils/constants/Theme';
@@ -16,10 +24,11 @@ export type RbSheetRef = {
 
 type RbSheetCompProps = {
   children: ReactNode;
+  sheetContStyle?: StyleProp<ViewStyle>;
 };
 
 const RbSheetComp = forwardRef<RbSheetRef, RbSheetCompProps>(
-  ({ children }, ref) => {
+  ({ children, sheetContStyle }, ref) => {
     const [visible, setVisible] = useState(false);
 
     useImperativeHandle(ref, () => ({
@@ -43,7 +52,7 @@ const RbSheetComp = forwardRef<RbSheetRef, RbSheetCompProps>(
             onPress={() => setVisible(false)}
           />
 
-          <View style={styles.sheetContainer}>
+          <View style={[styles.sheetContainer, sheetContStyle]}>
             <View style={styles.handle} />
 
             <ScrollView

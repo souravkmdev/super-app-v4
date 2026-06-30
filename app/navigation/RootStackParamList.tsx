@@ -45,4 +45,5 @@ export type RootStackParamList = {
     PanVerificationScreen: undefined;
     RewardsHowItWorks: undefined;
     AboutUs: undefined;
+    PaymentDetailsScreen: undefined;
 };

@@ -26,7 +26,7 @@ const Home = () => {
       image: require('../../assets/images/home/recommendcar.png'),
       rating: '5.00',
       variants: '4 Variants',
-      price: 1280000
+      price: 1280000,
     },
     {
       id: '2',
@@ -35,7 +35,7 @@ const Home = () => {
       image: require('../../assets/images/home/recommendcar.png'),
       rating: '5.00',
       variants: '4 Variants',
-      price: 1140000
+      price: 1140000,
     },
   ];
   return (
@@ -51,7 +51,10 @@ const Home = () => {
       >
         <GarageCard />
         <View style={{ marginHorizontal: size.width * 3.6 }}>
-          <FeatureGrid featureData={featureData} textStyle={{ fontFamily: fonts.medium }} />
+          <FeatureGrid
+            featureData={featureData}
+            textStyle={{ fontFamily: fonts.medium }}
+          />
         </View>
         <ExploreServices />
         <TrackYourCar />
